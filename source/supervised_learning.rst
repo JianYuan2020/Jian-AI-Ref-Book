@@ -12,8 +12,8 @@ Linear Regression with Multiple Variables/Features
 * x(i) = [ x(i)1; x(i)2; ... x(i)j; ... x(i)n ] -- n x 1 column vector.
 * X = [ x(1)'; x(2)'; ... x(i)'; ... x(m)' ] -- m x n matrix.
 
-Hypothesis
-^^^^^^^^^^
+1. Hypothesis
+^^^^^^^^^^^^^
 * h_theta(x) = theta_0 + theta_1*x1 + theta_2*x2 + ... + theta_j*xj + ... theta_n*xn
 
 * Define: x0 = 1 (x(i)0 = 1)
@@ -24,11 +24,18 @@ Parameters
 * Theta = [ theta_0; theta_1; theta_2; ... theta_j; ... theta_n ] -- (n + 1) x 1 column vector.
 
 Therefore:
+
 * h_theta(x) = theta_0*x0 + theta_1*x1 + theta_2*x2 + ... + theta_j*xj + ... theta_n*xn
 * h_theta(x) = Theta_transpose*x
 
-Gradient Descent
+2. Cost Function
 ^^^^^^^^^^^^^^^^
+* J(Theta) = sum((h_theta(x(i)) - y(i))^2 where i = 1:m)/(2*m)
+
+3. Gradient Descent
+^^^^^^^^^^^^^^^^^^^
+* theta_j = theta_j - alpha*sum((h_theta(x(i)) - y(i))*x(i)j where i = 1:m)/m
+* Note here, x(i)0 = 1; j = 0:n; and Theta is a (n + 1) x 1 column vector;
 
 Unsupervised learning
 ---------------------

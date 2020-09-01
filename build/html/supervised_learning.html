@@ -51,7 +51,7 @@
 <li><p>X = [ x(1)’; x(2)’; … x(i)’; … x(m)’ ] – m x n matrix.</p></li>
 </ul>
 <div class="section" id="hypothesis">
-<h3>Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">¶</a></h3>
+<h3>1. Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>h_theta(x) = theta_0 + theta_1*x1 + theta_2*x2 + … + theta_j*xj + … theta_n*xn</p></li>
 <li><p>Define: x0 = 1 (x(i)0 = 1)</p></li>
@@ -63,12 +63,24 @@
 <ul class="simple">
 <li><p>Theta = [ theta_0; theta_1; theta_2; … theta_j; … theta_n ] – (n + 1) x 1 column vector.</p></li>
 </ul>
-<p>Therefore:
-* h_theta(x) = theta_0*x0 + theta_1*x1 + theta_2*x2 + … + theta_j*xj + … theta_n*xn
-* h_theta(x) = Theta_transpose*x</p>
+<p>Therefore:</p>
+<ul class="simple">
+<li><p>h_theta(x) = theta_0*x0 + theta_1*x1 + theta_2*x2 + … + theta_j*xj + … theta_n*xn</p></li>
+<li><p>h_theta(x) = Theta_transpose*x</p></li>
+</ul>
+</div>
+<div class="section" id="cost-function">
+<h3>2. Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>J(Theta) = sum((h_theta(x(i)) - y(i))^2 where i = 1:m)/(2*m)</p></li>
+</ul>
 </div>
 <div class="section" id="gradient-descent">
-<h3>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h3>
+<h3>3. Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>theta_j = theta_j - alpha*sum((h_theta(x(i)) - y(i))*x(i)j where i = 1:m)/m</p></li>
+<li><p>Note here, x(i)0 = 1; j = 0:n; and Theta is a (n + 1) x 1 column vector;</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="unsupervised-learning">
@@ -94,9 +106,10 @@
 <li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Supervised learning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#linear-regression-with-multiple-variables-features">Linear Regression with Multiple Variables/Features</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#hypothesis">Hypothesis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hypothesis">1. Hypothesis</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gradient-descent">Gradient Descent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cost-function">2. Cost Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gradient-descent">3. Gradient Descent</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#unsupervised-learning">Unsupervised learning</a></li>
