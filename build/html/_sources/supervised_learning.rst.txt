@@ -1,32 +1,37 @@
 Supervised learning
 ===================
 
+:math:`\alpha > \beta`
+
+.. math::
+
+    n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k
 
 Linear Regression with Multiple Variables/Features
 --------------------------------------------------
 
-* n = number of features.
-* m = number of training examples.
-* x(i) = input (features) of ith training example.
-* x(i)j = value of feature j in ith training example.
-* x(i) = [ x(i)1; x(i)2; ... x(i)j; ... x(i)n ] -- n x 1 column vector.
-* X = [ x(1)'; x(2)'; ... x(i)'; ... x(m)' ] -- m x n matrix.
+Let's define:
+	* :math:`n` = number of features.
+	* :math:`m` = number of training examples.
+	* :math:`x^{(i)}` = input (features) of :math:`i^{th}` training example.
+	* :math:`x^{(i)}_{j}` = value of feature :math:`j` in :math:`i^{th}` training example.
+	* :math:`x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ... x^{(i)}_{j}; ... x^{(i)}_{n} ]` - :math:`n * 1` column vector.
+	* :math:`X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ... (x^{(i)})^{T}; ... (x^{(m)})^{T} ]` - :math:`m * n` matrix.
 
 1. Hypothesis
 ^^^^^^^^^^^^^
-* h_theta(x) = theta_0 + theta_1*x1 + theta_2*x2 + ... + theta_j*xj + ... theta_n*xn
+	* :math:`h_\theta (x) = \theta_{0} + \theta_{1} * x_{1} + \theta_{2} * x_{2} + ... + \theta_{j} * x_{j} + ... \theta_{n} * x_{n}`.
+	* Let: :math:`x_{0} = 1` and :math:`x^{(i)}_{0} = 1`.
+	* :math:`x = [ x_{0}; x_{1}; x_{2}; ... x_{j}; ... x_{n} ]` - :math:`(n + 1) * 1` column vector.
 
-* Define: x0 = 1 (x(i)0 = 1)
-* x = [ x0; x1; x2; ... xj; ... xn ] -- (n + 1) x 1 column vector.
-
-Parameters
-^^^^^^^^^^
-* Theta = [ theta_0; theta_1; theta_2; ... theta_j; ... theta_n ] -- (n + 1) x 1 column vector.
+The Parameters
+^^^^^^^^^^^^^^
+	* :math:`\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ... \theta_{j}; ... \theta_{n} ]` - :math:`(n + 1) * 1` column vector.
 
 Therefore:
 
-* h_theta(x) = theta_0*x0 + theta_1*x1 + theta_2*x2 + ... + theta_j*xj + ... theta_n*xn
-* h_theta(x) = Theta_transpose*x
+* :math:`h_\theta (x) = \theta_{0} * x_{0} + \theta_{1} * x_{1} + \theta_{2} * x_{2} + ... + \theta_{j} * x_{j} + ... + \theta_{n} * x_{n}`.
+* :math:`h_\theta (x) = \Theta^{T} * x`.
 
 2. Cost Function
 ^^^^^^^^^^^^^^^^

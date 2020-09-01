@@ -13,6 +13,7 @@
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Machine Learning" href="machine_learning.html" /> 
@@ -40,33 +41,43 @@
             
   <div class="section" id="supervised-learning">
 <h1>Supervised learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h1>
+<p><span class="math notranslate nohighlight">\(\alpha &gt; \beta\)</span></p>
+<div class="math notranslate nohighlight">
+\[n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k\]</div>
 <div class="section" id="linear-regression-with-multiple-variables-features">
 <h2>Linear Regression with Multiple Variables/Features<a class="headerlink" href="#linear-regression-with-multiple-variables-features" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>n = number of features.</p></li>
-<li><p>m = number of training examples.</p></li>
-<li><p>x(i) = input (features) of ith training example.</p></li>
-<li><p>x(i)j = value of feature j in ith training example.</p></li>
-<li><p>x(i) = [ x(i)1; x(i)2; … x(i)j; … x(i)n ] – n x 1 column vector.</p></li>
-<li><p>X = [ x(1)’; x(2)’; … x(i)’; … x(m)’ ] – m x n matrix.</p></li>
+<dl class="simple">
+<dt>Let’s define:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> = number of features.</p></li>
+<li><p><span class="math notranslate nohighlight">\(m\)</span> = number of training examples.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x^{(i)}\)</span> = input (features) of <span class="math notranslate nohighlight">\(i^{th}\)</span> training example.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x^{(i)}_{j}\)</span> = value of feature <span class="math notranslate nohighlight">\(j\)</span> in <span class="math notranslate nohighlight">\(i^{th}\)</span> training example.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ... x^{(i)}_{j}; ... x^{(i)}_{n} ]\)</span> - <span class="math notranslate nohighlight">\(n * 1\)</span> column vector.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ... (x^{(i)})^{T}; ... (x^{(m)})^{T} ]\)</span> - <span class="math notranslate nohighlight">\(m * n\)</span> matrix.</p></li>
 </ul>
+</dd>
+</dl>
 <div class="section" id="hypothesis">
 <h3>1. Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>h_theta(x) = theta_0 + theta_1*x1 + theta_2*x2 + … + theta_j*xj + … theta_n*xn</p></li>
-<li><p>Define: x0 = 1 (x(i)0 = 1)</p></li>
-<li><p>x = [ x0; x1; x2; … xj; … xn ] – (n + 1) x 1 column vector.</p></li>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta_{0} + \theta_{1} * x_{1} + \theta_{2} * x_{2} + ... + \theta_{j} * x_{j} + ... \theta_{n} * x_{n}\)</span>.</p></li>
+<li><p>Let: <span class="math notranslate nohighlight">\(x_{0} = 1\)</span> and <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x = [ x_{0}; x_{1}; x_{2}; ... x_{j}; ... x_{n} ]\)</span> - <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p></li>
 </ul>
+</div></blockquote>
 </div>
-<div class="section" id="parameters">
-<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Theta = [ theta_0; theta_1; theta_2; … theta_j; … theta_n ] – (n + 1) x 1 column vector.</p></li>
+<div class="section" id="the-parameters">
+<h3>The Parameters<a class="headerlink" href="#the-parameters" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ... \theta_{j}; ... \theta_{n} ]\)</span> - <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p></li>
 </ul>
+</div></blockquote>
 <p>Therefore:</p>
 <ul class="simple">
-<li><p>h_theta(x) = theta_0*x0 + theta_1*x1 + theta_2*x2 + … + theta_j*xj + … theta_n*xn</p></li>
-<li><p>h_theta(x) = Theta_transpose*x</p></li>
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta_{0} * x_{0} + \theta_{1} * x_{1} + \theta_{2} * x_{2} + ... + \theta_{j} * x_{j} + ... + \theta_{n} * x_{n}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \Theta^{T} * x\)</span>.</p></li>
 </ul>
 </div>
 <div class="section" id="cost-function">
@@ -107,7 +118,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Supervised learning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#linear-regression-with-multiple-variables-features">Linear Regression with Multiple Variables/Features</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#hypothesis">1. Hypothesis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-parameters">The Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cost-function">2. Cost Function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gradient-descent">3. Gradient Descent</a></li>
 </ul>
