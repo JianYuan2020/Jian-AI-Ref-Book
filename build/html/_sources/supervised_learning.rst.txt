@@ -2,8 +2,8 @@ Supervised learning
 ===================
 
 
-Linear Regression with Multiple Variables (Features)
-----------------------------------------------------
+Linear Regression with Multiple Variables/Features
+--------------------------------------------------
 
 * n = number of features.
 * m = number of training examples.
@@ -11,6 +11,24 @@ Linear Regression with Multiple Variables (Features)
 * x(i)j = value of feature j in ith training example.
 * x(i) = [ x(i)1; x(i)2; ... x(i)j; ... x(i)n ] -- n x 1 column vector.
 * X = [ x(1)'; x(2)'; ... x(i)'; ... x(m)' ] -- m x n matrix.
+
+Hypothesis
+^^^^^^^^^^
+* h_theta(x) = theta_0 + theta_1*x1 + theta_2*x2 + ... + theta_j*xj + ... theta_n*xn
+
+* Define: x0 = 1 (x(i)0 = 1)
+* x = [ x0; x1; x2; ... xj; ... xn ] -- (n + 1) x 1 column vector.
+
+Parameters
+^^^^^^^^^^
+* Theta = [ theta_0; theta_1; theta_2; ... theta_j; ... theta_n ] -- (n + 1) x 1 column vector.
+
+Therefore:
+* h_theta(x) = theta_0*x0 + theta_1*x1 + theta_2*x2 + ... + theta_j*xj + ... theta_n*xn
+* h_theta(x) = Theta_transpose*x
+
+Gradient Descent
+^^^^^^^^^^^^^^^^
 
 Unsupervised learning
 ---------------------
