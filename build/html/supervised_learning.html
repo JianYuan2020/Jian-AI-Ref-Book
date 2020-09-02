@@ -16,6 +16,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Linear Regression with Multiple Variables/Features" href="linear_reg_x_multi_vars.html" />
     <link rel="prev" title="Machine Learning" href="machine_learning.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
@@ -25,6 +26,8 @@
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="machine_learning.html" title="Machine Learning"
              accesskey="P">previous</a> |
+          <a href="linear_reg_x_multi_vars.html" title="Linear Regression with Multiple Variables/Features"
+             accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
         </div>
@@ -41,65 +44,29 @@
             
   <div class="section" id="supervised-learning">
 <h1>Supervised learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h1>
-<p><span class="math notranslate nohighlight">\(\alpha &gt; \beta\)</span></p>
-<div class="math notranslate nohighlight">
-\[n_{\mathrm{offset}} = \sum_{k=0}^{N-1} s_k n_k\]</div>
-<div class="section" id="linear-regression-with-multiple-variables-features">
-<h2>Linear Regression with Multiple Variables/Features<a class="headerlink" href="#linear-regression-with-multiple-variables-features" title="Permalink to this headline">¶</a></h2>
-<dl class="simple">
-<dt>Let’s define:</dt><dd><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(n\)</span> = number of features.</p></li>
-<li><p><span class="math notranslate nohighlight">\(m\)</span> = number of training examples.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x^{(i)}\)</span> = input (features) of <span class="math notranslate nohighlight">\(i^{th}\)</span> training example.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x^{(i)}_{j}\)</span> = value of feature <span class="math notranslate nohighlight">\(j\)</span> in <span class="math notranslate nohighlight">\(i^{th}\)</span> training example.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ... x^{(i)}_{j}; ... x^{(i)}_{n} ]\)</span> - <span class="math notranslate nohighlight">\(n * 1\)</span> column vector.</p></li>
-<li><p><span class="math notranslate nohighlight">\(X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ... (x^{(i)})^{T}; ... (x^{(m)})^{T} ]\)</span> - <span class="math notranslate nohighlight">\(m * n\)</span> matrix.</p></li>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="linear_reg_x_multi_vars.html">Linear Regression with Multiple Variables/Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html#hypothesis">Hypothesis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html#cost-function">Cost Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html#gradient-descent">Gradient Descent</a></li>
 </ul>
-</dd>
-</dl>
-<div class="section" id="hypothesis">
-<h3>1. Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta_{0} + \theta_{1} * x_{1} + \theta_{2} * x_{2} + ... + \theta_{j} * x_{j} + ... \theta_{n} * x_{n}\)</span>.</p></li>
-<li><p>Let: <span class="math notranslate nohighlight">\(x_{0} = 1\)</span> and <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x = [ x_{0}; x_{1}; x_{2}; ... x_{j}; ... x_{n} ]\)</span> - <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p></li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html#mean-normalization">Mean Normalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html#id1">Feature Scaling</a></li>
 </ul>
-</div></blockquote>
-</div>
-<div class="section" id="the-parameters">
-<h3>The Parameters<a class="headerlink" href="#the-parameters" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ... \theta_{j}; ... \theta_{n} ]\)</span> - <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p></li>
-</ul>
-</div></blockquote>
-<p>Therefore:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta_{0} * x_{0} + \theta_{1} * x_{1} + \theta_{2} * x_{2} + ... + \theta_{j} * x_{j} + ... + \theta_{n} * x_{n}\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \Theta^{T} * x\)</span>.</p></li>
-</ul>
-</div>
-<div class="section" id="cost-function">
-<h3>2. Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>J(Theta) = sum((h_theta(x(i)) - y(i))^2 where i = 1:m)/(2*m)</p></li>
-</ul>
-</div>
-<div class="section" id="gradient-descent">
-<h3>3. Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>theta_j = theta_j - alpha*sum((h_theta(x(i)) - y(i))*x(i)j where i = 1:m)/m</p></li>
-<li><p>Note here, x(i)0 = 1; j = 0:n; and Theta is a (n + 1) x 1 column vector;</p></li>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="unsupervised-learning">
-<h2>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h2>
+<h1>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Clusters and Segmentation</p></li>
 </ul>
-</div>
 </div>
 
 
@@ -116,16 +83,11 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Supervised learning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#linear-regression-with-multiple-variables-features">Linear Regression with Multiple Variables/Features</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#hypothesis">1. Hypothesis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-parameters">The Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cost-function">2. Cost Function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gradient-descent">3. Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html">Linear Regression with Multiple Variables/Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#unsupervised-learning">Unsupervised learning</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="#unsupervised-learning">Unsupervised learning</a></li>
 </ul>
 
           <div role="search">
@@ -147,6 +109,8 @@
           <div role="navigation" aria-label="related navigaton">
             <a href="machine_learning.html" title="Machine Learning"
               >previous</a> |
+            <a href="linear_reg_x_multi_vars.html" title="Linear Regression with Multiple Variables/Features"
+              >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
           </div>

@@ -1,0 +1,20 @@
+Feature Scaling
+===============
+
+Making sure features are on a similar scale.
+
+Get every feature into approximately a :math:`-1 <= x_{i} <= 1` range.
+
+Mean Normalization
+------------------
+	Replace :math:`x_{i}` with :math:`x_{i} - \mu_{i}` to make features have approximately zero mean
+	(Do not apply to :math:`x_{0} = 1`).
+
+Feature Scaling
+---------------
+	:math:`x_{i} = (x_{i} - \mu_{i}) / s_{i}`.
+
+	:math:`\mu_{i}` = average value of :math:`x_{i}`.
+
+	:math:`s_{i}` = range, max - min or standard deviation of :math:`x_{i}`.
+	
