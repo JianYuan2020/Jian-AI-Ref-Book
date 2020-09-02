@@ -6,11 +6,6 @@ Supervised learning
    :maxdepth: 3
    :caption: Contents:
 
-   linear_reg_x_multi_vars
+   linear_regression
    feature_scaling
    choose_learning_rate
-
-Unsupervised learning
-=====================
-
-* Clusters and Segmentation

@@ -1,5 +1,9 @@
-Linear Regression with Multiple Variables/Features
-==================================================
+.. _choose-linear-regression-label:
+
+Linear Regression
+=================
+
+Linear Regression with Multiple Variables/Features.
 
 Let's define:
 	* :math:`n` = number of features.

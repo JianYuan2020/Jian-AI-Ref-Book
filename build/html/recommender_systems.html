@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Machine Learning &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Recommender Systems &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -16,18 +16,15 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Supervised learning" href="supervised_learning.html" />
-    <link rel="prev" title="Intro" href="intro.html" /> 
+    <link rel="prev" title="Unsupervised learning" href="unsupervised_learning.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="intro.html" title="Intro"
+          <a href="unsupervised_learning.html" title="Unsupervised learning"
              accesskey="P">previous</a> |
-          <a href="supervised_learning.html" title="Supervised learning"
-             accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
         </div>
@@ -42,34 +39,23 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="machine-learning">
-<h1>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
-<p>A computer program is said to learn from experience E with respect to some task T and some
-performance measure P, if its performance on T, as measured by P, improves with experience E.</p>
+  <div class="section" id="recommender-systems">
+<span id="choose-recommender-systems-label"></span><h1>Recommender Systems<a class="headerlink" href="#recommender-systems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="content-based-recommendations">
+<h2>Content Based Recommendations<a class="headerlink" href="#content-based-recommendations" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>– Tom Mitchell (1998)</p>
+<div><p>Example: Predicting movie ratings. Let’s define:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n_{u}\)</span> = number of users.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_{m}\)</span> = number of movies.</p></li>
+<li><p><span class="math notranslate nohighlight">\(r(i, j)\)</span> = 1 if user <span class="math notranslate nohighlight">\(j\)</span> has rated movie <span class="math notranslate nohighlight">\(i\)</span> (0 otherwise).</p></li>
+<li><p><span class="math notranslate nohighlight">\(y^{(i, j)}\)</span> = rating given by user <span class="math notranslate nohighlight">\(j\)</span> to movie <span class="math notranslate nohighlight">\(i\)</span> (defined only if <span class="math notranslate nohighlight">\(r(i, j)\)</span> = 1).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta^{(j)}\)</span> = parameter vector for user <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x^{(i)}\)</span> = feature vector for movie <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+</ul>
+<p>For user <span class="math notranslate nohighlight">\(j\)</span>, movie <span class="math notranslate nohighlight">\(i\)</span>, predicted rating: <span class="math notranslate nohighlight">\((\theta^{(j)})^{T} * x^{(i)}\)</span></p>
+<p>These are essentially the same as <a class="reference internal" href="linear_regression.html#choose-linear-regression-label"><span class="std std-ref">Linear Regression</span></a>.</p>
 </div></blockquote>
-<p>For example:</p>
-<ul class="simple">
-<li><p>T: Classifying emails as spam or not spam.</p></li>
-<li><p>E: Watching you label emails as spam or not spam.</p></li>
-<li><p>P: The number (or fraction) of emails correctly classified as spam/not spam.</p></li>
-</ul>
-</div>
-<div class="section" id="supervised-learning">
-<h2>Supervised learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Regression: Predict continuous valued output</p></li>
-<li><p>Classification: Discrete valued output (0 or 1)</p></li>
-</ul>
-</div>
-<div class="section" id="unsupervised-learning">
-<h2>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Clusters, Segmentation, etc.</p></li>
-</ul>
 </div>
 </div>
 
@@ -85,14 +71,15 @@ performance measure P, if its performance on T, as measured by P, improves with 
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Machine Learning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#definition">Definition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#supervised-learning">Supervised learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#unsupervised-learning">Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Recommender Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#content-based-recommendations">Content Based Recommendations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
+</ul>
+</li>
 </ul>
 
           <div role="search">
@@ -112,16 +99,14 @@ performance measure P, if its performance on T, as measured by P, improves with 
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="intro.html" title="Intro"
+            <a href="unsupervised_learning.html" title="Unsupervised learning"
               >previous</a> |
-            <a href="supervised_learning.html" title="Supervised learning"
-              >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="_sources/machine_learning.rst.txt"
+              <a href="_sources/recommender_systems.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>
