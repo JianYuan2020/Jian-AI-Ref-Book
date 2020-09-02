@@ -29,10 +29,20 @@ Parameters
 
 Cost Function
 -------------
-	:math:`J(\Theta) = \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 / (2*m)`.
+	:math:`J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2`.
 
 Gradient Descent
 ----------------
-	:math:`\theta_{j} = \theta_{j} - \alpha * \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) * x^{(i)}_{j}`.
+	:math:`\theta_{j} = \theta_{j} - \alpha * \frac{\partial }{\partial \theta_{j}} J(\Theta)`.
 
-	Note here, :math:`x^{(i)}_{0} = 1`; :math:`j = 0 ... n`; and :math:`\Theta` is a :math:`(n + 1) * 1` column vector;
+	:math:`\theta_{j} = \theta_{j} - \alpha * \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) * x^{(i)}_{j}`.
+
+	Note here:
+
+	:math:`\alpha` = learning rate. :ref:`choose-learning-rate-label`.
+
+	:math:`x^{(i)}_{0} = 1`; :math:`j = 0 ... n`; and :math:`\Theta` is a :math:`(n + 1) * 1` column vector.
+
+Normal Equation
+---------------
+	Method to solve for :math:`\Theta` analytically.

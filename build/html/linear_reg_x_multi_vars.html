@@ -75,14 +75,23 @@
 <div class="section" id="cost-function">
 <h2>Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(J(\Theta) = \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 / (2*m)\)</span>.</p>
+<div><p><span class="math notranslate nohighlight">\(J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span>.</p>
 </div></blockquote>
 </div>
 <div class="section" id="gradient-descent">
 <h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha * \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) * x^{(i)}_{j}\)</span>.</p>
-<p>Note here, <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>; <span class="math notranslate nohighlight">\(j = 0 ... n\)</span>; and <span class="math notranslate nohighlight">\(\Theta\)</span> is a <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector;</p>
+<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha * \frac{\partial }{\partial \theta_{j}} J(\Theta)\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha * \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) * x^{(i)}_{j}\)</span>.</p>
+<p>Note here:</p>
+<p><span class="math notranslate nohighlight">\(\alpha\)</span> = learning rate. <a class="reference internal" href="choose_learning_rate.html#choose-learning-rate-label"><span class="std std-ref">Choose Learning Rate</span></a>.</p>
+<p><span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>; <span class="math notranslate nohighlight">\(j = 0 ... n\)</span>; and <span class="math notranslate nohighlight">\(\Theta\)</span> is a <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p>
+</div></blockquote>
+</div>
+<div class="section" id="normal-equation">
+<h2>Normal Equation<a class="headerlink" href="#normal-equation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Method to solve for <span class="math notranslate nohighlight">\(\Theta\)</span> analytically.</p>
 </div></blockquote>
 </div>
 </div>
@@ -106,9 +115,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cost-function">Cost Function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gradient-descent">Gradient Descent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#normal-equation">Normal Equation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choose_learning_rate.html">Choose Learning Rate</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="supervised_learning.html#unsupervised-learning">Unsupervised learning</a></li>

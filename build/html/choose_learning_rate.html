@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Supervised learning &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Choose Learning Rate &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -16,18 +16,15 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Linear Regression with Multiple Variables/Features" href="linear_reg_x_multi_vars.html" />
-    <link rel="prev" title="Machine Learning" href="machine_learning.html" /> 
+    <link rel="prev" title="Feature Scaling" href="feature_scaling.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="machine_learning.html" title="Machine Learning"
+          <a href="feature_scaling.html" title="Feature Scaling"
              accesskey="P">previous</a> |
-          <a href="linear_reg_x_multi_vars.html" title="Linear Regression with Multiple Variables/Features"
-             accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
         </div>
@@ -42,33 +39,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="supervised-learning">
-<h1>Supervised learning<a class="headerlink" href="#supervised-learning" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="linear_reg_x_multi_vars.html">Linear Regression with Multiple Variables/Features</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html#hypothesis">Hypothesis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html#parameters">Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html#cost-function">Cost Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html#gradient-descent">Gradient Descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html#normal-equation">Normal Equation</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html#mean-normalization">Mean Normalization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html#id1">Feature Scaling</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="choose_learning_rate.html">Choose Learning Rate</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="unsupervised-learning">
-<h1>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p>Clusters and Segmentation</p></li>
-</ul>
+  <div class="section" id="choose-learning-rate">
+<span id="choose-learning-rate-label"></span><h1>Choose Learning Rate<a class="headerlink" href="#choose-learning-rate" title="Permalink to this headline">¶</a></h1>
+<p>How to choose learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>? If <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, gradient descent can be slow.
+If <span class="math notranslate nohighlight">\(\alpha\)</span> is too large, gradient descent can overshoot the minimum. It may fail to converge, or even diverge.
+Gradient descent can converge to a local minimum, even with the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> fixed.</p>
+<p>For sufficiently small <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(J(\Theta)\)</span> should decrease on every iteration.
+To choose <span class="math notranslate nohighlight">\(\alpha\)</span>, try: … 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, …</p>
 </div>
 
 
@@ -84,13 +61,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Supervised learning</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="supervised_learning.html">Supervised learning</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="linear_reg_x_multi_vars.html">Linear Regression with Multiple Variables/Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="choose_learning_rate.html">Choose Learning Rate</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Choose Learning Rate</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#unsupervised-learning">Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supervised_learning.html#unsupervised-learning">Unsupervised learning</a></li>
 </ul>
 
           <div role="search">
@@ -110,16 +87,14 @@
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="machine_learning.html" title="Machine Learning"
+            <a href="feature_scaling.html" title="Feature Scaling"
               >previous</a> |
-            <a href="linear_reg_x_multi_vars.html" title="Linear Regression with Multiple Variables/Features"
-              >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="_sources/supervised_learning.rst.txt"
+              <a href="_sources/choose_learning_rate.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>
