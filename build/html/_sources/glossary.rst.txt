@@ -4,14 +4,11 @@ Glossary
 ========
 
 
-	:math:`F_{1}` Score
+	Classification Accuracy :ref:`error-metrics-label`.
 
-	:ref:`f1-score-label`.
 
-	Precision
+	:math:`F_{1}` Score (:math:`F` Score) :ref:`error-metrics-label`.
 
-	:ref:`f1-score-label`.
+	Precision :ref:`error-metrics-label`.
 
-	Recall
-
-	:ref:`f1-score-label`.
+	Recall :ref:`error-metrics-label`.

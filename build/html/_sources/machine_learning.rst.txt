@@ -35,4 +35,4 @@ Other
 
    feature_scaling
    learning_rate
-   F1_score
+   error_metrics
