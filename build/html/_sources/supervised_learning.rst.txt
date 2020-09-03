@@ -8,4 +8,4 @@ Supervised learning
 
    linear_regression
    feature_scaling
-   choose_learning_rate
+   learning_rate

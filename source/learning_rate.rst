@@ -1,7 +1,7 @@
-.. _choose-learning-rate-label:
+.. _learning-rate-label:
 
-Choose Learning Rate
-====================
+Learning Rate
+=============
 
 How to choose learning rate :math:`\alpha`? If :math:`\alpha` is too small, gradient descent can be slow. 
 If :math:`\alpha` is too large, gradient descent can overshoot the minimum. It may fail to converge, or even diverge. 

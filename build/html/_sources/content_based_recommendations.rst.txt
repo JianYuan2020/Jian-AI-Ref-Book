@@ -1,7 +1,7 @@
-.. _collaborative-filtering-label:
+.. _content-based-recommendations-label:
 
-Collaborative Filtering
-=======================
+Content Based Recommendations
+=============================
 
 	Example: Predicting movie ratings. Let's define:
 
@@ -16,12 +16,11 @@ Collaborative Filtering
 	For user :math:`j`, movie :math:`i`, predicted rating: :math:`(\theta^{(j)})^{T} * x^{(i)}`
 
 	These are essentially the same as :ref:`linear-regression-label`.
-	As usual, we can also add the regularization term to prevent the features from becoming too big.
-
-**To learn** :math:`\theta^{(1)}, ..., \theta^{(n_{u})}` **:**
 
 Cost Function
 ^^^^^^^^^^^^^
+
+	To learn :math:`\theta^{(1)}, ..., \theta^{(n_{u})}`:
 
 	:math:`J(\Theta) = \frac{1}{2} \sum_{j=1}^{n_{u}} \sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)})^2 + 
 	\frac{\lambda}{2} \sum_{j=1}^{n_{u}} \sum_{k=1}^{n} (\theta_{k}^{(j)})^2`
@@ -29,7 +28,7 @@ Cost Function
 Gradient Descent
 ^^^^^^^^^^^^^^^^
 
-	:math:`\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \frac{\partial }{\partial \theta_{k}^{(j)}} J(\Theta)`.
+	:math:`\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \frac{\partial }{\partial \theta_{k}^{(j)}} J(\Theta)`
 
 	:math:`\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k}` (for :math:`k = 0`)
 

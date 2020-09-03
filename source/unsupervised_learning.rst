@@ -7,6 +7,5 @@ Unsupervised learning
    :caption: Contents:
 
    recommender_systems
-   collaborative_filtering
 
 * Clusters and Segmentation

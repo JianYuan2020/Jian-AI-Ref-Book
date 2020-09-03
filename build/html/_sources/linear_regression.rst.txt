@@ -1,4 +1,4 @@
-.. _choose-linear-regression-label:
+.. _linear-regression-label:
 
 Linear Regression
 =================
@@ -43,7 +43,7 @@ Gradient Descent
 
 	Note here:
 
-	:math:`\alpha` = learning rate. :ref:`choose-learning-rate-label`.
+	:math:`\alpha` = :ref:`learning-rate-label`.
 
 	:math:`x^{(i)}_{0} = 1`; :math:`j = 0 ... n`; and :math:`\Theta` is a :math:`(n + 1) * 1` column vector.
 
