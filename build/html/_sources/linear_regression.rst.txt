@@ -3,7 +3,7 @@
 Linear Regression
 =================
 
-Linear Regression with Multiple Variables/Features.
+Linear regression with multiple variables/features.
 
 Let's define:
 	* :math:`n` = number of features.
@@ -45,7 +45,7 @@ Gradient Descent
 
 	:math:`\alpha` = :ref:`learning-rate-label`.
 
-	:math:`x^{(i)}_{0} = 1`; :math:`j = 0 ... n`; and :math:`\Theta` is a :math:`(n + 1) * 1` column vector.
+	:math:`x^{(i)}_{0} = 1`; :math:`j = 0 ... n`.
 
 Normal Equation
 ---------------

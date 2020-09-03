@@ -15,13 +15,13 @@ For example:
 * E: Watching you label emails as spam or not spam.
 * P: The number (or fraction) of emails correctly classified as spam/not spam.
 
-Supervised learning
+Supervised Learning
 -------------------
 
 * Regression: Predict continuous valued output
 * Classification: Discrete valued output (0 or 1)
 
-Unsupervised learning
+Unsupervised Learning
 ---------------------
 
 * Clusters, Segmentation, etc.

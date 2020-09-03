@@ -17,10 +17,11 @@ Content Based Recommendations
 
 	These are essentially the same as :ref:`linear-regression-label`.
 
+To learn :math:`\theta^{(1)}, ..., \theta^{(n_{u})}`:
+-----------------------------------------------------
+
 Cost Function
 ^^^^^^^^^^^^^
-
-	To learn :math:`\theta^{(1)}, ..., \theta^{(n_{u})}`:
 
 	:math:`J(\Theta) = \frac{1}{2} \sum_{j=1}^{n_{u}} \sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)})^2 + 
 	\frac{\lambda}{2} \sum_{j=1}^{n_{u}} \sum_{k=1}^{n} (\theta_{k}^{(j)})^2`

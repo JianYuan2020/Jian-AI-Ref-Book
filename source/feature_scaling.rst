@@ -1,3 +1,5 @@
+.. _feature-scaling-label:
+
 Feature Scaling
 ===============
 
