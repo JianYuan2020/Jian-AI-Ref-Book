@@ -14,6 +14,7 @@ Welcome to Jian AI Ref's documentation!
    machine_learning
    supervised_learning
    unsupervised_learning
+   glossary
 
 Indices and tables
 ==================

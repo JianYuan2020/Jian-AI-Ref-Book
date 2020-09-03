@@ -25,3 +25,14 @@ Unsupervised Learning
 ---------------------
 
 * Clusters, Segmentation, etc.
+
+Other
+-----
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Contents:
+
+   feature_scaling
+   learning_rate
+   F1_score

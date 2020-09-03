@@ -7,5 +7,3 @@ Supervised learning
    :caption: Contents:
 
    linear_regression
-   feature_scaling
-   learning_rate
