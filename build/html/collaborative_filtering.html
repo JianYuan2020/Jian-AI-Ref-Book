@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recommender Systems &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Collaborative Filtering &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -16,18 +16,15 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Collaborative Filtering" href="collaborative_filtering.html" />
-    <link rel="prev" title="Unsupervised learning" href="unsupervised_learning.html" /> 
+    <link rel="prev" title="Recommender Systems" href="recommender_systems.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="unsupervised_learning.html" title="Unsupervised learning"
+          <a href="recommender_systems.html" title="Recommender Systems"
              accesskey="P">previous</a> |
-          <a href="collaborative_filtering.html" title="Collaborative Filtering"
-             accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
         </div>
@@ -42,8 +39,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="recommender-systems">
-<span id="choose-recommender-systems-label"></span><h1>Recommender Systems<a class="headerlink" href="#recommender-systems" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="collaborative-filtering">
+<span id="choose-collaborative-filtering-label"></span><h1>Collaborative Filtering<a class="headerlink" href="#collaborative-filtering" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="content-based-recommendations">
 <h2>Content Based Recommendations<a class="headerlink" href="#content-based-recommendations" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -71,10 +68,11 @@
 <div class="section" id="gradient-descent">
 <h3>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \frac{\partial }{\partial \theta_{k}^{(j)}} J(\Theta)\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \frac{\partial }{\partial \theta_{k}^{(j)}} J(\Theta)\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k}\)</span> (for <span class="math notranslate nohighlight">\(k = 0\)</span>)</p>
 <p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha (\sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k} + \lambda \theta^{(j)}_{k} )\)</span> (for <span class="math notranslate nohighlight">\(k &lt;&gt; 0\)</span>)</p>
 </div></blockquote>
+<p>As usual, we can also add the regularization term to prevent the features from becoming too big.</p>
 </div>
 </div>
 </div>
@@ -94,11 +92,11 @@
 <li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Recommender Systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Collaborative Filtering</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#content-based-recommendations">Content Based Recommendations</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="collaborative_filtering.html">Collaborative Filtering</a></li>
 </ul>
 </li>
 </ul>
@@ -120,16 +118,14 @@
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="unsupervised_learning.html" title="Unsupervised learning"
+            <a href="recommender_systems.html" title="Recommender Systems"
               >previous</a> |
-            <a href="collaborative_filtering.html" title="Collaborative Filtering"
-              >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="_sources/recommender_systems.rst.txt"
+              <a href="_sources/collaborative_filtering.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>

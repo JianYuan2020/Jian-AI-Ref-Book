@@ -1,7 +1,7 @@
-.. _choose-recommender-systems-label:
+.. _choose-collaborative-filtering-label:
 
-Recommender Systems
-===================
+Collaborative Filtering
+=======================
 
 Content Based Recommendations
 -----------------------------
@@ -31,10 +31,11 @@ Cost Function
 Gradient Descent
 ^^^^^^^^^^^^^^^^
 
-	:math:`\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \frac{\partial }{\partial \theta_{k}^{(j)}} J(\Theta)`
+	:math:`\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \frac{\partial }{\partial \theta_{k}^{(j)}} J(\Theta)`.
 
 	:math:`\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k}` (for :math:`k = 0`)
 
 	:math:`\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha (\sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k} + \lambda \theta^{(j)}_{k} )` (for :math:`k <> 0`)
 
 
+As usual, we can also add the regularization term to prevent the features from becoming too big.
