@@ -33,6 +33,7 @@ Other
    :maxdepth: 3
    :caption: Contents:
 
+   normal_distribution
    feature_scaling
    learning_rate
    error_metrics
