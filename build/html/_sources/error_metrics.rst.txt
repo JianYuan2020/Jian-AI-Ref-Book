@@ -5,7 +5,7 @@ Error Metrics
 
 Classification Accuracy
 -----------------------
-	Of all our predictions, what fraction actually is correct?
+	Of all our predictions, what fraction actually is predicted correctly?
 
 	:math:`Accuracy = \frac{numberPredictedCorrectly}{totalPredictionsMade}`
 

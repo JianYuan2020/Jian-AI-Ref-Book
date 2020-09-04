@@ -17,14 +17,14 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Learning Rate" href="learning_rate.html" />
-    <link rel="prev" title="Linear Regression" href="linear_regression.html" /> 
+    <link rel="prev" title="Machine Learning" href="machine_learning.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="linear_regression.html" title="Linear Regression"
+          <a href="machine_learning.html" title="Machine Learning"
              accesskey="P">previous</a> |
           <a href="learning_rate.html" title="Learning Rate"
              accesskey="N">next</a> |
@@ -61,6 +61,14 @@
 <p><span class="math notranslate nohighlight">\(s_{i}\)</span> = range, max - min or standard deviation of <span class="math notranslate nohighlight">\(x_{i}\)</span>.</p>
 </div></blockquote>
 </div>
+<div class="section" id="octave-code">
+<h2>Octave Code<a class="headerlink" href="#octave-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span> <span class="p">=</span> <span class="nb">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c">% mean all rows for each columns</span>
+<span class="n">sigma2</span> <span class="p">=</span> <span class="nb">var</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c">% variance all rows (/N) for each columns</span>
+<span class="n">X</span> <span class="p">=</span> <span class="p">(</span><span class="n">X</span> <span class="p">.</span><span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">./</span> <span class="n">sigma2</span><span class="p">;</span> <span class="c">% feature scaling</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -75,18 +83,16 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="supervised_learning.html">Supervised learning</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Feature Scaling</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#mean-normalization">Mean Normalization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Feature Scaling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="machine_learning.html">Machine Learning</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="machine_learning.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machine_learning.html#supervised-learning">Supervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machine_learning.html#unsupervised-learning">Unsupervised Learning</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="machine_learning.html#other">Other</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="learning_rate.html">Learning Rate</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 
           <div role="search">
@@ -106,7 +112,7 @@
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="linear_regression.html" title="Linear Regression"
+            <a href="machine_learning.html" title="Machine Learning"
               >previous</a> |
             <a href="learning_rate.html" title="Learning Rate"
               >next</a> |

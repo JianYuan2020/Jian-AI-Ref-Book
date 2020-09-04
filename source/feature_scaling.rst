@@ -20,3 +20,11 @@ Feature Scaling
 
 	:math:`s_{i}` = range, max - min or standard deviation of :math:`x_{i}`.
 	
+Octave Code
+-----------
+
+.. code-block:: octave 
+
+	mu = mean(X, 1); % mean all rows for each columns
+	sigma2 = var(X, 1, 1); % variance all rows (/N) for each columns
+	X = (X .- mu) ./ sigma2; % feature scaling
