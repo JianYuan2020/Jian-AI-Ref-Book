@@ -7,3 +7,4 @@ Anomaly Detection
    :maxdepth: 3
    :caption: Contents:
 
+   gaussian_distribution

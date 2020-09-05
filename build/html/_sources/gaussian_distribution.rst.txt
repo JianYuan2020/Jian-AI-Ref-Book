@@ -1,0 +1,15 @@
+.. _gaussian-normal-distribution-label:
+
+Gaussian (Normal) Distribution
+==============================
+
+	Let's assume:
+
+	Training set: :math:`X = \{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}` and :math:`{\displaystyle x^{(i)} \in \mathbb {R^{n}}}`
+
+	All features are distributed as :ref:`normal-distribution-label`, :math:`x_{1}` ~ :math:`{\mathcal {N}}(\mu_{1}, \sigma _{1}^{2})`, 
+	:math:`x_{2}` ~ :math:`{\mathcal {N}}(\mu_{2}, \sigma _{2}^{2})`, ..., :math:`x_{n}` ~ :math:`{\mathcal {N}}(\mu_{n}, \sigma _{n}^{2})` 
+
+	Then:
+
+	:math:`p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})` * :math:`p(x_{2}; \mu_{2}, \sigma _{2}^{2})` * ... * :math:`p(x_{n}; \mu_{n}, \sigma _{n}^{2})`

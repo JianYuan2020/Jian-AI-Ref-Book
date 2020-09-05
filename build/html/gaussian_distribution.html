@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anomaly Detection &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Gaussian (Normal) Distribution &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -16,17 +16,17 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Gaussian (Normal) Distribution" href="gaussian_distribution.html" />
-    <link rel="prev" title="Unsupervised learning" href="unsupervised_learning.html" /> 
+    <link rel="next" title="Recommender Systems" href="recommender_systems.html" />
+    <link rel="prev" title="Anomaly Detection" href="anomaly_detection.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="unsupervised_learning.html" title="Unsupervised learning"
+          <a href="anomaly_detection.html" title="Anomaly Detection"
              accesskey="P">previous</a> |
-          <a href="gaussian_distribution.html" title="Gaussian (Normal) Distribution"
+          <a href="recommender_systems.html" title="Recommender Systems"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -42,14 +42,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="anomaly-detection">
-<span id="anomaly-detection-label"></span><h1>Anomaly Detection<a class="headerlink" href="#anomaly-detection" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gaussian_distribution.html">Gaussian (Normal) Distribution</a></li>
-</ul>
-</div>
+  <div class="section" id="gaussian-normal-distribution">
+<span id="gaussian-normal-distribution-label"></span><h1>Gaussian (Normal) Distribution<a class="headerlink" href="#gaussian-normal-distribution" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>Let’s assume:</p>
+<p>Training set: <span class="math notranslate nohighlight">\(X = \{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}\)</span> and <span class="math notranslate nohighlight">\({\displaystyle x^{(i)} \in \mathbb {R^{n}}}\)</span></p>
+<p>All features are distributed as <a class="reference internal" href="normal_distribution.html#normal-distribution-label"><span class="std std-ref">Normal Distribution</span></a>, <span class="math notranslate nohighlight">\(x_{1}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{1}, \sigma _{1}^{2})\)</span>,
+<span class="math notranslate nohighlight">\(x_{2}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{2}, \sigma _{2}^{2})\)</span>, …, <span class="math notranslate nohighlight">\(x_{n}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{n}, \sigma _{n}^{2})\)</span></p>
+<p>Then:</p>
+<p><span class="math notranslate nohighlight">\(p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})\)</span> * <span class="math notranslate nohighlight">\(p(x_{2}; \mu_{2}, \sigma _{2}^{2})\)</span> * … * <span class="math notranslate nohighlight">\(p(x_{n}; \mu_{n}, \sigma _{n}^{2})\)</span></p>
+</div></blockquote>
 </div>
 
 
@@ -67,7 +69,7 @@
 <li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Anomaly Detection</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a></li>
 </ul>
 </li>
@@ -91,16 +93,16 @@
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="unsupervised_learning.html" title="Unsupervised learning"
+            <a href="anomaly_detection.html" title="Anomaly Detection"
               >previous</a> |
-            <a href="gaussian_distribution.html" title="Gaussian (Normal) Distribution"
+            <a href="recommender_systems.html" title="Recommender Systems"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="_sources/anomaly_detection.rst.txt"
+              <a href="_sources/gaussian_distribution.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>
