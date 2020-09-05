@@ -33,6 +33,7 @@ Other
    :maxdepth: 3
    :caption: Contents:
 
+   better_practices
    normal_distribution
    feature_scaling
    learning_rate

@@ -60,6 +60,12 @@ Specifically
 
 It is not a good practice to use CV set + Test set as one set.
 
+Non-gaussian Features
+---------------------
+
+	* Each :math:`x_{j}` should be ploted to confirm the Gaussian distribution.
+	* For the one that is not, some simple math transformation could fix it. like :math:`x_{1} = \log(x_{1})`, :math:`x_{2} = \sqrt{x_{2}}`, ...
+
 Algorithm Evaluation
 --------------------
 
@@ -102,3 +108,4 @@ Octave Code
 		endif
 
 	endfor
+
