@@ -16,7 +16,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Gaussian (Normal) Distribution" href="gaussian_distribution.html" />
+    <link rel="next" title="Recommender Systems" href="recommender_systems.html" />
     <link rel="prev" title="Unsupervised learning" href="unsupervised_learning.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
@@ -26,7 +26,7 @@
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="unsupervised_learning.html" title="Unsupervised learning"
              accesskey="P">previous</a> |
-          <a href="gaussian_distribution.html" title="Gaussian (Normal) Distribution"
+          <a href="recommender_systems.html" title="Recommender Systems"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -44,11 +44,82 @@
             
   <div class="section" id="anomaly-detection">
 <span id="anomaly-detection-label"></span><h1>Anomaly Detection<a class="headerlink" href="#anomaly-detection" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gaussian_distribution.html">Gaussian (Normal) Distribution</a></li>
+<p>Anomaly detection can be used for detecting low probability cases:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fraud detections</p></li>
+<li><p>Manufacturing defect detections</p></li>
+<li><p>Monitoring computers in a data center, deteriorating computer detections</p></li>
+<li><p>and more</p></li>
 </ul>
+</div></blockquote>
+<p>Given the dataset with the majority data as normal:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Dataset: <span class="math notranslate nohighlight">\(X = \{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}\)</span> with <span class="math notranslate nohighlight">\({\displaystyle x^{(i)} \in \mathbb {R^{n}}}\)</span></p></li>
+<li><p>Is <span class="math notranslate nohighlight">\(x_{test}\)</span> anomalous?</p></li>
+<li><dl class="simple">
+<dt>Model (probability): <span class="math notranslate nohighlight">\(p(x_{test})\)</span></dt><dd><ul>
+<li><p><span class="math notranslate nohighlight">\(p(x_{test}) &lt; \epsilon\)</span>, flag anomaly</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x_{test}) &gt;= \epsilon\)</span> is normal (OK)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<div class="section" id="gaussian-normal-distribution">
+<h2>Gaussian (Normal) Distribution<a class="headerlink" href="#gaussian-normal-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Let’s assume:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Training set: <span class="math notranslate nohighlight">\(X = \{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}\)</span> and <span class="math notranslate nohighlight">\({\displaystyle x^{(i)} \in \mathbb {R^{n}}}\)</span></p></li>
+<li><p>All features are distributed as <a class="reference internal" href="normal_distribution.html#normal-distribution-label"><span class="std std-ref">Normal Distribution</span></a></p></li>
+<li><p>That is: <span class="math notranslate nohighlight">\(x_{1}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{1}, \sigma _{1}^{2})\)</span>,  <span class="math notranslate nohighlight">\(x_{2}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{2}, \sigma _{2}^{2})\)</span>, …, <span class="math notranslate nohighlight">\(x_{n}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{n}, \sigma _{n}^{2})\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>Then:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})\)</span> * <span class="math notranslate nohighlight">\(p(x_{2}; \mu_{2}, \sigma _{2}^{2})\)</span> * … * <span class="math notranslate nohighlight">\(p(x_{n}; \mu_{n}, \sigma _{n}^{2}) = \Pi_{j=1}^{n} p(x_{j}; \mu_{j}, \sigma _{j}^{2})\)</span></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="anomaly-detection-algorithm">
+<h2>Anomaly Detection Algorithm<a class="headerlink" href="#anomaly-detection-algorithm" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Choose features <span class="math notranslate nohighlight">\(x_{i}\)</span> that you think might be indicative of anomalous examples <span class="math notranslate nohighlight">\(\{ x^{(1)}, x^{(2)}, ..., x^{(m)} \}\)</span></p></li>
+<li><p>Fit parameters <span class="math notranslate nohighlight">\(\mu_{1}\)</span>, <span class="math notranslate nohighlight">\(\mu_{2}\)</span>, …, <span class="math notranslate nohighlight">\(\mu_{n}\)</span> and <span class="math notranslate nohighlight">\(\sigma _{1}^{2}\)</span>, <span class="math notranslate nohighlight">\(\sigma _{2}^{2}\)</span>, …, <span class="math notranslate nohighlight">\(\sigma _{n}^{2}\)</span> using <a class="reference internal" href="normal_distribution.html#normal-distribution-label"><span class="std std-ref">Normal Distribution</span></a></p></li>
+<li><p>Given new example <span class="math notranslate nohighlight">\(x\)</span>, compute <span class="math notranslate nohighlight">\(p(x)\)</span>:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(p(x) = \Pi_{j=1}^{n} p(x_{j}; \mu_{j}, \sigma _{j}^{2}) = {\displaystyle \Pi_{j=1}^{n} {\frac {1}{\sigma_{j} {\sqrt {2\pi }}}}e^{-{\frac {1}{2}}\left({\frac {x_{j}-\mu_{j} }{\sigma_{j} }}\right)^{2}}}\)</span></p>
+</div></blockquote>
+</li>
+</ol>
+<p>Anomaly if <span class="math notranslate nohighlight">\(p(x) &lt; \epsilon\)</span></p>
+</div></blockquote>
+</div>
+<div class="section" id="better-practice">
+<h2>Better Practice<a class="headerlink" href="#better-practice" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Assume we have some labeled data, of anomalous and non-anomalous examples (<span class="math notranslate nohighlight">\(y = 0\)</span> if normal, <span class="math notranslate nohighlight">\(y = 1\)</span> if anomalous)</p></li>
+<li><p>Training set: <span class="math notranslate nohighlight">\(x^{(1)}, x^{(2)}, ..., x^{(m)}\)</span> (assume normal examples/not anomalous)</p></li>
+<li><p>Cross validation set: <span class="math notranslate nohighlight">\((x_{cv}^{(1)}, y_{cv}^{(1)})\)</span>, …, <span class="math notranslate nohighlight">\((x_{cv}^{(m_{cv})}, y_{cv}^{(m_{cv})})\)</span> with some <span class="math notranslate nohighlight">\(y = 1\)</span> examples</p></li>
+<li><p>Test set: <span class="math notranslate nohighlight">\((x_{test}^{(1)}, y_{test}^{(1)})\)</span>, …, <span class="math notranslate nohighlight">\((x_{test}^{(m_{test})}, y_{test}^{(m_{test})})\)</span> with some <span class="math notranslate nohighlight">\(y = 1\)</span> examples</p></li>
+</ul>
+</div></blockquote>
+<p>Specifically</p>
+<blockquote>
+<div><p>For 10000 good (normal) engines with 20 flawed engines (anomalous):</p>
+<ul class="simple">
+<li><p>Training set: 6000 good engines</p></li>
+<li><p>CV set: 2000 good engines (<span class="math notranslate nohighlight">\(y = 0\)</span>), 10 anomalous (<span class="math notranslate nohighlight">\(y = 1\)</span>)</p></li>
+<li><p>Test set: 2000 good engines (<span class="math notranslate nohighlight">\(y = 0\)</span>), 10 anomalous (<span class="math notranslate nohighlight">\(y = 1\)</span>)</p></li>
+</ul>
+</div></blockquote>
+<p>It is not a good practice to use CV set + Test set as one set.</p>
 </div>
 </div>
 
@@ -93,7 +164,7 @@
           <div role="navigation" aria-label="related navigaton">
             <a href="unsupervised_learning.html" title="Unsupervised learning"
               >previous</a> |
-            <a href="gaussian_distribution.html" title="Gaussian (Normal) Distribution"
+            <a href="recommender_systems.html" title="Recommender Systems"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
