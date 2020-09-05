@@ -59,3 +59,46 @@ Specifically
 	* Test set: 2000 good engines (:math:`y = 0`), 10 anomalous (:math:`y = 1`)
 
 It is not a good practice to use CV set + Test set as one set.
+
+Algorithm Evaluation
+--------------------
+
+	* Fit model :math:`p(x)` on training set :math:`\{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}`
+	* On a cross validation/test example :math:`x`, predict :math:`y = 0` if :math:`p(x) >= \epsilon`, :math:`y = 1` if :math:`p(x) < \epsilon`
+	* Possible evaluation metrics:
+		- True positive, false positive, false negative, true negative
+		- Precision/Recall
+		- :math:`F_{1}`-score
+	* Can also use cross validation set to choose parameter :math:`\epsilon`
+
+Octave Code
+-----------
+
+.. code-block:: octave 
+
+	% Choosing the best epsilon and best F1 score using cross validation set's yval and pval
+
+	bestEpsilon = 0;
+	bestF1 = 0;
+	F1 = 0;
+
+	stepsize = (max(pval) - min(pval)) / 1000;
+	for epsilon = min(pval):stepsize:max(pval)
+    
+		cvPredictions = (pval < epsilon);
+		truePos = sum((cvPredictions == 1) & (yval == 1));
+		falsePos = sum((cvPredictions == 1) & (yval == 0));
+		falseNeg = sum((cvPredictions == 0) & (yval == 1));
+    
+		if (truePos != 0)
+		  prec = truePos/(truePos + falsePos); % Precision
+		  rec = truePos/(truePos + falseNeg); % Recall   
+		  F1 = 2*prec*rec/(prec + rec); % F1 score
+		endif
+
+		if F1 > bestF1
+		   bestF1 = F1;
+		   bestEpsilon = epsilon;
+		endif
+
+	endfor

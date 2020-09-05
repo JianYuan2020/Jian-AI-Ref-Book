@@ -24,3 +24,11 @@ Standard Deviation
 	:math:`\sigma = \sqrt {\sigma^{2}} = \sqrt {\frac{1}{N}\sum_{i=1}^{N} (x_{i} - \mu)^2}`
 
 Here :math:`x = \{ x_{1}, x_{2}, ..., x_{i}, ..., x_{N} \}` and :math:`{\displaystyle x_{i}, \mu, \sigma^{2}, \sigma \in \mathbb {R} }`.
+
+Octave Code
+-----------
+
+.. code-block:: octave 
+
+	mu = mean(X, 1)'; % mean all rows for each columns
+	sigma2 = var(X, 1, 1)'; % variance all rows (/N) for each columns

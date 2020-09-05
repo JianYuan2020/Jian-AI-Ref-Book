@@ -121,6 +121,56 @@
 </div></blockquote>
 <p>It is not a good practice to use CV set + Test set as one set.</p>
 </div>
+<div class="section" id="algorithm-evaluation">
+<h2>Algorithm Evaluation<a class="headerlink" href="#algorithm-evaluation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Fit model <span class="math notranslate nohighlight">\(p(x)\)</span> on training set <span class="math notranslate nohighlight">\(\{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}\)</span></p></li>
+<li><p>On a cross validation/test example <span class="math notranslate nohighlight">\(x\)</span>, predict <span class="math notranslate nohighlight">\(y = 0\)</span> if <span class="math notranslate nohighlight">\(p(x) &gt;= \epsilon\)</span>, <span class="math notranslate nohighlight">\(y = 1\)</span> if <span class="math notranslate nohighlight">\(p(x) &lt; \epsilon\)</span></p></li>
+<li><dl class="simple">
+<dt>Possible evaluation metrics:</dt><dd><ul>
+<li><p>True positive, false positive, false negative, true negative</p></li>
+<li><p>Precision/Recall</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{1}\)</span>-score</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Can also use cross validation set to choose parameter <span class="math notranslate nohighlight">\(\epsilon\)</span></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="octave-code">
+<h2>Octave Code<a class="headerlink" href="#octave-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="c">% Choosing the best epsilon and best F1 score using cross validation set&#39;s yval and pval</span>
+
+<span class="n">bestEpsilon</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">bestF1</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">F1</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="n">stepsize</span> <span class="p">=</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">pval</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">pval</span><span class="p">))</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">epsilon</span> <span class="p">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">pval</span><span class="p">):</span><span class="n">stepsize</span><span class="p">:</span><span class="nb">max</span><span class="p">(</span><span class="n">pval</span><span class="p">)</span>
+
+        <span class="n">cvPredictions</span> <span class="p">=</span> <span class="p">(</span><span class="n">pval</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">);</span>
+        <span class="n">truePos</span> <span class="p">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">cvPredictions</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">yval</span> <span class="o">==</span> <span class="mi">1</span><span class="p">));</span>
+        <span class="n">falsePos</span> <span class="p">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">cvPredictions</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">yval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">));</span>
+        <span class="n">falseNeg</span> <span class="p">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">cvPredictions</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">yval</span> <span class="o">==</span> <span class="mi">1</span><span class="p">));</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">truePos</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+          <span class="n">prec</span> <span class="p">=</span> <span class="n">truePos</span><span class="o">/</span><span class="p">(</span><span class="n">truePos</span> <span class="o">+</span> <span class="n">falsePos</span><span class="p">);</span> <span class="c">% Precision</span>
+          <span class="n">rec</span> <span class="p">=</span> <span class="n">truePos</span><span class="o">/</span><span class="p">(</span><span class="n">truePos</span> <span class="o">+</span> <span class="n">falseNeg</span><span class="p">);</span> <span class="c">% Recall</span>
+          <span class="n">F1</span> <span class="p">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">prec</span><span class="o">*</span><span class="n">rec</span><span class="o">/</span><span class="p">(</span><span class="n">prec</span> <span class="o">+</span> <span class="n">rec</span><span class="p">);</span> <span class="c">% F1 score</span>
+        <span class="k">endif</span>
+
+        <span class="k">if</span> <span class="n">F1</span> <span class="o">&gt;</span> <span class="n">bestF1</span>
+           <span class="n">bestF1</span> <span class="p">=</span> <span class="n">F1</span><span class="p">;</span>
+           <span class="n">bestEpsilon</span> <span class="p">=</span> <span class="n">epsilon</span><span class="p">;</span>
+        <span class="k">endif</span>
+
+<span class="k">endfor</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
