@@ -79,6 +79,32 @@
 </div></blockquote>
 </div>
 </div>
+<div class="section" id="anomaly-detection-original-model-vs-multivariate-gaussian">
+<h2>Anomaly Detection Original Model vs. Multivariate Gaussian<a class="headerlink" href="#anomaly-detection-original-model-vs-multivariate-gaussian" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="original-model">
+<h3>Original Model<a class="headerlink" href="#original-model" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})\)</span> * … * <span class="math notranslate nohighlight">\(p(x_{n}; \mu_{n}, \sigma _{n}^{2})\)</span></p></li>
+<li><p>Manually create features to capture anomalies where <span class="math notranslate nohighlight">\(x_{1}, x_{2}\)</span> take unusual combinations of values, i.e. <span class="math notranslate nohighlight">\(x_{3} = \frac {x_{1}} {x_{2}}\)</span></p></li>
+<li><p>Computationally cheaper (alternatively, scales better to large <span class="math notranslate nohighlight">\(n = 10,000\)</span>, <span class="math notranslate nohighlight">\(n = 100,000\)</span>)</p></li>
+<li><p>OK even if <span class="math notranslate nohighlight">\(m\)</span> (training set size) is small</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="multivariate-gaussian">
+<h3>Multivariate Gaussian<a class="headerlink" href="#multivariate-gaussian" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}\)</span></p></li>
+<li><p>Automatically captures correlations between features</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Sigma \in \mathbb {R^{nxn}}\)</span>, <span class="math notranslate nohighlight">\(\Sigma^{-1}\)</span> computationally more expensive</p></li>
+<li><p>Must have <span class="math notranslate nohighlight">\(m &gt; n\)</span>, or else <span class="math notranslate nohighlight">\(\Sigma\)</span> is non-invertible.</p></li>
+<li><p>Should use <span class="math notranslate nohighlight">\(m &gt;= 10 n\)</span></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
 </div>
 
 

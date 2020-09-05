@@ -42,6 +42,25 @@ Anomaly Detection Algorithm
 
 	Anomaly if :math:`p(x) < \epsilon`
 
+Note:
+^^^^^
+	
+	Sometimes, i.e. for monitoring computers in a data center case:
+
+	* :math:`x_{3}` = CPU load
+	* :math:`x_{4}` = network traffic
+
+	Adding the following will help the detection:
+
+	* :math:`x_{5} = \frac {CPULoad}{networkTraffic}`
+	* :math:`x_{6} = \frac {(CPULoad)^2}{networkTraffic}`
+
+Non-gaussian Features
+---------------------
+
+	* Each :math:`x_{j}` should be ploted to confirm the Gaussian distribution.
+	* For the one that is not, some simple math transformation could fix it. like :math:`x_{1} = \log(x_{1})`, :math:`x_{2} = \sqrt{x_{2}}`, ...
+
 Better Practice
 ---------------
 
@@ -59,12 +78,6 @@ Specifically
 	* Test set: 2000 good engines (:math:`y = 0`), 10 anomalous (:math:`y = 1`)
 
 It is not a good practice to use CV set + Test set as one set.
-
-Non-gaussian Features
----------------------
-
-	* Each :math:`x_{j}` should be ploted to confirm the Gaussian distribution.
-	* For the one that is not, some simple math transformation could fix it. like :math:`x_{1} = \log(x_{1})`, :math:`x_{2} = \sqrt{x_{2}}`, ...
 
 Algorithm Evaluation
 --------------------
@@ -108,4 +121,34 @@ Octave Code
 		endif
 
 	endfor
+
+Multivariate Gaussian Distribution
+----------------------------------
+
+	* Parameters: :math:`x, \mu \in \mathbb {R^{n}}`, :math:`\Sigma \in \mathbb {R^{nxn}}` (covariance matrix)
+	* :math:`p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}`
+	* Here :math:`|\Sigma|` is the determinant of :math:`\Sigma`.
+
+Parameter fitting:
+^^^^^^^^^^^^^^^^^^
+
+	:math:`\mu = \frac {1}{m} \sum_{i=1}^{m} x^{(i)}`
+
+	:math:`\Sigma = \frac {1}{m} \sum_{i=1}^{m} (x^{(i)} - \mu) (x^{(i)} - \mu)^{T}`
+
+Anomaly detection with the multivariate Gaussian
+
+	#. Fit model :math:`p(x)` by setting :math:`\mu, \Sigma`
+	#. Given a new example :math:`x`, compute
+
+		:math:`p(x) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}`
+
+	Flag an anomaly if :math:`p(x) < \epsilon`
+
+Relationship to Original Model
+------------------------------
+
+	* Original model: :math:`p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})` * ... * :math:`p(x_{n}; \mu_{n}, \sigma _{n}^{2})`
+	* Corresponds to multivariate Gaussian :math:`p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}`
+	* where all elements in :math:`\Sigma` is zero except on the diagonal line
 

@@ -99,6 +99,30 @@
 </ol>
 <p>Anomaly if <span class="math notranslate nohighlight">\(p(x) &lt; \epsilon\)</span></p>
 </div></blockquote>
+<div class="section" id="note">
+<h3>Note:<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Sometimes, i.e. for monitoring computers in a data center case:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_{3}\)</span> = CPU load</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{4}\)</span> = network traffic</p></li>
+</ul>
+<p>Adding the following will help the detection:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_{5} = \frac {CPULoad}{networkTraffic}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{6} = \frac {(CPULoad)^2}{networkTraffic}\)</span></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="non-gaussian-features">
+<h2>Non-gaussian Features<a class="headerlink" href="#non-gaussian-features" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Each <span class="math notranslate nohighlight">\(x_{j}\)</span> should be ploted to confirm the Gaussian distribution.</p></li>
+<li><p>For the one that is not, some simple math transformation could fix it. like <span class="math notranslate nohighlight">\(x_{1} = \log(x_{1})\)</span>, <span class="math notranslate nohighlight">\(x_{2} = \sqrt{x_{2}}\)</span>, …</p></li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="better-practice">
 <h2>Better Practice<a class="headerlink" href="#better-practice" title="Permalink to this headline">¶</a></h2>
@@ -120,15 +144,6 @@
 </ul>
 </div></blockquote>
 <p>It is not a good practice to use CV set + Test set as one set.</p>
-</div>
-<div class="section" id="non-gaussian-features">
-<h2>Non-gaussian Features<a class="headerlink" href="#non-gaussian-features" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><p>Each <span class="math notranslate nohighlight">\(x_{j}\)</span> should be ploted to confirm the Gaussian distribution.</p></li>
-<li><p>For the one that is not, some simple math transformation could fix it. like <span class="math notranslate nohighlight">\(x_{1} = \log(x_{1})\)</span>, <span class="math notranslate nohighlight">\(x_{1} = \sqrt{x_{1}}\)</span>. …</p></li>
-</ul>
-</div></blockquote>
 </div>
 <div class="section" id="algorithm-evaluation">
 <h2>Algorithm Evaluation<a class="headerlink" href="#algorithm-evaluation" title="Permalink to this headline">¶</a></h2>
@@ -179,6 +194,45 @@
 <span class="k">endfor</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="multivariate-gaussian-distribution">
+<h2>Multivariate Gaussian Distribution<a class="headerlink" href="#multivariate-gaussian-distribution" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Parameters: <span class="math notranslate nohighlight">\(x, \mu \in \mathbb {R^{n}}\)</span>, <span class="math notranslate nohighlight">\(\Sigma \in \mathbb {R^{nxn}}\)</span> (covariance matrix)</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}\)</span></p></li>
+<li><p>Here <span class="math notranslate nohighlight">\(|\Sigma|\)</span> is the determinant of <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="parameter-fitting">
+<h3>Parameter fitting:<a class="headerlink" href="#parameter-fitting" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\mu = \frac {1}{m} \sum_{i=1}^{m} x^{(i)}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Sigma = \frac {1}{m} \sum_{i=1}^{m} (x^{(i)} - \mu) (x^{(i)} - \mu)^{T}\)</span></p>
+</div></blockquote>
+<p>Anomaly detection with the multivariate Gaussian</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Fit model <span class="math notranslate nohighlight">\(p(x)\)</span> by setting <span class="math notranslate nohighlight">\(\mu, \Sigma\)</span></p></li>
+<li><p>Given a new example <span class="math notranslate nohighlight">\(x\)</span>, compute</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(p(x) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}\)</span></p>
+</div></blockquote>
+</li>
+</ol>
+<p>Flag an anomaly if <span class="math notranslate nohighlight">\(p(x) &lt; \epsilon\)</span></p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="relationship-to-original-model">
+<h2>Relationship to Original Model<a class="headerlink" href="#relationship-to-original-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Original model: <span class="math notranslate nohighlight">\(p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})\)</span> * … * <span class="math notranslate nohighlight">\(p(x_{n}; \mu_{n}, \sigma _{n}^{2})\)</span></p></li>
+<li><p>Corresponds to multivariate Gaussian <span class="math notranslate nohighlight">\(p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}\)</span></p></li>
+<li><p>where all elements in <span class="math notranslate nohighlight">\(\Sigma\)</span> is zero except on the diagonal line</p></li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
