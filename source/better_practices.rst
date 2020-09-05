@@ -30,22 +30,3 @@ Supervised Learning
 	* Weather prediction (sunny/rainy/etc)
 	* Cancer classification
 
-Anomaly Detection Original Model vs. Multivariate Gaussian
-----------------------------------------------------------
-
-Original Model
-^^^^^^^^^^^^^^
-
-	* :math:`p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})` * ... * :math:`p(x_{n}; \mu_{n}, \sigma _{n}^{2})`
-	* Manually create features to capture anomalies where :math:`x_{1}, x_{2}` take unusual combinations of values, i.e. :math:`x_{3} = \frac {x_{1}} {x_{2}}`
-	* Computationally cheaper (alternatively, scales better to large :math:`n = 10,000`, :math:`n = 100,000`) 
-	* OK even if :math:`m` (training set size) is small
-
-Multivariate Gaussian
-^^^^^^^^^^^^^^^^^^^^^
-
-	* :math:`p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}`
-	* Automatically captures correlations between features
-	* :math:`\Sigma \in \mathbb {R^{nxn}}`, :math:`\Sigma^{-1}` computationally more expensive
-	* Must have :math:`m > n`, or else :math:`\Sigma` is non-invertible.
-	* Should use :math:`m >= 10 n`

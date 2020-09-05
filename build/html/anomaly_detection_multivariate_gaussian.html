@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multivariate Gaussian Distribution &#8212; Jian AI Ref 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Recommender Systems" href="recommender_systems.html" />
+    <link rel="prev" title="Gaussian Distribution" href="anomaly_detection_gaussian.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="index.html">Jian AI Ref 0.1 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="anomaly_detection_gaussian.html" title="Gaussian Distribution"
+             accesskey="P">previous</a> |
+          <a href="recommender_systems.html" title="Recommender Systems"
+             accesskey="N">next</a> |
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="multivariate-gaussian-distribution">
+<span id="anomaly-multivariate-gaussian-label"></span><h1>Multivariate Gaussian Distribution<a class="headerlink" href="#multivariate-gaussian-distribution" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ul class="simple">
+<li><p>Parameters: <span class="math notranslate nohighlight">\(x, \mu \in \mathbb {R^{n}}\)</span>, <span class="math notranslate nohighlight">\(\Sigma \in \mathbb {R^{nxn}}\)</span> (covariance matrix)</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}\)</span></p></li>
+<li><p>Here <span class="math notranslate nohighlight">\(|\Sigma|\)</span> is the determinant of <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="parameter-fitting">
+<h2>Parameter fitting:<a class="headerlink" href="#parameter-fitting" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\mu = \frac {1}{m} \sum_{i=1}^{m} x^{(i)}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Sigma = \frac {1}{m} \sum_{i=1}^{m} (x^{(i)} - \mu) (x^{(i)} - \mu)^{T}\)</span></p>
+</div></blockquote>
+<p>Anomaly detection with the multivariate Gaussian</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Fit model <span class="math notranslate nohighlight">\(p(x)\)</span> by setting <span class="math notranslate nohighlight">\(\mu, \Sigma\)</span></p></li>
+<li><p>Given a new example <span class="math notranslate nohighlight">\(x\)</span>, compute</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(p(x) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}\)</span></p>
+</div></blockquote>
+</li>
+</ol>
+<p>Flag an anomaly if <span class="math notranslate nohighlight">\(p(x) &lt; \epsilon\)</span></p>
+</div></blockquote>
+</div>
+<div class="section" id="relationship-to-original-model">
+<h2>Relationship to Original Model<a class="headerlink" href="#relationship-to-original-model" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Original model: <span class="math notranslate nohighlight">\(p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})\)</span> * … * <span class="math notranslate nohighlight">\(p(x_{n}; \mu_{n}, \sigma _{n}^{2})\)</span></p></li>
+<li><p>Corresponds to multivariate Gaussian</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}\)</span></p>
+<ul class="simple">
+<li><p>where all elements in <span class="math notranslate nohighlight">\(\Sigma\)</span> is zero except on the diagonal line</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="anomaly_detection_gaussian.html" title="Gaussian Distribution"
+              >previous</a> |
+            <a href="recommender_systems.html" title="Recommender Systems"
+              >next</a> |
+            <a href="genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="_sources/anomaly_detection_multivariate_gaussian.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Jian Yuan.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

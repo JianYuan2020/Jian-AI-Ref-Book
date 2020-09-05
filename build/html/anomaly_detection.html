@@ -16,7 +16,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Recommender Systems" href="recommender_systems.html" />
+    <link rel="next" title="Gaussian Distribution" href="anomaly_detection_gaussian.html" />
     <link rel="prev" title="Unsupervised learning" href="unsupervised_learning.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
@@ -26,7 +26,7 @@
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="unsupervised_learning.html" title="Unsupervised learning"
              accesskey="P">previous</a> |
-          <a href="recommender_systems.html" title="Recommender Systems"
+          <a href="anomaly_detection_gaussian.html" title="Gaussian Distribution"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -68,53 +68,6 @@
 </li>
 </ul>
 </div></blockquote>
-<div class="section" id="gaussian-normal-distribution">
-<h2>Gaussian (Normal) Distribution<a class="headerlink" href="#gaussian-normal-distribution" title="Permalink to this headline">¶</a></h2>
-<p>Let’s assume:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Training set: <span class="math notranslate nohighlight">\(X = \{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}\)</span> and <span class="math notranslate nohighlight">\({\displaystyle x^{(i)} \in \mathbb {R^{n}}}\)</span></p></li>
-<li><p>All features are distributed as <a class="reference internal" href="normal_distribution.html#normal-distribution-label"><span class="std std-ref">Normal Distribution</span></a></p></li>
-<li><p>That is: <span class="math notranslate nohighlight">\(x_{1}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{1}, \sigma _{1}^{2})\)</span>,  <span class="math notranslate nohighlight">\(x_{2}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{2}, \sigma _{2}^{2})\)</span>, …, <span class="math notranslate nohighlight">\(x_{n}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{n}, \sigma _{n}^{2})\)</span></p></li>
-</ul>
-</div></blockquote>
-<p>Then:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})\)</span> * <span class="math notranslate nohighlight">\(p(x_{2}; \mu_{2}, \sigma _{2}^{2})\)</span> * … * <span class="math notranslate nohighlight">\(p(x_{n}; \mu_{n}, \sigma _{n}^{2}) = \Pi_{j=1}^{n} p(x_{j}; \mu_{j}, \sigma _{j}^{2})\)</span></p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="anomaly-detection-algorithm">
-<h2>Anomaly Detection Algorithm<a class="headerlink" href="#anomaly-detection-algorithm" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ol class="arabic">
-<li><p>Choose features <span class="math notranslate nohighlight">\(x_{i}\)</span> that you think might be indicative of anomalous examples <span class="math notranslate nohighlight">\(\{ x^{(1)}, x^{(2)}, ..., x^{(m)} \}\)</span></p></li>
-<li><p>Fit parameters <span class="math notranslate nohighlight">\(\mu_{1}\)</span>, <span class="math notranslate nohighlight">\(\mu_{2}\)</span>, …, <span class="math notranslate nohighlight">\(\mu_{n}\)</span> and <span class="math notranslate nohighlight">\(\sigma _{1}^{2}\)</span>, <span class="math notranslate nohighlight">\(\sigma _{2}^{2}\)</span>, …, <span class="math notranslate nohighlight">\(\sigma _{n}^{2}\)</span> using <a class="reference internal" href="normal_distribution.html#normal-distribution-label"><span class="std std-ref">Normal Distribution</span></a></p></li>
-<li><p>Given new example <span class="math notranslate nohighlight">\(x\)</span>, compute <span class="math notranslate nohighlight">\(p(x)\)</span>:</p>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(p(x) = \Pi_{j=1}^{n} p(x_{j}; \mu_{j}, \sigma _{j}^{2}) = {\displaystyle \Pi_{j=1}^{n} {\frac {1}{\sigma_{j} {\sqrt {2\pi }}}}e^{-{\frac {1}{2}}\left({\frac {x_{j}-\mu_{j} }{\sigma_{j} }}\right)^{2}}}\)</span></p>
-</div></blockquote>
-</li>
-</ol>
-<p>Anomaly if <span class="math notranslate nohighlight">\(p(x) &lt; \epsilon\)</span></p>
-</div></blockquote>
-<div class="section" id="note">
-<h3>Note:<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>Sometimes, i.e. for monitoring computers in a data center case:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(x_{3}\)</span> = CPU load</p></li>
-<li><p><span class="math notranslate nohighlight">\(x_{4}\)</span> = network traffic</p></li>
-</ul>
-<p>Adding the following will help the detection:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(x_{5} = \frac {CPULoad}{networkTraffic}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(x_{6} = \frac {(CPULoad)^2}{networkTraffic}\)</span></p></li>
-</ul>
-</div></blockquote>
-</div>
-</div>
 <div class="section" id="non-gaussian-features">
 <h2>Non-gaussian Features<a class="headerlink" href="#non-gaussian-features" title="Permalink to this headline">¶</a></h2>
 <blockquote>
@@ -144,6 +97,20 @@
 </ul>
 </div></blockquote>
 <p>It is not a good practice to use CV set + Test set as one set.</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="anomaly_detection_gaussian.html">Gaussian Distribution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection_gaussian.html#anomaly-detection-algorithm">Anomaly Detection Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="anomaly_detection_multivariate_gaussian.html">Multivariate Gaussian Distribution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection_multivariate_gaussian.html#parameter-fitting">Parameter fitting:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection_multivariate_gaussian.html#relationship-to-original-model">Relationship to Original Model</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="algorithm-evaluation">
 <h2>Algorithm Evaluation<a class="headerlink" href="#algorithm-evaluation" title="Permalink to this headline">¶</a></h2>
@@ -195,44 +162,31 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="multivariate-gaussian-distribution">
-<h2>Multivariate Gaussian Distribution<a class="headerlink" href="#multivariate-gaussian-distribution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="anomaly-detection-original-model-vs-multivariate-gaussian">
+<h2>Anomaly Detection Original Model vs. Multivariate Gaussian<a class="headerlink" href="#anomaly-detection-original-model-vs-multivariate-gaussian" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="original-model">
+<h3>Original Model<a class="headerlink" href="#original-model" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>Parameters: <span class="math notranslate nohighlight">\(x, \mu \in \mathbb {R^{n}}\)</span>, <span class="math notranslate nohighlight">\(\Sigma \in \mathbb {R^{nxn}}\)</span> (covariance matrix)</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})\)</span> * … * <span class="math notranslate nohighlight">\(p(x_{n}; \mu_{n}, \sigma _{n}^{2})\)</span></p></li>
+<li><p>Manually create features to capture anomalies where <span class="math notranslate nohighlight">\(x_{1}, x_{2}\)</span> take unusual combinations of values, i.e. <span class="math notranslate nohighlight">\(x_{3} = \frac {x_{1}} {x_{2}}\)</span></p></li>
+<li><p>Computationally cheaper (alternatively, scales better to large <span class="math notranslate nohighlight">\(n = 10,000\)</span>, <span class="math notranslate nohighlight">\(n = 100,000\)</span>)</p></li>
+<li><p>OK even if <span class="math notranslate nohighlight">\(m\)</span> (training set size) is small</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="multivariate-gaussian">
+<h3>Multivariate Gaussian<a class="headerlink" href="#multivariate-gaussian" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}\)</span></p></li>
-<li><p>Here <span class="math notranslate nohighlight">\(|\Sigma|\)</span> is the determinant of <span class="math notranslate nohighlight">\(\Sigma\)</span>.</p></li>
+<li><p>Automatically captures correlations between features</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Sigma \in \mathbb {R^{nxn}}\)</span>, <span class="math notranslate nohighlight">\(\Sigma^{-1}\)</span> computationally more expensive</p></li>
+<li><p>Must have <span class="math notranslate nohighlight">\(m &gt; n\)</span>, or else <span class="math notranslate nohighlight">\(\Sigma\)</span> is non-invertible.</p></li>
+<li><p>We use <span class="math notranslate nohighlight">\(m &gt;= 10 n\)</span></p></li>
 </ul>
 </div></blockquote>
-<div class="section" id="parameter-fitting">
-<h3>Parameter fitting:<a class="headerlink" href="#parameter-fitting" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(\mu = \frac {1}{m} \sum_{i=1}^{m} x^{(i)}\)</span></p>
-<p><span class="math notranslate nohighlight">\(\Sigma = \frac {1}{m} \sum_{i=1}^{m} (x^{(i)} - \mu) (x^{(i)} - \mu)^{T}\)</span></p>
-</div></blockquote>
-<p>Anomaly detection with the multivariate Gaussian</p>
-<blockquote>
-<div><ol class="arabic">
-<li><p>Fit model <span class="math notranslate nohighlight">\(p(x)\)</span> by setting <span class="math notranslate nohighlight">\(\mu, \Sigma\)</span></p></li>
-<li><p>Given a new example <span class="math notranslate nohighlight">\(x\)</span>, compute</p>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(p(x) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}\)</span></p>
-</div></blockquote>
-</li>
-</ol>
-<p>Flag an anomaly if <span class="math notranslate nohighlight">\(p(x) &lt; \epsilon\)</span></p>
-</div></blockquote>
 </div>
-</div>
-<div class="section" id="relationship-to-original-model">
-<h2>Relationship to Original Model<a class="headerlink" href="#relationship-to-original-model" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><p>Original model: <span class="math notranslate nohighlight">\(p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})\)</span> * … * <span class="math notranslate nohighlight">\(p(x_{n}; \mu_{n}, \sigma _{n}^{2})\)</span></p></li>
-<li><p>Corresponds to multivariate Gaussian <span class="math notranslate nohighlight">\(p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}\)</span></p></li>
-<li><p>where all elements in <span class="math notranslate nohighlight">\(\Sigma\)</span> is zero except on the diagonal line</p></li>
-</ul>
-</div></blockquote>
 </div>
 </div>
 
@@ -277,7 +231,7 @@
           <div role="navigation" aria-label="related navigaton">
             <a href="unsupervised_learning.html" title="Unsupervised learning"
               >previous</a> |
-            <a href="recommender_systems.html" title="Recommender Systems"
+            <a href="anomaly_detection_gaussian.html" title="Gaussian Distribution"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>

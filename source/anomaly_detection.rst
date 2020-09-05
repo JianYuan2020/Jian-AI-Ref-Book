@@ -18,43 +18,6 @@ Given the dataset with the majority data as normal:
 		* :math:`p(x_{test}) < \epsilon`, flag anomaly
 		* :math:`p(x_{test}) >= \epsilon` is normal (OK)
 
-Gaussian (Normal) Distribution
-------------------------------
-
-Let's assume:
-
-	* Training set: :math:`X = \{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}` and :math:`{\displaystyle x^{(i)} \in \mathbb {R^{n}}}`
-	* All features are distributed as :ref:`normal-distribution-label`
-	* That is: :math:`x_{1}` ~ :math:`{\mathcal {N}}(\mu_{1}, \sigma _{1}^{2})`,  :math:`x_{2}` ~ :math:`{\mathcal {N}}(\mu_{2}, \sigma _{2}^{2})`, ..., :math:`x_{n}` ~ :math:`{\mathcal {N}}(\mu_{n}, \sigma _{n}^{2})` 
-
-Then:
-
-	* :math:`p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})` * :math:`p(x_{2}; \mu_{2}, \sigma _{2}^{2})` * ... * :math:`p(x_{n}; \mu_{n}, \sigma _{n}^{2}) = \Pi_{j=1}^{n} p(x_{j}; \mu_{j}, \sigma _{j}^{2})`
-
-Anomaly Detection Algorithm
----------------------------
-
-	#. Choose features :math:`x_{i}` that you think might be indicative of anomalous examples :math:`\{ x^{(1)}, x^{(2)}, ..., x^{(m)} \}`
-	#. Fit parameters :math:`\mu_{1}`, :math:`\mu_{2}`, ..., :math:`\mu_{n}` and :math:`\sigma _{1}^{2}`, :math:`\sigma _{2}^{2}`, ..., :math:`\sigma _{n}^{2}` using :ref:`normal-distribution-label`
-	#. Given new example :math:`x`, compute :math:`p(x)`:
-
-		:math:`p(x) = \Pi_{j=1}^{n} p(x_{j}; \mu_{j}, \sigma _{j}^{2}) = {\displaystyle \Pi_{j=1}^{n} {\frac {1}{\sigma_{j} {\sqrt {2\pi }}}}e^{-{\frac {1}{2}}\left({\frac {x_{j}-\mu_{j} }{\sigma_{j} }}\right)^{2}}}`
-
-	Anomaly if :math:`p(x) < \epsilon`
-
-Note:
-^^^^^
-	
-	Sometimes, i.e. for monitoring computers in a data center case:
-
-	* :math:`x_{3}` = CPU load
-	* :math:`x_{4}` = network traffic
-
-	Adding the following will help the detection:
-
-	* :math:`x_{5} = \frac {CPULoad}{networkTraffic}`
-	* :math:`x_{6} = \frac {(CPULoad)^2}{networkTraffic}`
-
 Non-gaussian Features
 ---------------------
 
@@ -78,6 +41,13 @@ Specifically
 	* Test set: 2000 good engines (:math:`y = 0`), 10 anomalous (:math:`y = 1`)
 
 It is not a good practice to use CV set + Test set as one set.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   anomaly_detection_gaussian
+   anomaly_detection_multivariate_gaussian
 
 Algorithm Evaluation
 --------------------
@@ -122,33 +92,22 @@ Octave Code
 
 	endfor
 
-Multivariate Gaussian Distribution
-----------------------------------
+Anomaly Detection Original Model vs. Multivariate Gaussian
+----------------------------------------------------------
 
-	* Parameters: :math:`x, \mu \in \mathbb {R^{n}}`, :math:`\Sigma \in \mathbb {R^{nxn}}` (covariance matrix)
+Original Model
+^^^^^^^^^^^^^^
+
+	* :math:`p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})` * ... * :math:`p(x_{n}; \mu_{n}, \sigma _{n}^{2})`
+	* Manually create features to capture anomalies where :math:`x_{1}, x_{2}` take unusual combinations of values, i.e. :math:`x_{3} = \frac {x_{1}} {x_{2}}`
+	* Computationally cheaper (alternatively, scales better to large :math:`n = 10,000`, :math:`n = 100,000`) 
+	* OK even if :math:`m` (training set size) is small
+
+Multivariate Gaussian
+^^^^^^^^^^^^^^^^^^^^^
+
 	* :math:`p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}`
-	* Here :math:`|\Sigma|` is the determinant of :math:`\Sigma`.
-
-Parameter fitting:
-^^^^^^^^^^^^^^^^^^
-
-	:math:`\mu = \frac {1}{m} \sum_{i=1}^{m} x^{(i)}`
-
-	:math:`\Sigma = \frac {1}{m} \sum_{i=1}^{m} (x^{(i)} - \mu) (x^{(i)} - \mu)^{T}`
-
-Anomaly detection with the multivariate Gaussian
-
-	#. Fit model :math:`p(x)` by setting :math:`\mu, \Sigma`
-	#. Given a new example :math:`x`, compute
-
-		:math:`p(x) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}`
-
-	Flag an anomaly if :math:`p(x) < \epsilon`
-
-Relationship to Original Model
-------------------------------
-
-	* Original model: :math:`p(x) = p(x_{1}; \mu_{1}, \sigma _{1}^{2})` * ... * :math:`p(x_{n}; \mu_{n}, \sigma _{n}^{2})`
-	* Corresponds to multivariate Gaussian :math:`p(x; \mu, \Sigma) = \frac {1}{\sqrt {(2\pi)^{n} |\Sigma|}} \exp {(-\frac {1}{2} (x -\mu)^{T} \Sigma^{-1} (x -\mu))}`
-	* where all elements in :math:`\Sigma` is zero except on the diagonal line
-
+	* Automatically captures correlations between features
+	* :math:`\Sigma \in \mathbb {R^{nxn}}`, :math:`\Sigma^{-1}` computationally more expensive
+	* Must have :math:`m > n`, or else :math:`\Sigma` is non-invertible.
+	* We use :math:`m >= 10 n`
