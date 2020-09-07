@@ -16,7 +16,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Content Based Recommendations" href="content_based_recommendations.html" />
+    <link rel="next" title="Better Practices" href="better_practices.html" />
     <link rel="prev" title="Multivariate Gaussian Distribution" href="anomaly_detection_multivariate_gaussian.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
@@ -26,7 +26,7 @@
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="anomaly_detection_multivariate_gaussian.html" title="Multivariate Gaussian Distribution"
              accesskey="P">previous</a> |
-          <a href="content_based_recommendations.html" title="Content Based Recommendations"
+          <a href="better_practices.html" title="Better Practices"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -44,19 +44,140 @@
             
   <div class="section" id="recommender-systems">
 <span id="recommender-systems-label"></span><h1>Recommender Systems<a class="headerlink" href="#recommender-systems" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="content_based_recommendations.html">Content Based Recommendations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="content_based_recommendations.html#to-learn-theta-1-theta-n-u">To learn <span class="math notranslate nohighlight">\(\theta^{(1)}, ..., \theta^{(n_{u})}\)</span>:</a></li>
+<div class="section" id="content-based-recommendations">
+<h2>Content Based Recommendations<a class="headerlink" href="#content-based-recommendations" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Example: Predicting movie ratings. Let’s define:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n_{u}\)</span> = number of users</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_{m}\)</span> = number of movies</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> = number of features for movies</p></li>
+<li><p><span class="math notranslate nohighlight">\(r(i, j)\)</span> = 1 if user <span class="math notranslate nohighlight">\(j\)</span> has rated movie <span class="math notranslate nohighlight">\(i\)</span> (0 otherwise)</p></li>
+<li><p><span class="math notranslate nohighlight">\(y^{(i, j)}\)</span> = rating given by user <span class="math notranslate nohighlight">\(j\)</span> to movie <span class="math notranslate nohighlight">\(i\)</span> (defined only if <span class="math notranslate nohighlight">\(r(i, j)\)</span> = 1)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta^{(j)}\)</span> = parameter vector for user <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\(\theta^{(j)} \in \mathbb {R^{n + 1}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^{(i)}\)</span> = feature vector for movie <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(x^{(i)} \in \mathbb {R^{n + 1}}\)</span></p></li>
+<li><p>For user <span class="math notranslate nohighlight">\(j\)</span>, movie <span class="math notranslate nohighlight">\(i\)</span>, predicted rating: <span class="math notranslate nohighlight">\((\theta^{(j)})^{T} (x^{(i)})\)</span></p></li>
+<li><p>These are essentially the same as <a class="reference internal" href="linear_regression.html#linear-regression-label"><span class="std std-ref">Linear Regression</span></a>.</p></li>
+<li><p>As usual, we can also add the regularization term to prevent the features from becoming too big.</p></li>
 </ul>
+</div></blockquote>
+</div>
+<div class="section" id="given-x-1-x-n-m-and-movie-ratings-to-learn-theta-1-theta-n-u">
+<h2>Given <span class="math notranslate nohighlight">\(x^{(1)}, ..., x^{(n_{m})}\)</span> (and movie ratings), to learn <span class="math notranslate nohighlight">\(\theta^{(1)}, ..., \theta^{(n_{u})}\)</span>:<a class="headerlink" href="#given-x-1-x-n-m-and-movie-ratings-to-learn-theta-1-theta-n-u" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cost-function">
+<h3>Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(J(\Theta) = \frac{1}{2} \sum_{j=1}^{n_{u}} \sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)})^2 +
+\frac{\lambda}{2} \sum_{j=1}^{n_{u}} \sum_{k=1}^{n} (\theta_{k}^{(j)})^2\)</span></p>
+</div></blockquote>
+</div>
+<div class="section" id="gradient-descent">
+<h3>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \frac{\partial }{\partial \theta_{k}^{(j)}} J(\Theta)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k}\)</span> (for <span class="math notranslate nohighlight">\(k = 0\)</span>)</p>
+<p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha (\sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k} + \lambda \theta^{(j)}_{k} )\)</span> (for <span class="math notranslate nohighlight">\(k &lt;&gt; 0\)</span>)</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="collaborative-filtering">
+<h2>Collaborative Filtering<a class="headerlink" href="#collaborative-filtering" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Given <span class="math notranslate nohighlight">\(x^{(1)}, ..., x^{(n_{m})}\)</span> (and movie ratings), to learn <span class="math notranslate nohighlight">\(\theta^{(1)}, ..., \theta^{(n_{u})}\)</span></p></li>
+<li><p>Given <span class="math notranslate nohighlight">\(\theta^{(1)}, ..., \theta^{(n_{u})}\)</span>, can estimate <span class="math notranslate nohighlight">\(x^{(1)}, ..., x^{(n_{m})}\)</span></p></li>
+<li><p>Guess <span class="math notranslate nohighlight">\(\Theta\)</span> -&gt; <span class="math notranslate nohighlight">\(x\)</span> -&gt; <span class="math notranslate nohighlight">\(\Theta\)</span> -&gt; <span class="math notranslate nohighlight">\(x\)</span> -&gt; …</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The nice things with collaborative filtering are:</p>
+<ul class="simple">
+<li><p>features are learnt automatically</p></li>
+<li><p>k = 0 is not included in the computation</p></li>
+</ul>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="given-theta-1-theta-n-u-to-learn-x-1-x-n-m">
+<h2>Given <span class="math notranslate nohighlight">\(\theta^{(1)}, ..., \theta^{(n_{u})}\)</span>, to learn <span class="math notranslate nohighlight">\(x^{(1)}, ..., x^{(n_{m})}\)</span>:<a class="headerlink" href="#given-theta-1-theta-n-u-to-learn-x-1-x-n-m" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Cost Function<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(J(x) = \frac{1}{2} \sum_{i=1}^{n_{m}} \sum_{j:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)})^2 +
+\frac{\lambda}{2} \sum_{i=1}^{n_{m}} \sum_{k=1}^{n} (x_{k}^{(i)})^2\)</span></p>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h3>Gradient Descent<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(x_{k}^{(i)} = x_{k}^{(i)} - \alpha \frac{\partial }{\partial x_{k}^{(i)}} J(x)\)</span></p>
+<p><span class="math notranslate nohighlight">\(x_{k}^{(i)} = x_{k}^{(i)} - \alpha (\sum_{j:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) \theta^{(j)}_{k} + \lambda x_{k}^{(i)} )\)</span> (for <span class="math notranslate nohighlight">\(k &lt;&gt; 0\)</span>)</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="minimizing-x-1-x-n-m-and-theta-1-theta-n-u-simultaneously">
+<h2>Minimizing <span class="math notranslate nohighlight">\(x^{(1)}, ..., x^{(n_{m})}\)</span> and <span class="math notranslate nohighlight">\(\theta^{(1)}, ..., \theta^{(n_{u})}\)</span> Simultaneously:<a class="headerlink" href="#minimizing-x-1-x-n-m-and-theta-1-theta-n-u-simultaneously" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Cost Function<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(J(x^{(1)}, ..., x^{(n_{m})}, \theta^{(1)}, ..., \theta^{(n_{u})}) = \frac{1}{2} \sum_{(i,j):r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)})^2 +
+\frac{\lambda}{2} \sum_{i=1}^{n_{m}} \sum_{k=1}^{n} (x_{k}^{(i)})^2 + \frac{\lambda}{2} \sum_{j=1}^{n_{u}} \sum_{k=1}^{n} (\theta_{k}^{(j)})^2\)</span></p>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h3>Gradient Descent<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(x_{k}^{(i)} = x_{k}^{(i)} - \alpha (\sum_{j:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) \theta^{(j)}_{k} + \lambda x_{k}^{(i)} )\)</span>
+<span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha (\sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k} + \lambda \theta^{(j)}_{k} )\)</span></p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="collaborative-filtering-algorithm">
+<h2>Collaborative Filtering Algorithm<a class="headerlink" href="#collaborative-filtering-algorithm" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Initialize <span class="math notranslate nohighlight">\(x^{(1)}, ..., x^{(n_{m})}, \theta^{(1)}, ..., \theta^{(n_{u})}\)</span> to small random values</p></li>
+<li><p>Minimize <span class="math notranslate nohighlight">\(J(x^{(1)}, ..., x^{(n_{m})}, \theta^{(1)}, ..., \theta^{(n_{u})})\)</span> using gradient descent (or an advanced optimization algorithm). E.g. for every <span class="math notranslate nohighlight">\(j = 1\)</span>, …, <span class="math notranslate nohighlight">\(n_{u}, i = 1\)</span>, …, <span class="math notranslate nohighlight">\(n_{m}\)</span>:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(x_{k}^{(i)} = x_{k}^{(i)} - \alpha (\sum_{j:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) \theta^{(j)}_{k} + \lambda x_{k}^{(i)} )\)</span>
+<span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha (\sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k} + \lambda \theta^{(j)}_{k} )\)</span></p>
+</div></blockquote>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="collaborative_filtering.html">Collaborative Filtering</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="collaborative_filtering.html#cost-function">Cost Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collaborative_filtering.html#gradient-descent">Gradient Descent</a></li>
-</ul>
+<li><p>For a user with parameters <span class="math notranslate nohighlight">\(\theta^{(j)}\)</span> and a movie with (learned) features <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, predict a star rating of <span class="math notranslate nohighlight">\((\theta^{(j)})^{T} x^{(i)}\)</span></p></li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="octave-code">
+<h2>Octave Code<a class="headerlink" href="#octave-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="c">% Cost function</span>
+<span class="n">J</span> <span class="p">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">R</span> <span class="o">.*</span> <span class="p">(</span><span class="n">X</span><span class="o">*</span><span class="n">Theta</span><span class="o">&#39;</span> <span class="o">-</span> <span class="n">Y</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">lambda</span><span class="o">*</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">Theta</span><span class="o">.^</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">X</span><span class="o">.^</span><span class="mi">2</span><span class="p">)))</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+
+<span class="c">% Gradient descent</span>
+<span class="n">temp</span> <span class="p">=</span> <span class="p">(</span><span class="n">R</span> <span class="o">.*</span> <span class="p">(</span><span class="n">X</span><span class="o">*</span><span class="n">Theta</span><span class="o">&#39;</span> <span class="o">-</span> <span class="n">Y</span><span class="p">));</span>
+<span class="n">X_grad</span> <span class="p">=</span> <span class="n">temp</span><span class="o">*</span><span class="n">Theta</span> <span class="o">+</span> <span class="n">lambda</span><span class="o">*</span><span class="n">X</span><span class="p">;</span>
+<span class="n">Theta_grad</span> <span class="p">=</span> <span class="n">temp</span><span class="o">&#39;*</span><span class="n">X</span> <span class="o">+</span> <span class="n">lambda</span><span class="o">*</span><span class="n">Theta</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="finding-related-movies">
+<h2>Finding Related Movies<a class="headerlink" href="#finding-related-movies" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><p>For each product <span class="math notranslate nohighlight">\(i\)</span>, we learn a feature vector <span class="math notranslate nohighlight">\(x^{(i)} \in \mathbb {R^{n}}\)</span></p></li>
+<li><p>How to find movies related to movie <span class="math notranslate nohighlight">\(i\)</span>?</p>
+<blockquote>
+<div><p>5 most similar movies to movie <span class="math notranslate nohighlight">\(i\)</span>:</p>
+<p>Find the 5 movies with the smallest <span class="math notranslate nohighlight">\(\left\|x^{(i)} - x^{(j)}\right\|\)</span></p>
+</div></blockquote>
 </li>
 </ul>
+</div></blockquote>
+<div class="section" id="implementational-detail-mean-normalization">
+<h3>Implementational Detail: Mean Normalization<a class="headerlink" href="#implementational-detail-mean-normalization" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>To help with new user with no ratings, for user <span class="math notranslate nohighlight">\(j\)</span>, on movie <span class="math notranslate nohighlight">\(i\)</span> predict: <span class="math notranslate nohighlight">\((\theta^{(j)})^{T} (x^{(i)}) + \mu_{i}\)</span></p>
+</div></blockquote>
+</div>
 </div>
 </div>
 
@@ -72,13 +193,15 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Recommender Systems</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="machine_learning.html">Machine Learning</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="machine_learning.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machine_learning.html#supervised-learning">Supervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machine_learning.html#unsupervised-learning">Unsupervised Learning</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="machine_learning.html#other">Other</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 
@@ -101,7 +224,7 @@
           <div role="navigation" aria-label="related navigaton">
             <a href="anomaly_detection_multivariate_gaussian.html" title="Multivariate Gaussian Distribution"
               >previous</a> |
-            <a href="content_based_recommendations.html" title="Content Based Recommendations"
+            <a href="better_practices.html" title="Better Practices"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>

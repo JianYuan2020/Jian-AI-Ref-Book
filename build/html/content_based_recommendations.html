@@ -47,15 +47,15 @@
 <blockquote>
 <div><p>Example: Predicting movie ratings. Let’s define:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(n_{u}\)</span> = number of users.</p></li>
-<li><p><span class="math notranslate nohighlight">\(n_{m}\)</span> = number of movies.</p></li>
-<li><p><span class="math notranslate nohighlight">\(n\)</span> = number of features for movies.</p></li>
-<li><p><span class="math notranslate nohighlight">\(r(i, j)\)</span> = 1 if user <span class="math notranslate nohighlight">\(j\)</span> has rated movie <span class="math notranslate nohighlight">\(i\)</span> (0 otherwise).</p></li>
-<li><p><span class="math notranslate nohighlight">\(y^{(i, j)}\)</span> = rating given by user <span class="math notranslate nohighlight">\(j\)</span> to movie <span class="math notranslate nohighlight">\(i\)</span> (defined only if <span class="math notranslate nohighlight">\(r(i, j)\)</span> = 1).</p></li>
-<li><p><span class="math notranslate nohighlight">\(\theta^{(j)}\)</span> = parameter vector for user <span class="math notranslate nohighlight">\(j\)</span> - <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x^{(i)}\)</span> = feature vector for movie <span class="math notranslate nohighlight">\(i\)</span> - <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_{u}\)</span> = number of users</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_{m}\)</span> = number of movies</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> = number of features for movies</p></li>
+<li><p><span class="math notranslate nohighlight">\(r(i, j)\)</span> = 1 if user <span class="math notranslate nohighlight">\(j\)</span> has rated movie <span class="math notranslate nohighlight">\(i\)</span> (0 otherwise)</p></li>
+<li><p><span class="math notranslate nohighlight">\(y^{(i, j)}\)</span> = rating given by user <span class="math notranslate nohighlight">\(j\)</span> to movie <span class="math notranslate nohighlight">\(i\)</span> (defined only if <span class="math notranslate nohighlight">\(r(i, j)\)</span> = 1)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta^{(j)}\)</span> = parameter vector for user <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\(\theta^{(j)} \in \mathbb {R^{n + 1}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^{(i)}\)</span> = feature vector for movie <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(x^{(i)} \in \mathbb {R^{n + 1}}\)</span></p></li>
 </ul>
-<p>For user <span class="math notranslate nohighlight">\(j\)</span>, movie <span class="math notranslate nohighlight">\(i\)</span>, predicted rating: <span class="math notranslate nohighlight">\((\theta^{(j)})^{T} * x^{(i)}\)</span></p>
+<p>For user <span class="math notranslate nohighlight">\(j\)</span>, movie <span class="math notranslate nohighlight">\(i\)</span>, predicted rating: <span class="math notranslate nohighlight">\((\theta^{(j)})^{T} (x^{(i)})\)</span></p>
 <p>These are essentially the same as <a class="reference internal" href="linear_regression.html#linear-regression-label"><span class="std std-ref">Linear Regression</span></a>.</p>
 </div></blockquote>
 <div class="section" id="to-learn-theta-1-theta-n-u">
@@ -90,17 +90,16 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="machine_learning.html">Machine Learning</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="machine_learning.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machine_learning.html#supervised-learning">Supervised Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machine_learning.html#unsupervised-learning">Unsupervised Learning</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="machine_learning.html#other">Other</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Content Based Recommendations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="collaborative_filtering.html">Collaborative Filtering</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 
           <div role="search">

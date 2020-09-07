@@ -33,6 +33,8 @@ Other
    :maxdepth: 2
    :caption: Contents:
 
+   anomaly_detection
+   recommender_systems
    better_practices
    normal_distribution
    feature_scaling

@@ -33,6 +33,7 @@ Better Practice
 	* Test set: :math:`(x_{test}^{(1)}, y_{test}^{(1)})`, ..., :math:`(x_{test}^{(m_{test})}, y_{test}^{(m_{test})})` with some :math:`y = 1` examples
 
 Specifically
+------------
 	
 	For 10000 good (normal) engines with 20 flawed engines (anomalous):
 
@@ -92,8 +93,8 @@ Octave Code
 
 	endfor
 
-Anomaly Detection Original Model vs. Multivariate Gaussian
-----------------------------------------------------------
+Original Model vs. Multivariate Gaussian
+----------------------------------------
 
 Original Model
 ^^^^^^^^^^^^^^
