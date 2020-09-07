@@ -5,28 +5,29 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Large Scale Machine Learning &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script src="_static/searchtools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
-  <script src="searchindex.js" defer></script>
-   
-
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Better Practices" href="better_practices.html" />
+    <link rel="prev" title="Recommender Systems" href="recommender_systems.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="recommender_systems.html" title="Recommender Systems"
+             accesskey="P">previous</a> |
+          <a href="better_practices.html" title="Better Practices"
+             accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
         </div>
@@ -41,27 +42,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script>$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    Searching for multiple words only shows matches that contain
-    all words.
-  </p>
-  <form action="" method="get">
-    <input type="text" name="q" aria-labelledby="search-documentation" value="" />
-    <input type="submit" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
-  
-  <div id="search-results">
-  
-  </div>
+  <div class="section" id="large-scale-machine-learning">
+<span id="large-scale-machine-learning-label"></span><h1>Large Scale Machine Learning<a class="headerlink" href="#large-scale-machine-learning" title="Permalink to this headline">¶</a></h1>
+<p>How to choose learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>?</p>
+<p>If <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, gradient descent can be slow. If <span class="math notranslate nohighlight">\(\alpha\)</span> is too large,
+gradient descent can overshoot the minimum. It may fail to converge, or even diverge.</p>
+<p>Gradient descent can converge to a local minimum, even with the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> fixed.</p>
+<p>For sufficiently small <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(J(\Theta)\)</span> should decrease on every iteration.
+To choose <span class="math notranslate nohighlight">\(\alpha\)</span>, try: … 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, …</p>
+</div>
+
 
             <div class="clearer"></div>
           </div>
@@ -72,16 +62,20 @@
           
           <h3>Table of Contents</h3>
           <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="machine_learning.html">Machine Learning</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="machine_learning.html#definition">Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 
           <div role="search">
             <h3 style="margin-top: 1.5em;">Search</h3>
-            <form class="search" action="#" method="get">
+            <form class="search" action="search.html" method="get">
                 <input type="text" name="q" />
                 <input type="submit" value="Go" />
             </form>
@@ -96,10 +90,17 @@
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
+            <a href="recommender_systems.html" title="Recommender Systems"
+              >previous</a> |
+            <a href="better_practices.html" title="Better Practices"
+              >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
+              <br/>
+              <a href="_sources/large_scale_machine_learning.rst.txt"
+                rel="nofollow">Show Source</a>
           </div>
         </div>
 
