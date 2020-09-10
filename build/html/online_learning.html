@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Large Scale Machine Learning &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Online Learning &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -16,17 +16,17 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Stochastic Gradient Descent" href="stochastic_gradient_descent.html" />
-    <link rel="prev" title="Recommender Systems" href="recommender_systems.html" /> 
+    <link rel="next" title="Appendix" href="appendix.html" />
+    <link rel="prev" title="Stochastic Gradient Descent" href="stochastic_gradient_descent.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="recommender_systems.html" title="Recommender Systems"
-             accesskey="P">previous</a> |
           <a href="stochastic_gradient_descent.html" title="Stochastic Gradient Descent"
+             accesskey="P">previous</a> |
+          <a href="appendix.html" title="Appendix"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -42,47 +42,17 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="large-scale-machine-learning">
-<span id="large-scale-machine-learning-label"></span><h1>Large Scale Machine Learning<a class="headerlink" href="#large-scale-machine-learning" title="Permalink to this headline">¶</a></h1>
-<p>“It’s not who has the best algorithm that wins. It’s who has the most data.”</p>
-<div class="section" id="learning-with-large-datasets">
-<h2>Learning with large datasets<a class="headerlink" href="#learning-with-large-datasets" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(m = 300,000,000\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p></li>
-</ul>
-</div></blockquote>
-<div class="section" id="linear-regression-with-batch-gradient-descent">
-<h3>Linear Regression with Batch Gradient Descent<a class="headerlink" href="#linear-regression-with-batch-gradient-descent" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(h_{\theta}(x) = \sum_{j=0}^{n} \theta_{j} x_{j}\)</span></p>
-<p><span class="math notranslate nohighlight">\(J_{Train}(\theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p>
-<p>Repeat for each iteration {</p>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
-<p>Here <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>, for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
-</div></blockquote>
-<p>}</p>
-<p>Here all <span class="math notranslate nohighlight">\(m\)</span> training examples are being used (therefore Batch) to learn gradient descent for every
-<span class="math notranslate nohighlight">\(j\)</span> for just one learning iteration. When <span class="math notranslate nohighlight">\(m\)</span> is very large, i.e. <span class="math notranslate nohighlight">\(m = 300,000,000\)</span>,
-computation becomes very expensive and time consuming.</p>
-<p>All <span class="math notranslate nohighlight">\(m\)</span> training examples need to be computed for every <span class="math notranslate nohighlight">\(j\)</span> =&gt; <span class="math notranslate nohighlight">\(m * (n + 1)\)</span> times for
-just one learning iteration.</p>
-</div></blockquote>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="stochastic_gradient_descent.html">Stochastic Gradient Descent</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="stochastic_gradient_descent.html#one-way-to-optimize-the-above-situation-is">One way to optimize the above situation is:</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="stochastic_gradient_descent.html#mini-batch-gradient-descent">Mini-batch Gradient Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="online_learning.html">Online Learning</a></li>
-</ul>
-</div>
-</div>
-</div>
+  <div class="section" id="online-learning">
+<span id="online-learning-label"></span><h1>Online Learning<a class="headerlink" href="#online-learning" title="Permalink to this headline">¶</a></h1>
+<p>How to choose learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>?</p>
+<p>If <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, gradient descent can be slow. If <span class="math notranslate nohighlight">\(\alpha\)</span> is too large,
+gradient descent can overshoot the minimum. It may fail to converge, or even diverge.</p>
+<p>Gradient descent can converge to a local minimum, even with the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> fixed.</p>
+<p>For sufficiently small <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(J(\Theta)\)</span> should decrease on every iteration.
+To choose <span class="math notranslate nohighlight">\(\alpha\)</span>, try: … 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, …</p>
+<p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is typically held constant. Can slowly decrease over time if we want
+<span class="math notranslate nohighlight">\(\theta\)</span> to converge. (E.g. <span class="math notranslate nohighlight">\(\alpha = \frac{const1}{iterationNumber + const2}\)</span>),
+<span class="math notranslate nohighlight">\(\alpha\)</span> -&gt; <span class="math notranslate nohighlight">\(0\)</span></p>
 </div>
 
 
@@ -102,7 +72,7 @@ just one learning iteration.</p>
 <li class="toctree-l2"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Large Scale Machine Learning</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="large_scale_machine_learning.html">Large Scale Machine Learning</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
@@ -126,16 +96,16 @@ just one learning iteration.</p>
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="recommender_systems.html" title="Recommender Systems"
-              >previous</a> |
             <a href="stochastic_gradient_descent.html" title="Stochastic Gradient Descent"
+              >previous</a> |
+            <a href="appendix.html" title="Appendix"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="_sources/large_scale_machine_learning.rst.txt"
+              <a href="_sources/online_learning.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>

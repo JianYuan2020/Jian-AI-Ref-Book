@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stochastic Gradient Descent &#8212; Jian AI Ref 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Online Learning" href="online_learning.html" />
+    <link rel="prev" title="Large Scale Machine Learning" href="large_scale_machine_learning.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="index.html">Jian AI Ref 0.1 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="large_scale_machine_learning.html" title="Large Scale Machine Learning"
+             accesskey="P">previous</a> |
+          <a href="online_learning.html" title="Online Learning"
+             accesskey="N">next</a> |
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="stochastic-gradient-descent">
+<span id="stochastic-gradient-descent-label"></span><h1>Stochastic Gradient Descent<a class="headerlink" href="#stochastic-gradient-descent" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="one-way-to-optimize-the-above-situation-is">
+<h2>One way to optimize the above situation is:<a class="headerlink" href="#one-way-to-optimize-the-above-situation-is" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(cost(\theta, (x^{(i)}, y^{(i)})) = \frac{1}{2} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p>
+<p><span class="math notranslate nohighlight">\(J_{Train}(\theta) = \frac{1}{m} \sum_{i=1}^{m} cost(\theta, (x^{(i)}, y^{(i)}))\)</span></p>
+<p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} cost(\theta, (x^{(i)}, y^{(i)})) = \theta_{j} - \alpha (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+<ol class="arabic">
+<li><p>Randomly shuffle (reorder) training examples</p></li>
+<li><p>Repeat for each iteration {</p>
+<blockquote>
+<div><blockquote>
+<div><p>for <span class="math notranslate nohighlight">\(i = 1, ..., m\)</span> {</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+<p>Here <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>, for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
+</div></blockquote>
+<p>} for each training examples <span class="math notranslate nohighlight">\((x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)})\)</span></p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</li>
+</ol>
+<p>Here <span class="math notranslate nohighlight">\(1\)</span> training example is being used to learn gradient descent for every <span class="math notranslate nohighlight">\(j\)</span>. Repeat the learning
+over the rest of the <span class="math notranslate nohighlight">\(m - 1\)</span> training examples. For one iteration, each training examples is computed once.</p>
+<p>The learning parameters are not as accurate as Batch, but this is extremely efficient for large dataset and good
+enough accuracy. Normally after <span class="math notranslate nohighlight">\(1 - 10\)</span> of iterations, it can reach desired parameters.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="mini-batch-gradient-descent">
+<h1>Mini-batch Gradient Descent<a class="headerlink" href="#mini-batch-gradient-descent" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>A smoother Stochastic gradient descent.</p>
+<ul class="simple">
+<li><p>Batch gradient descent: Use all <span class="math notranslate nohighlight">\(m\)</span> examples in each iteration</p></li>
+<li><p>Stochastic gradient descent: Use <span class="math notranslate nohighlight">\(1\)</span> example in each iteration</p></li>
+<li><p>Mini-batch gradient descent: Use <span class="math notranslate nohighlight">\(b\)</span> examples in each iteration</p></li>
+</ul>
+<p>Say <span class="math notranslate nohighlight">\(b = 10, m = 1000\)</span>.</p>
+<p>Repeat for each iteration {</p>
+<blockquote>
+<div><blockquote>
+<div><p>for <span class="math notranslate nohighlight">\(i = 1, 11, 21, 31, ..., 991\)</span> {</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{10} \sum_{k=i}^{i + 9} (h_\theta (x^{(k)}) - y^{(k)}) x^{(k)}_{j}\)</span></p>
+<p>Here <span class="math notranslate nohighlight">\(x^{(k)}_{0} = 1\)</span>, for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
+</div></blockquote>
+<p>} for each training examples <span class="math notranslate nohighlight">\((x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)})\)</span></p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>Here <span class="math notranslate nohighlight">\(b\)</span> training examples are being used (therefore Mini-batch) to learn gradient descent for every <span class="math notranslate nohighlight">\(j\)</span>.
+Repeat the learning over the rest of the training examples. For one iteration, each training examples is computed once.</p>
+</div></blockquote>
+<p><a class="reference internal" href="checking_for_convergence.html#checking-for-convergence-label"><span class="std std-ref">Checking for Convergence</span></a></p>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="machine_learning.html">Machine Learning</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="large_scale_machine_learning.html">Large Scale Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="large_scale_machine_learning.html" title="Large Scale Machine Learning"
+              >previous</a> |
+            <a href="online_learning.html" title="Online Learning"
+              >next</a> |
+            <a href="genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="_sources/stochastic_gradient_descent.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Jian Yuan.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
