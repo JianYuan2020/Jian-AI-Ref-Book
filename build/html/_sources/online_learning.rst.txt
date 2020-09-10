@@ -3,16 +3,35 @@
 Online Learning
 ===============
 
-How to choose learning rate :math:`\alpha`? 
+Examples:
+---------
+	* Shipping service
+	* Product (phone) search, show user the 10 phones they're most likely to click on
+	* Choosing special offers to show user
+	* Customized selection of news articles
+	* Product recommendation, ...
 
-If :math:`\alpha` is too small, gradient descent can be slow. If :math:`\alpha` is too large, 
-gradient descent can overshoot the minimum. It may fail to converge, or even diverge. 
+	Shipping service website where user comes, specifies origin and destination, you offer to ship their package 
+	for some asking price, and users sometimes choose to use your shipping service (:math:`y = 1`), sometimes not 
+	(:math:`y = 0`).
 
-Gradient descent can converge to a local minimum, even with the learning rate :math:`\alpha` fixed.
+	Features :math:`x` capture properties of user, of origin/destination and asking price. We want to learn 
+	:math:`p(y = 1|x;\theta)` to optimize price.
 
-For sufficiently small :math:`\alpha`, :math:`J(\Theta)` should decrease on every iteration.
-To choose :math:`\alpha`, try: ... 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, ...
+	:ref:`logistic-regression-label`
 
-Learning rate :math:`\alpha` is typically held constant. Can slowly decrease over time if we want 
-:math:`\theta` to converge. (E.g. :math:`\alpha = \frac{const1}{iterationNumber + const2}`), 
-:math:`\alpha` -> :math:`0`
+	Repeat forever {
+
+		Get :math:`(x, y)` corresponding to user
+
+		Update :math:`\theta` using :math:`(x, y)` {
+		
+			:math:`\theta_{j} = \theta_{j} - \alpha (h_\theta (x) - y) x_{j}`
+
+			Here :math:`x_{0} = 1`, for every :math:`j = 0, ..., n`
+	
+		} throw out :math:`(x, y)` after computation
+
+	}
+
+	Can adapt to changing user preference.

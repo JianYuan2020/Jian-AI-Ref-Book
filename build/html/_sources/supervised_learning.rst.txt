@@ -10,3 +10,4 @@ Supervised learning
    :caption: Contents:
 
    linear_regression
+   logistic_regression

@@ -44,15 +44,36 @@
             
   <div class="section" id="online-learning">
 <span id="online-learning-label"></span><h1>Online Learning<a class="headerlink" href="#online-learning" title="Permalink to this headline">¶</a></h1>
-<p>How to choose learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>?</p>
-<p>If <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, gradient descent can be slow. If <span class="math notranslate nohighlight">\(\alpha\)</span> is too large,
-gradient descent can overshoot the minimum. It may fail to converge, or even diverge.</p>
-<p>Gradient descent can converge to a local minimum, even with the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> fixed.</p>
-<p>For sufficiently small <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(J(\Theta)\)</span> should decrease on every iteration.
-To choose <span class="math notranslate nohighlight">\(\alpha\)</span>, try: … 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, …</p>
-<p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is typically held constant. Can slowly decrease over time if we want
-<span class="math notranslate nohighlight">\(\theta\)</span> to converge. (E.g. <span class="math notranslate nohighlight">\(\alpha = \frac{const1}{iterationNumber + const2}\)</span>),
-<span class="math notranslate nohighlight">\(\alpha\)</span> -&gt; <span class="math notranslate nohighlight">\(0\)</span></p>
+<div class="section" id="examples">
+<h2>Examples:<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Shipping service</p></li>
+<li><p>Product (phone) search, show user the 10 phones they’re most likely to click on</p></li>
+<li><p>Choosing special offers to show user</p></li>
+<li><p>Customized selection of news articles</p></li>
+<li><p>Product recommendation, …</p></li>
+</ul>
+<p>Shipping service website where user comes, specifies origin and destination, you offer to ship their package
+for some asking price, and users sometimes choose to use your shipping service (<span class="math notranslate nohighlight">\(y = 1\)</span>), sometimes not
+(<span class="math notranslate nohighlight">\(y = 0\)</span>).</p>
+<p>Features <span class="math notranslate nohighlight">\(x\)</span> capture properties of user, of origin/destination and asking price. We want to learn
+<span class="math notranslate nohighlight">\(p(y = 1|x;\theta)\)</span> to optimize price.</p>
+<p><a class="reference internal" href="logistic_regression.html#logistic-regression-label"><span class="std std-ref">Logistic Regression</span></a></p>
+<p>Repeat forever {</p>
+<blockquote>
+<div><p>Get <span class="math notranslate nohighlight">\((x, y)\)</span> corresponding to user</p>
+<p>Update <span class="math notranslate nohighlight">\(\theta\)</span> using <span class="math notranslate nohighlight">\((x, y)\)</span> {</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha (h_\theta (x) - y) x_{j}\)</span></p>
+<p>Here <span class="math notranslate nohighlight">\(x_{0} = 1\)</span>, for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
+</div></blockquote>
+<p>} throw out <span class="math notranslate nohighlight">\((x, y)\)</span> after computation</p>
+</div></blockquote>
+<p>}</p>
+<p>Can adapt to changing user preference.</p>
+</div></blockquote>
+</div>
 </div>
 
 
