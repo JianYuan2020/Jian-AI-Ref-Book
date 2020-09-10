@@ -12,3 +12,7 @@ Gradient descent can converge to a local minimum, even with the learning rate :m
 
 For sufficiently small :math:`\alpha`, :math:`J(\Theta)` should decrease on every iteration.
 To choose :math:`\alpha`, try: ... 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, ...
+
+Learning rate :math:`\alpha` is typically held constant. Can slowly decrease over time if we want 
+:math:`\theta` to converge. (E.g. :math:`\alpha = \frac{const1}{iterationNumber + const2}`), 
+:math:`\alpha` -> :math:`0`
