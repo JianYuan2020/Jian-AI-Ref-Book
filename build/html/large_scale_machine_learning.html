@@ -16,7 +16,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Better Practices" href="better_practices.html" />
+    <link rel="next" title="Appendix" href="appendix.html" />
     <link rel="prev" title="Recommender Systems" href="recommender_systems.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
@@ -26,7 +26,7 @@
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="recommender_systems.html" title="Recommender Systems"
              accesskey="P">previous</a> |
-          <a href="better_practices.html" title="Better Practices"
+          <a href="appendix.html" title="Appendix"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -44,12 +44,62 @@
             
   <div class="section" id="large-scale-machine-learning">
 <span id="large-scale-machine-learning-label"></span><h1>Large Scale Machine Learning<a class="headerlink" href="#large-scale-machine-learning" title="Permalink to this headline">¶</a></h1>
-<p>How to choose learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>?</p>
-<p>If <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, gradient descent can be slow. If <span class="math notranslate nohighlight">\(\alpha\)</span> is too large,
-gradient descent can overshoot the minimum. It may fail to converge, or even diverge.</p>
-<p>Gradient descent can converge to a local minimum, even with the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> fixed.</p>
-<p>For sufficiently small <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(J(\Theta)\)</span> should decrease on every iteration.
-To choose <span class="math notranslate nohighlight">\(\alpha\)</span>, try: … 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, …</p>
+<p>“It’s not who has the best algorithm that wins. It’s who has the most data.”</p>
+<div class="section" id="learning-with-large-datasets">
+<h2>Learning with large datasets<a class="headerlink" href="#learning-with-large-datasets" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>m = 100,000,000</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="linear-regression-with-batch-gradient-descent">
+<h3>Linear Regression with Batch Gradient Descent<a class="headerlink" href="#linear-regression-with-batch-gradient-descent" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(h_{\theta}(x) = \sum_{j=0}^{n} \theta_{j} x_{j}\)</span></p>
+<p><span class="math notranslate nohighlight">\(J_{Train}(\theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p>
+<p>Repeat for each iteration {</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+<p>Here <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>, for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
+</div></blockquote>
+<p>}</p>
+<p>Here all m training examples are being used (Batch) to learn gradient descent for every <span class="math notranslate nohighlight">\(j\)</span> for one iteration.
+When m is very large, i.e. m = 300,000,000, computation becomes very expensive/time consuming.
+For one iteration, all m training examples need to be computed for every j =&gt; (n + 1) times.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="stochastic-gradient-descent">
+<h2>Stochastic Gradient Descent<a class="headerlink" href="#stochastic-gradient-descent" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>One Optimization (over the above situation)</p>
+<p><span class="math notranslate nohighlight">\(cost(\theta, (x^{(i)}, y^{(i)})) = \frac{1}{2} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p>
+<p><span class="math notranslate nohighlight">\(J_{Train}(\theta) = \frac{1}{m} \sum_{i=1}^{m} cost(\theta, (x^{(i)}, y^{(i)}))\)</span></p>
+<p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} cost(\theta, (x^{(i)}, y^{(i)})) = \theta_{j} - \alpha (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+<ol class="arabic">
+<li><p>Randomly shuffle (reorder) training examples</p></li>
+<li><p>Repeat for each iteration {</p>
+<blockquote>
+<div><blockquote>
+<div><p>for i = 1, …, m {</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+<p>Here <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>, for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
+</div></blockquote>
+<p>} for each training examples <span class="math notranslate nohighlight">\((x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)})\)</span></p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</li>
+</ol>
+<p>Here one training example is being used to learn gradient descent for every <span class="math notranslate nohighlight">\(j\)</span>.
+Repeat the learning over the rest of the training examples.
+For one iteration, each training examples is computed once.</p>
+<p>The learning parameters are not as accurate as Batch, but this is very efficient and accurate enough.
+Normally 1 - 10 times of iteration is good enough.</p>
+</div></blockquote>
+</div>
 </div>
 
 
@@ -65,11 +115,14 @@ To choose <span class="math notranslate nohighlight">\(\alpha\)</span>, try: …
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="machine_learning.html">Machine Learning</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="machine_learning.html#definition">Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Large Scale Machine Learning</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 
@@ -92,7 +145,7 @@ To choose <span class="math notranslate nohighlight">\(\alpha\)</span>, try: …
           <div role="navigation" aria-label="related navigaton">
             <a href="recommender_systems.html" title="Recommender Systems"
               >previous</a> |
-            <a href="better_practices.html" title="Better Practices"
+            <a href="appendix.html" title="Appendix"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>

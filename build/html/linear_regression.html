@@ -16,7 +16,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Feature Scaling" href="feature_scaling.html" />
+    <link rel="next" title="Unsupervised learning" href="unsupervised_learning.html" />
     <link rel="prev" title="Supervised learning" href="supervised_learning.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
@@ -26,7 +26,7 @@
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="supervised_learning.html" title="Supervised learning"
              accesskey="P">previous</a> |
-          <a href="feature_scaling.html" title="Feature Scaling"
+          <a href="unsupervised_learning.html" title="Unsupervised learning"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -82,11 +82,15 @@
 <div class="section" id="gradient-descent">
 <h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\Theta)\)</span></p>
-<p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
-<p>Note here:</p>
+<div><p>Also called Batch Gradient Descent for it’s processing all training examples in one batch at every iteration.</p>
+<p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\Theta)\)</span></p>
+<p>Repeat for each iteration {</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+<p>Here <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>, for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
+</div></blockquote>
+<p>}</p>
 <p><span class="math notranslate nohighlight">\(\alpha\)</span> = <a class="reference internal" href="learning_rate.html#learning-rate-label"><span class="std std-ref">Learning Rate</span></a>.</p>
-<p><span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>; <span class="math notranslate nohighlight">\(j = 0 ... n\)</span>.</p>
 </div></blockquote>
 </div>
 <div class="section" id="normal-equation">
@@ -109,21 +113,16 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="supervised_learning.html">Supervised learning</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Linear Regression</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#hypothesis">Hypothesis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cost-function">Cost Function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gradient-descent">Gradient Descent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#normal-equation">Normal Equation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="machine_learning.html">Machine Learning</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_scale_machine_learning.html">Large Scale Machine Learning</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="learning_rate.html">Learning Rate</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 
           <div role="search">
@@ -145,7 +144,7 @@
           <div role="navigation" aria-label="related navigaton">
             <a href="supervised_learning.html" title="Supervised learning"
               >previous</a> |
-            <a href="feature_scaling.html" title="Feature Scaling"
+            <a href="unsupervised_learning.html" title="Unsupervised learning"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>

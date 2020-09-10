@@ -37,15 +37,19 @@ Cost Function
 
 Gradient Descent
 ----------------
+	Also called Batch Gradient Descent for it's processing all training examples in one batch at every iteration. 
+
 	:math:`\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\Theta)`
 
-	:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
+	Repeat for each iteration {
 
-	Note here:
+		:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
+
+		Here :math:`x^{(i)}_{0} = 1`, for every :math:`j = 0, ..., n`
+
+	}
 
 	:math:`\alpha` = :ref:`learning-rate-label`.
-
-	:math:`x^{(i)}_{0} = 1`; :math:`j = 0 ... n`.
 
 Normal Equation
 ---------------
