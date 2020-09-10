@@ -3,8 +3,8 @@
 Online Learning
 ===============
 
-Examples:
----------
+	Examples:
+
 	* Shipping service
 	* Product (phone) search, show user the 10 phones they're most likely to click on
 	* Choosing special offers to show user

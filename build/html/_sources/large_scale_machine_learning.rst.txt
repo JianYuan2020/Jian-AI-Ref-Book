@@ -36,3 +36,7 @@ Linear Regression with Batch Gradient Descent
 
    stochastic_gradient_descent
    online_learning
+   map_reduce
+
+:ref:`checking-for-convergence-label`
+

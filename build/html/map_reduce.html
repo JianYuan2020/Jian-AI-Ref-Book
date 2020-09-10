@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Online Learning &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Map-reduce &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -16,17 +16,17 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Map-reduce" href="map_reduce.html" />
-    <link rel="prev" title="Stochastic Gradient Descent" href="stochastic_gradient_descent.html" /> 
+    <link rel="next" title="Appendix" href="appendix.html" />
+    <link rel="prev" title="Online Learning" href="online_learning.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="stochastic_gradient_descent.html" title="Stochastic Gradient Descent"
+          <a href="online_learning.html" title="Online Learning"
              accesskey="P">previous</a> |
-          <a href="map_reduce.html" title="Map-reduce"
+          <a href="appendix.html" title="Appendix"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -42,36 +42,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="online-learning">
-<span id="online-learning-label"></span><h1>Online Learning<a class="headerlink" href="#online-learning" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p>Examples:</p>
-<ul class="simple">
-<li><p>Shipping service</p></li>
-<li><p>Product (phone) search, show user the 10 phones they’re most likely to click on</p></li>
-<li><p>Choosing special offers to show user</p></li>
-<li><p>Customized selection of news articles</p></li>
-<li><p>Product recommendation, …</p></li>
-</ul>
-<p>Shipping service website where user comes, specifies origin and destination, you offer to ship their package
-for some asking price, and users sometimes choose to use your shipping service (<span class="math notranslate nohighlight">\(y = 1\)</span>), sometimes not
-(<span class="math notranslate nohighlight">\(y = 0\)</span>).</p>
-<p>Features <span class="math notranslate nohighlight">\(x\)</span> capture properties of user, of origin/destination and asking price. We want to learn
-<span class="math notranslate nohighlight">\(p(y = 1|x;\theta)\)</span> to optimize price.</p>
-<p><a class="reference internal" href="logistic_regression.html#logistic-regression-label"><span class="std std-ref">Logistic Regression</span></a></p>
-<p>Repeat forever {</p>
-<blockquote>
-<div><p>Get <span class="math notranslate nohighlight">\((x, y)\)</span> corresponding to user</p>
-<p>Update <span class="math notranslate nohighlight">\(\theta\)</span> using <span class="math notranslate nohighlight">\((x, y)\)</span> {</p>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha (h_\theta (x) - y) x_{j}\)</span></p>
-<p>Here <span class="math notranslate nohighlight">\(x_{0} = 1\)</span>, for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
-</div></blockquote>
-<p>} throw out <span class="math notranslate nohighlight">\((x, y)\)</span> after computation</p>
-</div></blockquote>
-<p>}</p>
-<p>Can adapt to changing user preference.</p>
-</div></blockquote>
+  <div class="section" id="map-reduce">
+<span id="map-reduce-label"></span><h1>Map-reduce<a class="headerlink" href="#map-reduce" title="Permalink to this headline">¶</a></h1>
+<p>Map-reduce and data parallelism.</p>
 </div>
 
 
@@ -115,16 +88,16 @@ for some asking price, and users sometimes choose to use your shipping service (
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="stochastic_gradient_descent.html" title="Stochastic Gradient Descent"
+            <a href="online_learning.html" title="Online Learning"
               >previous</a> |
-            <a href="map_reduce.html" title="Map-reduce"
+            <a href="appendix.html" title="Appendix"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="_sources/online_learning.rst.txt"
+              <a href="_sources/map_reduce.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>

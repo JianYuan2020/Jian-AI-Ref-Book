@@ -3,13 +3,13 @@
 Stochastic Gradient Descent
 ===========================
 
-One way to optimize the above situation is:
--------------------------------------------
-	:math:`cost(\theta, (x^{(i)}, y^{(i)})) = \frac{1}{2} (h_\theta (x^{(i)}) - y^{(i)})^2`
+	One way to optimize the above situation is:
 
-	:math:`J_{Train}(\theta) = \frac{1}{m} \sum_{i=1}^{m} cost(\theta, (x^{(i)}, y^{(i)}))`
+	* :math:`cost(\theta, (x^{(i)}, y^{(i)})) = \frac{1}{2} (h_\theta (x^{(i)}) - y^{(i)})^2`
 
-	:math:`\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} cost(\theta, (x^{(i)}, y^{(i)})) = \theta_{j} - \alpha (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
+	* :math:`J_{Train}(\theta) = \frac{1}{m} \sum_{i=1}^{m} cost(\theta, (x^{(i)}, y^{(i)}))`
+
+	* :math:`\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} cost(\theta, (x^{(i)}, y^{(i)})) = \theta_{j} - \alpha (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
 
 	#. Randomly shuffle (reorder) training examples
 	#. Repeat for each iteration {
@@ -55,5 +55,3 @@ Mini-batch Gradient Descent
 
 	Here :math:`b` training examples are being used (therefore Mini-batch) to learn gradient descent for every :math:`j`. 
 	Repeat the learning over the rest of the training examples. For one iteration, each training examples is computed once.
-
-:ref:`checking-for-convergence-label`

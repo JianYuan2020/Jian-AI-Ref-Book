@@ -44,12 +44,13 @@
             
   <div class="section" id="stochastic-gradient-descent">
 <span id="stochastic-gradient-descent-label"></span><h1>Stochastic Gradient Descent<a class="headerlink" href="#stochastic-gradient-descent" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="one-way-to-optimize-the-above-situation-is">
-<h2>One way to optimize the above situation is:<a class="headerlink" href="#one-way-to-optimize-the-above-situation-is" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(cost(\theta, (x^{(i)}, y^{(i)})) = \frac{1}{2} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p>
-<p><span class="math notranslate nohighlight">\(J_{Train}(\theta) = \frac{1}{m} \sum_{i=1}^{m} cost(\theta, (x^{(i)}, y^{(i)}))\)</span></p>
-<p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} cost(\theta, (x^{(i)}, y^{(i)})) = \theta_{j} - \alpha (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+<div><p>One way to optimize the above situation is:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(cost(\theta, (x^{(i)}, y^{(i)})) = \frac{1}{2} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(J_{Train}(\theta) = \frac{1}{m} \sum_{i=1}^{m} cost(\theta, (x^{(i)}, y^{(i)}))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} cost(\theta, (x^{(i)}, y^{(i)})) = \theta_{j} - \alpha (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p></li>
+</ul>
 <ol class="arabic">
 <li><p>Randomly shuffle (reorder) training examples</p></li>
 <li><p>Repeat for each iteration {</p>
@@ -71,7 +72,6 @@ over the rest of the <span class="math notranslate nohighlight">\(m - 1\)</span>
 <p>The learning parameters are not as accurate as Batch, but this is extremely efficient for large dataset and good
 enough accuracy. Normally after <span class="math notranslate nohighlight">\(1 - 10\)</span> of iterations, it can reach desired parameters.</p>
 </div></blockquote>
-</div>
 </div>
 <div class="section" id="mini-batch-gradient-descent">
 <h1>Mini-batch Gradient Descent<a class="headerlink" href="#mini-batch-gradient-descent" title="Permalink to this headline">¶</a></h1>
@@ -98,7 +98,6 @@ enough accuracy. Normally after <span class="math notranslate nohighlight">\(1 -
 <p>Here <span class="math notranslate nohighlight">\(b\)</span> training examples are being used (therefore Mini-batch) to learn gradient descent for every <span class="math notranslate nohighlight">\(j\)</span>.
 Repeat the learning over the rest of the training examples. For one iteration, each training examples is computed once.</p>
 </div></blockquote>
-<p><a class="reference internal" href="checking_for_convergence.html#checking-for-convergence-label"><span class="std std-ref">Checking for Convergence</span></a></p>
 </div>
 
 
