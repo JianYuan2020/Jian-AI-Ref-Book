@@ -23,13 +23,16 @@ Linear Regression with Batch Gradient Descent
 
 	}
 
-	Here all m training examples are being used (Batch) to learn gradient descent for every :math:`j` for one iteration. 
-	When m is very large, i.e. m = 300,000,000, computation becomes very expensive/time consuming. 
-	For one iteration, all m training examples need to be computed for every j => (n + 1) times.
+	Here all :math:`m` training examples are being used (therefore Batch) to learn gradient descent for every 
+	:math:`j` for just one learning iteration. When :math:`m` is very large, i.e. :math:`m = 300,000,000`, 
+	computation becomes very expensive and time consuming. 
+	
+	All :math:`m` training examples need to be computed for every :math:`j` => :math:`m * (n + 1)` times for 
+	just one learning iteration.
 
 Stochastic Gradient Descent
 ---------------------------
-	One Optimization (over the above situation)
+	One way to optimize the above situation is:
 
 	:math:`cost(\theta, (x^{(i)}, y^{(i)})) = \frac{1}{2} (h_\theta (x^{(i)}) - y^{(i)})^2`
 
@@ -50,9 +53,11 @@ Stochastic Gradient Descent
 
 		}
 	   
-	Here one training example is being used to learn gradient descent for every :math:`j`. 
-	Repeat the learning over the rest of the training examples. 
-	For one iteration, each training examples is computed once.
+	Here :math:`1` training example is being used to learn gradient descent for every :math:`j`. Repeat the learning 
+	over the rest of the :math:`m - 1` training examples. For one iteration, each training examples is computed once.
 
-	The learning parameters are not as accurate as Batch, but this is very efficient and accurate enough. 
-	Normally 1 - 10 times of iteration is good enough.
+	The learning parameters are not as accurate as Batch, but this is extremely efficient for large dataset and good 
+	enough accuracy. Normally after :math:`1 - 10` of iterations, it can reach desired parameters.
+
+Mini-batch Gradient Descent
+---------------------------
