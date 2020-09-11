@@ -45,6 +45,40 @@
   <div class="section" id="map-reduce">
 <span id="map-reduce-label"></span><h1>Map-reduce<a class="headerlink" href="#map-reduce" title="Permalink to this headline">¶</a></h1>
 <p>Map-reduce and data parallelism.</p>
+<blockquote>
+<div><p>Let <span class="math notranslate nohighlight">\(m = 400\)</span>, Batch gradient descent: <span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{400} \sum_{i=1}^{400} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+<p>Distribute into 4 machines:</p>
+<blockquote>
+<div><p>Machine 1: Use <span class="math notranslate nohighlight">\((x^{(1)}, y^{(1)}), ..., (x^{(100)}, y^{(100)})\)</span></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(temp^{(1)}_{j} = \sum_{i=1}^{100} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+</div></blockquote>
+<p>Machine 2: Use <span class="math notranslate nohighlight">\((x^{(101)}, y^{(101)}), ..., (x^{(200)}, y^{(200)})\)</span></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(temp^{(2)}_{j} = \sum_{i=101}^{200} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+</div></blockquote>
+<p>Machine 3: Use <span class="math notranslate nohighlight">\((x^{(201)}, y^{(201)}), ..., (x^{(300)}, y^{(300)})\)</span></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(temp^{(3)}_{j} = \sum_{i=201}^{300} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+</div></blockquote>
+<p>Machine 4: Use <span class="math notranslate nohighlight">\((x^{(301)}, y^{(301)}), ..., (x^{(400)}, y^{(400)})\)</span></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(temp^{(4)}_{j} = \sum_{i=301}^{400} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+</div></blockquote>
+</div></blockquote>
+<p>Combine:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{400} (temp^{(1)}_{j} + temp^{(2)}_{j} + temp^{(3)}_{j} + temp^{(4)}_{j})\)</span></p>
+<p>for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
+</div></blockquote>
+</div></blockquote>
+<p>Many learning algorithms can be expressed as computing sums of functions over the training set.</p>
+<p>E.g. for advanced optimization, with logistic regression, need:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(J_{Train}(\theta) = - \frac{1}{m} \sum_{i=1}^{m} y^{(i)} log (h_\theta (x^{(i)})) - (1 - y^{(i)}) log (1 - h_\theta (x^{(i)}))\)</span></p>
+<p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_{j}} J_{Train}(\theta) = \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
+<p>for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
+</div></blockquote>
 </div>
 
 
