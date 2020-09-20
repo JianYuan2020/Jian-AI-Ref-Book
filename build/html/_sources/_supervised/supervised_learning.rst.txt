@@ -14,3 +14,4 @@ Supervised learning
    linear_regression
    logistic_regression
    neural_networks
+   support_vector_machines
