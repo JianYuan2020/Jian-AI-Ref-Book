@@ -2,55 +2,79 @@
 
 K-means
 =======
+	K-means clustering
 
-Linear regression with multiple variables/features.
+K-means Algorithm
+-----------------
+	Input:
 
-Let's define:
-	* :math:`n` = number of features.
-	* :math:`m` = number of training examples.
-	* :math:`x^{(i)}` = input (features) of :math:`i^{th}` training example.
-	* :math:`x^{(i)}_{j}` = value of feature :math:`j` in :math:`i^{th}` training example.
-	* :math:`x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ...; x^{(i)}_{j}; ...; x^{(i)}_{n} ]` - :math:`n * 1` column vector.
-	* :math:`X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ...; (x^{(i)})^{T}; ...; (x^{(m)})^{T} ]` - :math:`m * n` matrix.
+	* :math:`K` = number of clusters
+	* Training set :math:`\{ x^{(1)}, x^{(2)}, ..., x^{(m)} \}` with :math:`{\displaystyle x^{(i)} \in \mathbb {R^{n}}}` (drop :math:`x_{0} = 1` convention)
 
-Hypothesis
-----------
-	:math:`h_\theta (x) = \theta_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}`
+	#. Randomly initialize cluster centroids :math:`\mu_{1}, \mu_{2}, ..., \mu_{K} {\displaystyle \in \mathbb {R^{n}}}`
+	#. Repeat {
 
-	Let: :math:`x_{0} = 1` and :math:`x^{(i)}_{0} = 1`:
+		Assign a cluster index :math:`k` to each :math:`x^{(i)}` where :math:`\left\|x^{(i)} - \mu_{k}\right\|^2` is minimum:
 
-	:math:`x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ]` - :math:`(n + 1) * 1` column vector.
+		for :math:`i = 1` to :math:`m`
 
-Parameters
-----------
-	:math:`\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ...; \theta_{j}; ...; \theta_{n} ]` - :math:`(n + 1) * 1` column vector.
+			:math:`c^{(i)}` = index (from :math:`1` to :math:`K`) of cluster centroid closest to :math:`x^{(i)}`
+			
+		Update all centroids:
 
-	Therefore:
+		for :math:`k = 1` to :math:`K`
 
-	:math:`h_\theta (x) = \theta_{0} x_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}`
-
-	:math:`h_\theta (x) = \Theta^{T} x`
-
-Cost Function
--------------
-	:math:`J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2`
-
-Gradient Descent
-----------------
-	Also called Batch Gradient Descent for it's processing all training examples in one batch at every iteration. 
-
-	:math:`\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\Theta)`
-
-	Repeat for each iteration {
-
-		:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
-
-		Here :math:`x^{(i)}_{0} = 1`, for every :math:`j = 0, ..., n`
+			:math:`\mu_{k}` = average (mean) of points assigned to cluster :math:`k`
 
 	}
 
-	:math:`\alpha` = :ref:`learning-rate-label`.
+K-means Optimization Objective
+------------------------------
 
-Normal Equation
----------------
-	Method to solve for :math:`\Theta` analytically.
+	* :math:`c^{(i)}` = index of cluster (from :math:`1` to :math:`K`) to which example :math:`x^{(i)}` is currently assigned
+	* :math:`\mu_{k}` = cluster centroid :math:`k`, :math:`({\displaystyle \mu_{k} \in \mathbb {R^{n}}})`
+	* :math:`\mu_{c}(i)` = cluster centroid of cluster to which example :math:`x^{(i)}` has been assigned
+
+Cost Function (distortion)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	:math:`J(c^{(1)}, ..., c^{(m)}, \mu_{1}, ..., \mu_{K}) = \frac{1}{m} \sum_{i=1}^{m} \left\|x^{(i)} - \mu_{c}(i)\right\|^2`
+
+Random Initialization
+^^^^^^^^^^^^^^^^^^^^^
+
+	* Should have :math:`K < m`
+	* Randomly pick :math:`K` training examples
+	* Set :math:`\mu_{1}, ..., \mu_{K}` equal to these :math:`K` examples
+	* Can have local optima
+
+Avoiding Local Optima
+^^^^^^^^^^^^^^^^^^^^^
+
+	for :math:`i = 1` to :math:`100` {
+
+		Randomly initialize K-means
+
+		Run K-means. Get :math:`c^{(1)}, ..., c^{(m)}, \mu_{1}, ..., \mu_{K}`
+
+		Compute cost cunction (distortion) :math:`J(c^{(1)}, ..., c^{(m)}, \mu_{1}, ..., \mu_{K})`
+
+	}
+
+	Pick clustering that gave lowest cost :math:`J(c^{(1)}, ..., c^{(m)}, \mu_{1}, ..., \mu_{K})`
+
+Choosing the Number of Clusters K
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	#. Elbow method:
+
+		Plot :math:`J` vs :math:`K` curve, if there is an elbow, pick that :math:`K`
+
+	#. Sometimes, we evaluate K-means based on a metric for how well it performs for that later purpose:
+
+		i.e. T-shirt sizing (Plot Weight vs Height)
+		
+			K = 3 for S, M, L
+
+			K = 5 for XS, S, M, L, XL
+
