@@ -21,6 +21,5 @@ For example:
 
    ../_supervised/supervised_learning
    ../_unsupervised/unsupervised_learning
-   anomaly_detection
    recommender_systems
    large_scale_machine_learning
