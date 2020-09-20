@@ -19,8 +19,8 @@ For example:
    :maxdepth: 2
    :caption: Contents:
 
-   supervised_learning
-   unsupervised_learning
+   ../_supervised/supervised_learning
+   ../_unsupervised/unsupervised_learning
    anomaly_detection
    recommender_systems
    large_scale_machine_learning

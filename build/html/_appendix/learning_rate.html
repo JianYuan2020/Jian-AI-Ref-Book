@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning Rate &#8212; Jian AI Ref 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Error Metrics" href="error_metrics.html" />
+    <link rel="prev" title="Feature Scaling" href="feature_scaling.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Jian AI Ref 0.1 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="feature_scaling.html" title="Feature Scaling"
+             accesskey="P">previous</a> |
+          <a href="error_metrics.html" title="Error Metrics"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="learning-rate">
+<span id="learning-rate-label"></span><h1>Learning Rate<a class="headerlink" href="#learning-rate" title="Permalink to this headline">¶</a></h1>
+<p>How to choose learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>?</p>
+<p>If <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, gradient descent can be slow. If <span class="math notranslate nohighlight">\(\alpha\)</span> is too large,
+gradient descent can overshoot the minimum. It may fail to converge, or even diverge.</p>
+<p>Gradient descent can converge to a local minimum, even with the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> fixed.</p>
+<p>For sufficiently small <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(J(\Theta)\)</span> should decrease on every iteration.
+To choose <span class="math notranslate nohighlight">\(\alpha\)</span>, try: … 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, …</p>
+<p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is typically held constant. Can slowly decrease over time if we want
+<span class="math notranslate nohighlight">\(\theta\)</span> to converge. (E.g. <span class="math notranslate nohighlight">\(\alpha = \frac{const1}{iterationNumber + const2}\)</span>),
+<span class="math notranslate nohighlight">\(\alpha\)</span> -&gt; <span class="math notranslate nohighlight">\(0\)</span></p>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning.html">Machine Learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">Appendix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="normal_distribution.html">Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Learning Rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error_metrics.html">Error Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="checking_for_convergence.html">Checking for Convergence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learning_curve.html">Learning Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="better_practices.html">Better Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="feature_scaling.html" title="Feature Scaling"
+              >previous</a> |
+            <a href="error_metrics.html" title="Error Metrics"
+              >next</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/_appendix/learning_rate.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Jian Yuan.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

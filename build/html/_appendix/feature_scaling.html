@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feature Scaling &#8212; Jian AI Ref 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Learning Rate" href="learning_rate.html" />
+    <link rel="prev" title="Normal Distribution" href="normal_distribution.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Jian AI Ref 0.1 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="normal_distribution.html" title="Normal Distribution"
+             accesskey="P">previous</a> |
+          <a href="learning_rate.html" title="Learning Rate"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="feature-scaling">
+<span id="feature-scaling-label"></span><h1>Feature Scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">¶</a></h1>
+<p>Making sure features are on a similar scale.</p>
+<p>Get every feature into approximately a <span class="math notranslate nohighlight">\(-1 &lt;= x_{i} &lt;= 1\)</span> range.</p>
+<div class="section" id="mean-normalization">
+<h2>Mean Normalization<a class="headerlink" href="#mean-normalization" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Replace <span class="math notranslate nohighlight">\(x_{i}\)</span> with <span class="math notranslate nohighlight">\(x_{i} - \mu_{i}\)</span> to make features have approximately zero mean
+(Do not apply to <span class="math notranslate nohighlight">\(x_{0} = 1\)</span>).</p>
+</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h2>Feature Scaling<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(x_{i} = (x_{i} - \mu_{i}) / s_{i}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\mu_{i}\)</span> = average value of <span class="math notranslate nohighlight">\(x_{i}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(s_{i}\)</span> = range, max - min or standard deviation of <span class="math notranslate nohighlight">\(x_{i}\)</span>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="octave-code">
+<h2>Octave Code<a class="headerlink" href="#octave-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span> <span class="p">=</span> <span class="nb">mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c">% mean all rows for each columns</span>
+<span class="n">sigma2</span> <span class="p">=</span> <span class="nb">var</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c">% variance all rows (/N) for each columns</span>
+<span class="n">X</span> <span class="p">=</span> <span class="p">(</span><span class="n">X</span> <span class="p">.</span><span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">./</span> <span class="n">sigma2</span><span class="p">;</span> <span class="c">% feature scaling</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning.html">Machine Learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="appendix.html">Appendix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="normal_distribution.html">Normal Distribution</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Feature Scaling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mean-normalization">Mean Normalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Feature Scaling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#octave-code">Octave Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="learning_rate.html">Learning Rate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error_metrics.html">Error Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="checking_for_convergence.html">Checking for Convergence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learning_curve.html">Learning Curve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="better_practices.html">Better Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="normal_distribution.html" title="Normal Distribution"
+              >previous</a> |
+            <a href="learning_rate.html" title="Learning Rate"
+              >next</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/_appendix/feature_scaling.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Jian Yuan.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
