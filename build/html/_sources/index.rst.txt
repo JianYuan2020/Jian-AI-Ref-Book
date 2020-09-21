@@ -7,11 +7,14 @@ Welcome to Jian AI Ref's documentation!
 =======================================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Contents:
 
    intro
    machine_learning
+   supervised_learning
+   unsupervised_learning
+   ../_special_apps_topics/special_apps_topics
    ../_appendix/appendix
    glossary
 

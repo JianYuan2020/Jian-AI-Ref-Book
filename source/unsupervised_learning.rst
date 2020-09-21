@@ -10,8 +10,8 @@ Unsupervised learning
    :maxdepth: 2
    :caption: Contents:
 
-   k_means
-   principal_component_analysis
-   anomaly_detection
+   ../_unsupervised/k_means
+   ../_unsupervised/principal_component_analysis
+   ../_unsupervised/anomaly_detection
 
 

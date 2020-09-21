@@ -16,17 +16,17 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Anomaly Detection" href="anomaly_detection.html" />
-    <link rel="prev" title="Linear Regression" href="linear_regression.html" /> 
+    <link rel="next" title="K-means" href="_unsupervised/k_means.html" />
+    <link rel="prev" title="Support Vector Machines" href="_supervised/support_vector_machines.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="linear_regression.html" title="Linear Regression"
+          <a href="_supervised/support_vector_machines.html" title="Support Vector Machines"
              accesskey="P">previous</a> |
-          <a href="anomaly_detection.html" title="Anomaly Detection"
+          <a href="_unsupervised/k_means.html" title="K-means"
              accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -45,11 +45,37 @@
   <div class="section" id="unsupervised-learning">
 <h1>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><ul class="simple">
+<div><p>Given a set of training examples: <span class="math notranslate nohighlight">\(x^{(i)}\)</span></p>
+<ul class="simple">
 <li><p>Clusters, Segmentation, etc.</p></li>
 </ul>
 </div></blockquote>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_unsupervised/k_means.html">K-means</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/k_means.html#k-means-algorithm">K-means Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/k_means.html#k-means-optimization-objective">K-means Optimization Objective</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_unsupervised/principal_component_analysis.html">Principal Component Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/principal_component_analysis.html#hypothesis">Hypothesis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/principal_component_analysis.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/principal_component_analysis.html#cost-function">Cost Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/principal_component_analysis.html#gradient-descent">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/principal_component_analysis.html#normal-equation">Normal Equation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_unsupervised/anomaly_detection.html">Anomaly Detection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/anomaly_detection.html#non-gaussian-features">Non-gaussian Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/anomaly_detection.html#better-practice">Better Practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/anomaly_detection.html#specifically">Specifically</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/anomaly_detection.html#algorithm-evaluation">Algorithm Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/anomaly_detection.html#octave-code">Octave Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/anomaly_detection.html#original-model-vs-multivariate-gaussian">Original Model vs. Multivariate Gaussian</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
@@ -65,15 +91,16 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="machine_learning.html">Machine Learning</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Unsupervised learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_scale_machine_learning.html">Large Scale Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unsupervised learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/k_means.html">K-means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/principal_component_analysis.html">Principal Component Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_unsupervised/anomaly_detection.html">Anomaly Detection</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_special_apps_topics/special_apps_topics.html">Special Applications/Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_appendix/appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 
@@ -94,9 +121,9 @@
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="linear_regression.html" title="Linear Regression"
+            <a href="_supervised/support_vector_machines.html" title="Support Vector Machines"
               >previous</a> |
-            <a href="anomaly_detection.html" title="Anomaly Detection"
+            <a href="_unsupervised/k_means.html" title="K-means"
               >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>

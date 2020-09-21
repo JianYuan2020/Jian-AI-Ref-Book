@@ -11,7 +11,7 @@ Supervised learning
    :maxdepth: 2
    :caption: Contents:
 
-   linear_regression
-   logistic_regression
-   neural_networks
-   support_vector_machines
+   ../_supervised/linear_regression
+   ../_supervised/logistic_regression
+   ../_supervised/neural_networks
+   ../_supervised/support_vector_machines

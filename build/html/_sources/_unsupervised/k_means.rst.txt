@@ -20,7 +20,7 @@ K-means Algorithm
 
 			:math:`c^{(i)}` = index (from :math:`1` to :math:`K`) of cluster centroid closest to :math:`x^{(i)}`
 			
-		Update all centroids:
+		Move centroids:
 
 		for :math:`k = 1` to :math:`K`
 

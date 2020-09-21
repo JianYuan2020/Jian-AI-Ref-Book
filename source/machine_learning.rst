@@ -13,13 +13,3 @@ For example:
 	* T: Classifying emails as spam or not spam.
 	* E: Watching you label emails as spam or not spam.
 	* P: The number (or fraction) of emails correctly classified as spam/not spam.
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   ../_supervised/supervised_learning
-   ../_unsupervised/unsupervised_learning
-   recommender_systems
-   large_scale_machine_learning
