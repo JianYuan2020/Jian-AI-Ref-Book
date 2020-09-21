@@ -49,7 +49,7 @@ Gradient Descent
 
 	}
 
-	:math:`\alpha` = :ref:`learning-rate-label`.
+	:math:`\alpha` = :ref:`learning-rate-label`
 
 Normal Equation
 ---------------

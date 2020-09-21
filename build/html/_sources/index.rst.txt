@@ -14,8 +14,9 @@ Welcome to Jian AI Ref's documentation!
    machine_learning
    supervised_learning
    unsupervised_learning
-   ../_special_apps_topics/special_apps_topics
-   ../_appendix/appendix
+   special_apps_topics
+   advice
+   appendix
    glossary
 
 Indices and tables

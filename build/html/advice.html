@@ -5,28 +5,29 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Advice on Building a ML System &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script src="_static/searchtools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
-  <script src="searchindex.js" defer></script>
-   
-
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bias/Variance" href="_advice/bias_variance.html" />
+    <link rel="prev" title="Map-reduce" href="_special_apps_topics/map_reduce.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="_special_apps_topics/map_reduce.html" title="Map-reduce"
+             accesskey="P">previous</a> |
+          <a href="_advice/bias_variance.html" title="Bias/Variance"
+             accesskey="N">next</a> |
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a>
         </div>
@@ -41,27 +42,21 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script>$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    Searching for multiple words only shows matches that contain
-    all words.
-  </p>
-  <form action="" method="get">
-    <input type="text" name="q" aria-labelledby="search-documentation" value="" />
-    <input type="submit" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
-  
-  <div id="search-results">
-  
-  </div>
+  <div class="section" id="advice-on-building-a-ml-system">
+<h1>Advice on Building a ML System<a class="headerlink" href="#advice-on-building-a-ml-system" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_advice/bias_variance.html">Bias/Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_advice/regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_advice/deciding_next.html">Deciding What to Work on Next: Evaluation of Learning Algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_advice/learning_curves.html">Learning Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_advice/error_analysis.html">Error Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_advice/ceiling_analysis.html">Ceiling Analysis</a></li>
+</ul>
+</div>
+</div>
+
 
             <div class="clearer"></div>
           </div>
@@ -72,20 +67,28 @@
           
           <h3>Table of Contents</h3>
           <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="machine_learning.html">Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supervised_learning.html">Supervised learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="special_apps_topics.html">Special Applications/Topics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advice.html">Advice on Building a ML System</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advice on Building a ML System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="_advice/bias_variance.html">Bias/Variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_advice/regularization.html">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_advice/deciding_next.html">Deciding What to Work on Next: Evaluation of Learning Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_advice/learning_curves.html">Learning Curves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_advice/error_analysis.html">Error Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_advice/ceiling_analysis.html">Ceiling Analysis</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="appendix.html">Appendix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 
           <div role="search">
             <h3 style="margin-top: 1.5em;">Search</h3>
-            <form class="search" action="#" method="get">
+            <form class="search" action="search.html" method="get">
                 <input type="text" name="q" />
                 <input type="submit" value="Go" />
             </form>
@@ -100,10 +103,17 @@
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
+            <a href="_special_apps_topics/map_reduce.html" title="Map-reduce"
+              >previous</a> |
+            <a href="_advice/bias_variance.html" title="Bias/Variance"
+              >next</a> |
             <a href="genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
+              <br/>
+              <a href="_sources/advice.rst.txt"
+                rel="nofollow">Show Source</a>
           </div>
         </div>
 
