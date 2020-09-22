@@ -3,14 +3,14 @@
 Linear Regression
 =================
 
-Linear regression with multiple variables/features.
+	Linear regression with multiple variables/features.
 
 Let's define:
 	* :math:`n` = number of features.
 	* :math:`m` = number of training examples.
 	* :math:`x^{(i)}` = input (features) of :math:`i^{th}` training example.
 	* :math:`x^{(i)}_{j}` = value of feature :math:`j` in :math:`i^{th}` training example.
-	* :math:`x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ...; x^{(i)}_{j}; ...; x^{(i)}_{n} ]` - :math:`n * 1` column vector.
+	* :math:`x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ...; x^{(i)}_{j}; ...; x^{(i)}_{n} ] \in \mathbb {R^{n}}`
 	* :math:`X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ...; (x^{(i)})^{T}; ...; (x^{(m)})^{T} ]` - :math:`m * n` matrix.
 
 Hypothesis
@@ -19,11 +19,11 @@ Hypothesis
 
 	Let: :math:`x_{0} = 1` and :math:`x^{(i)}_{0} = 1`:
 
-	:math:`x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ]` - :math:`(n + 1) * 1` column vector.
+	:math:`x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ] \in \mathbb {R^{n + 1}}`
 
 Parameters
 ----------
-	:math:`\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ...; \theta_{j}; ...; \theta_{n} ]` - :math:`(n + 1) * 1` column vector.
+	:math:`\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ...; \theta_{j}; ...; \theta_{n} ] \in \mathbb {R^{n + 1}}`
 
 	Therefore:
 

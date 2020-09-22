@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Error Metrics &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Artificial Data Synthesis &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -16,17 +16,17 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Better Practices" href="better_practices.html" />
-    <link rel="prev" title="Checking for Convergence" href="checking_for_convergence.html" /> 
+    <link rel="next" title="Glossary" href="../glossary.html" />
+    <link rel="prev" title="Better Practices" href="better_practices.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="../index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="checking_for_convergence.html" title="Checking for Convergence"
-             accesskey="P">previous</a> |
           <a href="better_practices.html" title="Better Practices"
+             accesskey="P">previous</a> |
+          <a href="../glossary.html" title="Glossary"
              accesskey="N">next</a> |
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -42,65 +42,53 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="error-metrics">
-<span id="error-metrics-label"></span><h1>Error Metrics<a class="headerlink" href="#error-metrics" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="classification-accuracy">
-<h2>Classification Accuracy<a class="headerlink" href="#classification-accuracy" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="artificial-data-synthesis">
+<span id="artificial-data-synthesis-label"></span><h1>Artificial Data Synthesis<a class="headerlink" href="#artificial-data-synthesis" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>Of all our predictions, what fraction actually is predicted correctly?</p>
-<p><span class="math notranslate nohighlight">\(Accuracy = \frac{numberPredictedCorrectly}{totalPredictionsMade}\)</span></p>
+<div><ul class="simple">
+<li><p>Getting lots of data</p></li>
+<li><p>Sometimes, when we don’t have enough Real data, we can generate Synthetic data</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="letter-photos">
+<h2>Letter Photos<a class="headerlink" href="#letter-photos" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Manually capture random letter of various fonts from different photos</p></li>
+<li><p>Synthesizing data by introducing distortions</p></li>
+</ul>
 </div></blockquote>
 </div>
-<div class="section" id="skewed-classes">
-<h2>Skewed Classes<a class="headerlink" href="#skewed-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="audio">
+<h2>Audio<a class="headerlink" href="#audio" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>For skewed classes, i.e. only 0.50% of patients have cancer.
-Classification accuracy is not a good indicator for prediction accuracy.</p>
-<p><span class="math notranslate nohighlight">\(y = 1\)</span> in presence of rare class that we want to detect.</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td></td>
-<td colspan="2"><p>Actual</p></td>
-</tr>
-<tr class="row-even"><td><p>Predicted</p></td>
-<td><p>1</p></td>
-<td><p>0</p></td>
-</tr>
-<tr class="row-odd"><td><p>1</p></td>
-<td><p>True Pos.</p></td>
-<td><p>Fake Pos.</p></td>
-</tr>
-<tr class="row-even"><td><p>0</p></td>
-<td><p>Fake Neg.</p></td>
-<td><p>True Neg.</p></td>
-</tr>
-</tbody>
-</table>
+<div><ul class="simple">
+<li><p>Original audio, A</p></li>
+<li><p>A + bad cellphone connection</p></li>
+<li><p>A + noisy background, i.e. crowd</p></li>
+<li><p>A + noisy background, i.e. machinery</p></li>
+</ul>
 </div></blockquote>
+<ul class="simple">
+<li><p>Distortion introduced should be representation of the type of noise/distortions in the test set</p></li>
+<li><p>Usually does not help to add purely random/meaningless noise to your data</p></li>
+</ul>
 </div>
-<div class="section" id="precision">
-<h2>Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="discussion-on-getting-more-data">
+<h2>Discussion on Getting More Data<a class="headerlink" href="#discussion-on-getting-more-data" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Of all patients where we predicted <span class="math notranslate nohighlight">\(y = 1\)</span>, what fraction actually has cancer?</p>
-<p><span class="math notranslate nohighlight">\(P = \frac{truePos}{predictedPos} = \frac{truePos}{truePos + fakePos}\)</span></p>
+<div><ol class="arabic">
+<li><p>Make sure you have a low bias classifier (so more data will help) before expending the effort. (Plot learning curves). E.g. keep increasing the number of features/number of hidden units in neural network until you have a low bias classifier.</p></li>
+<li><p>“How much work would it be to get 10x as much data as we currently have?”</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Artificial data synthesis</p></li>
+<li><p>Collect/label it yourself</p></li>
+<li><p>“Crowd source” (E.g. Amazon Mechanical Turk)</p></li>
+</ul>
 </div></blockquote>
-</div>
-<div class="section" id="recall">
-<h2>Recall<a class="headerlink" href="#recall" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Of all patients that actually have cancer, what fraction did we correctly detect as having cancer?</p>
-<p><span class="math notranslate nohighlight">\(R = \frac{truePos}{actualPos} = \frac{truePos}{truePos + fakeNeg}\)</span></p>
-</div></blockquote>
-</div>
-<div class="section" id="f-1-score-f-score">
-<h2><span class="math notranslate nohighlight">\(F_{1}\)</span> Score (<span class="math notranslate nohighlight">\(F\)</span> Score)<a class="headerlink" href="#f-1-score-f-score" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(F_{1} Score = 2 \frac{P R}{P + R}\)</span></p>
+</li>
+</ol>
 </div></blockquote>
 </div>
 </div>
@@ -127,8 +115,9 @@ Classification accuracy is not a good indicator for prediction accuracy.</p>
 <li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learning_rate.html">Learning Rate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="checking_for_convergence.html">Checking for Convergence</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Error Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error_metrics.html">Error Metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="better_practices.html">Better Practices</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Artificial Data Synthesis</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -151,16 +140,16 @@ Classification accuracy is not a good indicator for prediction accuracy.</p>
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="checking_for_convergence.html" title="Checking for Convergence"
-              >previous</a> |
             <a href="better_practices.html" title="Better Practices"
+              >previous</a> |
+            <a href="../glossary.html" title="Glossary"
               >next</a> |
             <a href="../genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="../_sources/_appendix/error_metrics.rst.txt"
+              <a href="../_sources/_appendix/artificial _data_synthesis.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>

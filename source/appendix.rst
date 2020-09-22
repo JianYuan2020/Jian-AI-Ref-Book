@@ -11,4 +11,6 @@ Appendix
    ../_appendix/feature_scaling
    ../_appendix/learning_rate
    ../_appendix/checking_for_convergence
+   ../_appendix/error_metrics
    ../_appendix/better_practices
+   ../_appendix/artificial _data_synthesis
