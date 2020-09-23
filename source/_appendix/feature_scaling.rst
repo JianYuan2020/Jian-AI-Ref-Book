@@ -3,9 +3,9 @@
 Feature Scaling
 ===============
 
-Making sure features are on a similar scale.
+	Making sure features are on a similar scale.
 
-Get every feature into approximately a :math:`-1 <= x_{i} <= 1` range.
+	Get every feature into approximately a :math:`-1 <= x_{i} <= 1` range.
 
 Mean Normalization
 ------------------
