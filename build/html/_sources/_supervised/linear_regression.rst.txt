@@ -11,7 +11,7 @@ Let's define:
 	* :math:`x^{(i)}` = input (features) of :math:`i^{th}` training example
 	* :math:`x^{(i)}_{j}` = value of feature :math:`j` in :math:`i^{th}` training example
 	* :math:`x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ...; x^{(i)}_{j}; ...; x^{(i)}_{n} ] \in \mathbb {R^{n}}`
-	* :math:`X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ...; (x^{(i)})^{T}; ...; (x^{(m)})^{T} ]` - :math:`m * n` matrix
+	* :math:`X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ...; (x^{(i)})^{T}; ...; (x^{(m)})^{T} ] \in \mathbb {R^{m * n}}`
 
 Hypothesis
 ----------
@@ -43,19 +43,30 @@ Gradient Descent
 
 	Repeat for each iteration {
 
-		:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
-
-		for every :math:`j = 0, ..., n`
+		:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}` (for every :math:`j = 0, ..., n`)
 
 	}
 
 	:math:`\alpha` = :ref:`learning-rate-label`
 
-	TODO :ref:`feature-scaling-label`
+:ref:`feature-scaling-label`
+----------------------------
 
 Features and Polynomial Regression
 ----------------------------------
 
+	When adding features: :math:`x^{2}, x^{3}, ...` and/or :math:`x_{1}^{2}, x_{1} x_{2}, x_{2}^{2}, ...` 
+	we can extend linear into complex shapes to better fit our training examples.
+
 Normal Equation
 ---------------
-	Method to solve for :math:`\Theta` analytically.
+	Method to solve for :math:`\Theta` analytically
+
+		Set :math:`\frac{\partial }{\partial \theta_{j}} J(\Theta) = 0` (for every :math:`j = 0, ..., n`)
+
+	Let :math:`X \in \mathbb {R^{m * (n + 1)}}` and :math:`y \in \mathbb {R^{m}}`
+
+		:math:`\theta = (X^{T} X)^{-1} X^{T} y \in \mathbb {R^{n + 1}}`
+
+	TODO week2 half way
+

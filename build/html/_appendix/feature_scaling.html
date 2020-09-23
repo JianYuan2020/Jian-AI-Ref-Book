@@ -45,22 +45,22 @@
   <div class="section" id="feature-scaling">
 <span id="feature-scaling-label"></span><h1>Feature Scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>Making sure features are on a similar scale.</p>
-<p>Get every feature into approximately a <span class="math notranslate nohighlight">\(-1 &lt;= x_{i} &lt;= 1\)</span> range.</p>
+<div><p>Making sure features are on a similar scale so no one is out weighting the other</p>
+<p>Get every feature into approximately a <span class="math notranslate nohighlight">\(-1 &lt;= x_{i} &lt;= 1\)</span> range</p>
 </div></blockquote>
 <div class="section" id="mean-normalization">
 <h2>Mean Normalization<a class="headerlink" href="#mean-normalization" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Replace <span class="math notranslate nohighlight">\(x_{i}\)</span> with <span class="math notranslate nohighlight">\(x_{i} - \mu_{i}\)</span> to make features have approximately zero mean
-(Do not apply to <span class="math notranslate nohighlight">\(x_{0} = 1\)</span>).</p>
+(Do not apply to <span class="math notranslate nohighlight">\(x_{0} = 1\)</span>)</p>
 </div></blockquote>
 </div>
 <div class="section" id="id1">
 <h2>Feature Scaling<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(x_{i} = (x_{i} - \mu_{i}) / s_{i}\)</span>.</p>
-<p><span class="math notranslate nohighlight">\(\mu_{i}\)</span> = average value of <span class="math notranslate nohighlight">\(x_{i}\)</span>.</p>
-<p><span class="math notranslate nohighlight">\(s_{i}\)</span> = range, max - min or standard deviation of <span class="math notranslate nohighlight">\(x_{i}\)</span>.</p>
+<div><p><span class="math notranslate nohighlight">\(x_{i} = (x_{i} - \mu_{i}) / s_{i}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\mu_{i}\)</span> = average value of <span class="math notranslate nohighlight">\(x_{i}\)</span></p>
+<p><span class="math notranslate nohighlight">\(s_{i}\)</span> = range, max - min or standard deviation of <span class="math notranslate nohighlight">\(x_{i}\)</span></p>
 </div></blockquote>
 </div>
 <div class="section" id="octave-code">
