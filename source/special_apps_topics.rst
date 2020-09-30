@@ -8,3 +8,4 @@ Special Applications/Topics
 
    ../_special_apps_topics/recommender_systems
    ../_special_apps_topics/large_scale_machine_learning
+   ../_special_apps_topics/generative_adversarial_network

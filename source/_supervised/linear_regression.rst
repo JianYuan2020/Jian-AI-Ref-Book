@@ -58,6 +58,9 @@ Features and Polynomial Regression
 	When adding features: :math:`x^{2}, x^{3}, ...` and/or :math:`x_{1}^{2}, x_{1} x_{2}, x_{2}^{2}, ...` 
 	we can extend linear into complex shapes to better fit our training examples.
 
+	Let :math:`x_{n + 1} = x_{1}^{2}, x_{n + 2} = x_{1} x_{2}, x_{n + 3} = x_{2}^{2}, ...` 
+	We can continuously call this linear regression.
+
 Normal Equation
 ---------------
 	Method to solve for :math:`\Theta` analytically
