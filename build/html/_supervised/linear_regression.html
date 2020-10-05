@@ -111,14 +111,66 @@ We can continuously call this linear regression.</p>
 <blockquote>
 <div><p>Method to solve for <span class="math notranslate nohighlight">\(\Theta\)</span> analytically</p>
 <blockquote>
-<div><p>Set <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_{j}} J(\Theta) = 0\)</span> (for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span>)</p>
+<div><ul class="simple">
+<li><p>Set <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_{j}} J(\Theta) = 0\)</span> (for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span>)</p></li>
+<li><p>Solve for <span class="math notranslate nohighlight">\(\theta_{0}, \theta_{1}, \theta_{2}, ..., \theta_{n}\)</span></p></li>
+</ul>
 </div></blockquote>
 <p>Let <span class="math notranslate nohighlight">\(X \in \mathbb {R^{m * (n + 1)}}\)</span> and <span class="math notranslate nohighlight">\(y \in \mathbb {R^{m}}\)</span></p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\theta = (X^{T} X)^{-1} X^{T} y \in \mathbb {R^{n + 1}}\)</span></p>
 </div></blockquote>
-<p>TODO week2 half way</p>
 </div></blockquote>
+</div>
+<div class="section" id="octave-code">
+<h2>Octave Code<a class="headerlink" href="#octave-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="p">=</span> <span class="nb">pinv</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;*</span><span class="n">X</span><span class="p">)</span><span class="o">*</span><span class="n">X</span><span class="o">&#39;*</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gradient-descent-vs-normal-equation">
+<h2>Gradient Descent vs. Normal Equation<a class="headerlink" href="#gradient-descent-vs-normal-equation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>For <span class="math notranslate nohighlight">\(m\)</span> training examples, <span class="math notranslate nohighlight">\(n\)</span> features.</p>
+<p>Gradient Descent:</p>
+<ul class="simple">
+<li><p>Need to choose <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>Needs many iterations</p></li>
+<li><p>Works well even when <span class="math notranslate nohighlight">\(n\)</span> is large (<span class="math notranslate nohighlight">\(n = 10^{6}\)</span>)</p></li>
+</ul>
+<p>Normal Equation:</p>
+<ul class="simple">
+<li><p>No need to choose <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>Don’t need to iterate</p></li>
+<li><p>Need to compute <span class="math notranslate nohighlight">\((X^{T} X)^{-1} \in \mathbb {R^{n * n}}\)</span>, ~:math:<cite>O(n^{3})</cite></p></li>
+<li><p>Slow if <span class="math notranslate nohighlight">\(n\)</span> is very large, OK with <span class="math notranslate nohighlight">\(n = 100; n = 1000\)</span>, move to Gradient Descent when <span class="math notranslate nohighlight">\(n = 10000\)</span></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="non-invertible">
+<h2>Non-invertible?<a class="headerlink" href="#non-invertible" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>What if <span class="math notranslate nohighlight">\(X^{T} X\)</span> is non-invertible? (singular/degenerate)</p>
+<ul>
+<li><p>Redundant features (linearly dependent)</p>
+<blockquote>
+<div><dl class="simple">
+<dt>E.g.</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_{1} =\)</span> size in feet</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{2} =\)</span> size in meter -&gt; <strong>need to delete this feature</strong></p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>Too many features (e.g. <span class="math notranslate nohighlight">\(m &lt;= n\)</span>)</p>
+<blockquote>
+<div><p>Delete some features, or use regularization.</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>TODO week2 half way</p>
 </div>
 </div>
 

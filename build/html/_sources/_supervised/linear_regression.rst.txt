@@ -65,11 +65,52 @@ Normal Equation
 ---------------
 	Method to solve for :math:`\Theta` analytically
 
-		Set :math:`\frac{\partial }{\partial \theta_{j}} J(\Theta) = 0` (for every :math:`j = 0, ..., n`)
+		* Set :math:`\frac{\partial }{\partial \theta_{j}} J(\Theta) = 0` (for every :math:`j = 0, ..., n`)
+		* Solve for :math:`\theta_{0}, \theta_{1}, \theta_{2}, ..., \theta_{n}`
 
 	Let :math:`X \in \mathbb {R^{m * (n + 1)}}` and :math:`y \in \mathbb {R^{m}}`
 
 		:math:`\theta = (X^{T} X)^{-1} X^{T} y \in \mathbb {R^{n + 1}}`
 
-	TODO week2 half way
+Octave Code
+-----------
+
+.. code-block:: octave 
+
+	theta = pinv(X'*X)*X'*y
+
+Gradient Descent vs. Normal Equation
+------------------------------------
+
+	For :math:`m` training examples, :math:`n` features.
+
+	Gradient Descent:
+
+	* Need to choose :math:`\alpha`
+	* Needs many iterations
+	* Works well even when :math:`n` is large (:math:`n = 10^{6}`)
+
+	Normal Equation:
+
+	* No need to choose :math:`\alpha`
+	* Don't need to iterate
+	* Need to compute :math:`(X^{T} X)^{-1} \in \mathbb {R^{n * n}}`, ~:math:`O(n^{3})`
+	* Slow if :math:`n` is very large, OK with :math:`n = 100; n = 1000`, move to Gradient Descent when :math:`n = 10000`
+
+Non-invertible?
+---------------
+
+	What if :math:`X^{T} X` is non-invertible? (singular/degenerate)
+
+	* Redundant features (linearly dependent)
+
+		E.g.
+			* :math:`x_{1} =` size in feet
+			* :math:`x_{2} =` size in meter -> **need to delete this feature**
+
+	* Too many features (e.g. :math:`m <= n`)
+
+		Delete some features, or use regularization.
+
+TODO week2 half way
 
