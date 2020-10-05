@@ -112,5 +112,5 @@ Non-invertible?
 
 		Delete some features, or use regularization.
 
-TODO week2 half way
+TODO Done with week2
 
