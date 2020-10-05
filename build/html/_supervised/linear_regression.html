@@ -72,8 +72,14 @@
 <div><p><span class="math notranslate nohighlight">\(\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ...; \theta_{j}; ...; \theta_{n} ] \in \mathbb {R^{n + 1}}\)</span></p>
 <p>Therefore:</p>
 <p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta_{0} x_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}\)</span></p>
-<p><span class="math notranslate nohighlight">\(h_\theta (x) = \Theta^{T} x\)</span></p>
+<p><span class="math notranslate nohighlight">\(h_\theta (x) = \Theta^{T} x \in \mathbb {R}\)</span></p>
 </div></blockquote>
+</div>
+<div class="section" id="octave-code">
+<h2>Octave Code<a class="headerlink" href="#octave-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">h_theta_x</span> <span class="p">=</span> <span class="n">theta</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">x</span><span class="p">;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="cost-function">
 <h2>Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h2>
@@ -122,9 +128,9 @@ We can continuously call this linear regression.</p>
 </div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="octave-code">
-<h2>Octave Code<a class="headerlink" href="#octave-code" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="p">=</span> <span class="nb">pinv</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;*</span><span class="n">X</span><span class="p">)</span><span class="o">*</span><span class="n">X</span><span class="o">&#39;*</span><span class="n">y</span>
+<div class="section" id="id1">
+<h2>Octave Code<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span> <span class="p">=</span> <span class="nb">pinv</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">X</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">y</span>
 </pre></div>
 </div>
 </div>
@@ -170,7 +176,6 @@ We can continuously call this linear regression.</p>
 </li>
 </ul>
 </div></blockquote>
-<p>TODO Done with week2</p>
 </div>
 </div>
 

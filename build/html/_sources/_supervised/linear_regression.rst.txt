@@ -29,7 +29,14 @@ Parameters
 
 	:math:`h_\theta (x) = \theta_{0} x_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}`
 
-	:math:`h_\theta (x) = \Theta^{T} x`
+	:math:`h_\theta (x) = \Theta^{T} x \in \mathbb {R}`
+
+Octave Code
+-----------
+
+.. code-block:: octave 
+
+	h_theta_x = theta' * x;
 
 Cost Function
 -------------
@@ -77,7 +84,7 @@ Octave Code
 
 .. code-block:: octave 
 
-	theta = pinv(X'*X)*X'*y
+	theta = pinv(X' * X) * X' * y
 
 Gradient Descent vs. Normal Equation
 ------------------------------------
@@ -111,6 +118,3 @@ Non-invertible?
 	* Too many features (e.g. :math:`m <= n`)
 
 		Delete some features, or use regularization.
-
-TODO Done with week2
-
