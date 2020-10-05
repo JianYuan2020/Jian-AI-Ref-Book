@@ -45,16 +45,31 @@
   <div class="section" id="learning-rate">
 <span id="learning-rate-label"></span><h1>Learning Rate<a class="headerlink" href="#learning-rate" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>How to choose learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>?</p>
-<p>If <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, gradient descent can be slow. If <span class="math notranslate nohighlight">\(\alpha\)</span> is too large,
-gradient descent can overshoot the minimum. It may fail to converge, or even diverge.</p>
+<div><p>If learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, gradient descent can be slow to converge. If <span class="math notranslate nohighlight">\(\alpha\)</span>
+is too large, gradient descent can overshoot the minimum. It may fail to converge, or even diverge.</p>
 <p>Gradient descent can converge to a local minimum, even with the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> fixed.</p>
-<p>For sufficiently small <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(J(\Theta)\)</span> should decrease on every iteration.
-To choose <span class="math notranslate nohighlight">\(\alpha\)</span>, try: … 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, …</p>
+<p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\Theta)\)</span></p>
+<p>As we approach a local minimum, gradient descent will automatically take smaller steps. So, no need to
+decrease <span class="math notranslate nohighlight">\(\alpha\)</span> over time.</p>
+</div></blockquote>
+<div class="section" id="how-to-choose-learning-rate-alpha">
+<h2>How to Choose Learning Rate <span class="math notranslate nohighlight">\(\alpha\)</span>?<a class="headerlink" href="#how-to-choose-learning-rate-alpha" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Plot cost function <span class="math notranslate nohighlight">\(J(\Theta)\)</span> vs. No. of iterations curve. Cost function <span class="math notranslate nohighlight">\(J(\Theta)\)</span> should
+decrease after every iteration. Declare convergence if decreases by less than <span class="math notranslate nohighlight">\(\epsilon = 10^{-3}\)</span>
+in one iteration.</p>
+</div></blockquote>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>For sufficiently small <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(J(\Theta)\)</span> should decrease on every iteration. To choose
+<span class="math notranslate nohighlight">\(\alpha\)</span>, try: … <span class="math notranslate nohighlight">\(0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1\)</span>, …</p>
 <p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is typically held constant. Can slowly decrease over time if we want
 <span class="math notranslate nohighlight">\(\theta\)</span> to converge. (E.g. <span class="math notranslate nohighlight">\(\alpha = \frac{const1}{iterationNumber + const2}\)</span>),
 <span class="math notranslate nohighlight">\(\alpha\)</span> -&gt; <span class="math notranslate nohighlight">\(0\)</span></p>
 </div></blockquote>
+</div>
 </div>
 
 
