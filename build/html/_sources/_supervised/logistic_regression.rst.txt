@@ -2,34 +2,55 @@
 
 Logistic Regression
 ===================
+	Classification:
+		* Email: Spam / Not Spam?
+		* Online Transactions: Fraudulent (Yes / No)?
+		* Tumor: Malignant / Benign?
 
-Linear regression with multiple variables/features.
+	Here, we have:
+		* :math:`y \in` { :math:`0, 1` }
+		* :math:`0`: "Negative Class" (e.g., benign tumor)
+		* :math:`1`: "Positive Class" (e.g., malignant tumor)
 
-Let's define:
-	* :math:`n` = number of features.
-	* :math:`m` = number of training examples.
-	* :math:`x^{(i)}` = input (features) of :math:`i^{th}` training example.
-	* :math:`x^{(i)}_{j}` = value of feature :math:`j` in :math:`i^{th}` training example.
-	* :math:`x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ...; x^{(i)}_{j}; ...; x^{(i)}_{n} ]` - :math:`n * 1` column vector.
-	* :math:`X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ...; (x^{(i)})^{T}; ...; (x^{(m)})^{T} ]` - :math:`m * n` matrix.
+	Often, we could have:
+		* :math:`y \in` { :math:`0, 1, 2, 3, 4, ...` }
 
-Hypothesis
-----------
-	:math:`h_\theta (x) = \theta_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}`
+Threshold Classifier
+--------------------
+	Threshold classifier output :math:`h_\theta (x)` at :math:`0.5`:
 
-	Let: :math:`x_{0} = 1` and :math:`x^{(i)}_{0} = 1`:
+	* If :math:`h_\theta (x) >= 0.5`, predict :math:`y = 1`
+	* If :math:`h_\theta (x) < 0.5`, predict :math:`y = 0`
 
-	:math:`x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ]` - :math:`(n + 1) * 1` column vector.
+Hypothesis Representation
+-------------------------
+	Logistic Regression Model
 
-Parameters
-----------
-	:math:`\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ...; \theta_{j}; ...; \theta_{n} ]` - :math:`(n + 1) * 1` column vector.
+		* Want :math:`0 <= h_\theta (x) <= 1`
+		* :math:`h_\theta (x) = g (\Theta^{T} x)`
 
-	Therefore:
+	Let :math:`z = \Theta^{T} x`
 
-	:math:`h_\theta (x) = \theta_{0} x_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}`
+		* :math:`g(z) = \frac{1}{1 + e^{-z}}`
+		* :math:`h_\theta (x) = \frac{1}{1 + e^{-\Theta^{T} x}}`
+		* This is Sigmoid function (Logistic function)
+		* :math:`g(z)` -> :math:`1` as :math:`z` -> :math:`+\infty` 
+		* :math:`g(z) = 0.5` as :math:`z = 0`
+		* :math:`g(z)` -> :math:`0` as :math:`z` -> :math:`-\infty` 
 
-	:math:`h_\theta (x) = \Theta^{T} x`
+Interpretation of Hypothesis Output
+-----------------------------------
+	:math:`h_\theta (x)` = estimated probability that :math:`y = 1` on input :math:`x`
+
+	Example:
+
+	:math:`{\begin{bmatrix}1&9&-13\\20&5&-6\end{bmatrix}}`
+
+	{\begin{bmatrix}1&9&-13\\20&5&-6\end{bmatrix}}
+
+
+	TODO: starting week 3
+
 
 Cost Function
 -------------

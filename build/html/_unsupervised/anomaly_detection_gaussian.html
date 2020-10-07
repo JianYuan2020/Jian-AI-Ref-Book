@@ -47,7 +47,7 @@
 <p>Let’s assume:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Training set: <span class="math notranslate nohighlight">\(X = \{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}\)</span> and <span class="math notranslate nohighlight">\({\displaystyle x^{(i)} \in \mathbb {R^{n}}}\)</span></p></li>
+<li><p>Training set: <span class="math notranslate nohighlight">\(X = \{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}\)</span> and <span class="math notranslate nohighlight">\(x^{(i)} \in \mathbb {R^{n}}\)</span></p></li>
 <li><p>All features are distributed as <a class="reference internal" href="../_appendix/normal_distribution.html#normal-distribution-label"><span class="std std-ref">Normal Distribution</span></a></p></li>
 <li><p>That is: <span class="math notranslate nohighlight">\(x_{1}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{1}, \sigma _{1}^{2})\)</span>,  <span class="math notranslate nohighlight">\(x_{2}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{2}, \sigma _{2}^{2})\)</span>, …, <span class="math notranslate nohighlight">\(x_{n}\)</span> ~ <span class="math notranslate nohighlight">\({\mathcal {N}}(\mu_{n}, \sigma _{n}^{2})\)</span></p></li>
 </ul>
@@ -66,7 +66,7 @@
 <li><p>Fit parameters <span class="math notranslate nohighlight">\(\mu_{1}\)</span>, <span class="math notranslate nohighlight">\(\mu_{2}\)</span>, …, <span class="math notranslate nohighlight">\(\mu_{n}\)</span> and <span class="math notranslate nohighlight">\(\sigma _{1}^{2}\)</span>, <span class="math notranslate nohighlight">\(\sigma _{2}^{2}\)</span>, …, <span class="math notranslate nohighlight">\(\sigma _{n}^{2}\)</span> using <a class="reference internal" href="../_appendix/normal_distribution.html#normal-distribution-label"><span class="std std-ref">Normal Distribution</span></a></p></li>
 <li><p>Given new example <span class="math notranslate nohighlight">\(x\)</span>, compute <span class="math notranslate nohighlight">\(p(x)\)</span>:</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(p(x) = \Pi_{j=1}^{n} p(x_{j}; \mu_{j}, \sigma _{j}^{2}) = {\displaystyle \Pi_{j=1}^{n} {\frac {1}{\sigma_{j} {\sqrt {2\pi }}}}e^{-{\frac {1}{2}}\left({\frac {x_{j}-\mu_{j} }{\sigma_{j} }}\right)^{2}}}\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(p(x) = \Pi_{j=1}^{n} p(x_{j}; \mu_{j}, \sigma _{j}^{2}) = \Pi_{j=1}^{n} {\frac {1}{\sigma_{j} {\sqrt {2\pi }}}}e^{-{\frac {1}{2}}\left({\frac {x_{j}-\mu_{j} }{\sigma_{j} }}\right)^{2}}\)</span></p>
 </div></blockquote>
 </li>
 </ol>
@@ -102,19 +102,18 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Intro</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../machine_learning.html">Machine Learning</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../_supervised/supervised_learning.html">Supervised learning</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="unsupervised_learning.html">Unsupervised learning</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="k_means.html">K-means</a></li>
-<li class="toctree-l3"><a class="reference internal" href="principal_component_analysis.html">Principal Component Analysis</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../unsupervised_learning.html">Unsupervised learning</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="k_means.html">K-means</a></li>
+<li class="toctree-l2"><a class="reference internal" href="principal_component_analysis.html">Principal Component Analysis</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="anomaly_detection.html">Anomaly Detection</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../recommender_systems.html">Recommender Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../large_scale_machine_learning.html">Large Scale Machine Learning</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../_appendix/appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../special_apps_topics.html">Special Applications/Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advice.html">Advice on Building a ML System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tensorflow.html">TensorFlow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
 

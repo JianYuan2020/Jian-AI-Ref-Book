@@ -16,7 +16,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Unsupervised learning" href="../unsupervised_learning.html" />
+    <link rel="next" title="Neural Networks" href="neural_networks.html" />
     <link rel="prev" title="Linear Regression" href="linear_regression.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
@@ -26,7 +26,7 @@
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="linear_regression.html" title="Linear Regression"
              accesskey="P">previous</a> |
-          <a href="../unsupervised_learning.html" title="Unsupervised learning"
+          <a href="neural_networks.html" title="Neural Networks"
              accesskey="N">next</a> |
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -44,33 +44,67 @@
             
   <div class="section" id="logistic-regression">
 <span id="logistic-regression-label"></span><h1>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h1>
-<p>Linear regression with multiple variables/features.</p>
-<dl class="simple">
-<dt>Let’s define:</dt><dd><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(n\)</span> = number of features.</p></li>
-<li><p><span class="math notranslate nohighlight">\(m\)</span> = number of training examples.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x^{(i)}\)</span> = input (features) of <span class="math notranslate nohighlight">\(i^{th}\)</span> training example.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x^{(i)}_{j}\)</span> = value of feature <span class="math notranslate nohighlight">\(j\)</span> in <span class="math notranslate nohighlight">\(i^{th}\)</span> training example.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ...; x^{(i)}_{j}; ...; x^{(i)}_{n} ]\)</span> - <span class="math notranslate nohighlight">\(n * 1\)</span> column vector.</p></li>
-<li><p><span class="math notranslate nohighlight">\(X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ...; (x^{(i)})^{T}; ...; (x^{(m)})^{T} ]\)</span> - <span class="math notranslate nohighlight">\(m * n\)</span> matrix.</p></li>
+<blockquote>
+<div><dl class="simple">
+<dt>Classification:</dt><dd><ul class="simple">
+<li><p>Email: Spam / Not Spam?</p></li>
+<li><p>Online Transactions: Fraudulent (Yes / No)?</p></li>
+<li><p>Tumor: Malignant / Benign?</p></li>
+</ul>
+</dd>
+<dt>Here, we have:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y \in\)</span> { <span class="math notranslate nohighlight">\(0, 1\)</span> }</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span>: “Negative Class” (e.g., benign tumor)</p></li>
+<li><p><span class="math notranslate nohighlight">\(1\)</span>: “Positive Class” (e.g., malignant tumor)</p></li>
+</ul>
+</dd>
+<dt>Often, we could have:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y \in\)</span> { <span class="math notranslate nohighlight">\(0, 1, 2, 3, 4, ...\)</span> }</p></li>
 </ul>
 </dd>
 </dl>
-<div class="section" id="hypothesis">
-<h2>Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">¶</a></h2>
+</div></blockquote>
+<div class="section" id="threshold-classifier">
+<h2>Threshold Classifier<a class="headerlink" href="#threshold-classifier" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}\)</span></p>
-<p>Let: <span class="math notranslate nohighlight">\(x_{0} = 1\)</span> and <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>:</p>
-<p><span class="math notranslate nohighlight">\(x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ]\)</span> - <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p>
+<div><p>Threshold classifier output <span class="math notranslate nohighlight">\(h_\theta (x)\)</span> at <span class="math notranslate nohighlight">\(0.5\)</span>:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(h_\theta (x) &gt;= 0.5\)</span>, predict <span class="math notranslate nohighlight">\(y = 1\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(h_\theta (x) &lt; 0.5\)</span>, predict <span class="math notranslate nohighlight">\(y = 0\)</span></p></li>
+</ul>
 </div></blockquote>
 </div>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hypothesis-representation">
+<h2>Hypothesis Representation<a class="headerlink" href="#hypothesis-representation" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ...; \theta_{j}; ...; \theta_{n} ]\)</span> - <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p>
-<p>Therefore:</p>
-<p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta_{0} x_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}\)</span></p>
-<p><span class="math notranslate nohighlight">\(h_\theta (x) = \Theta^{T} x\)</span></p>
+<div><p>Logistic Regression Model</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Want <span class="math notranslate nohighlight">\(0 &lt;= h_\theta (x) &lt;= 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = g (\Theta^{T} x)\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>Let <span class="math notranslate nohighlight">\(z = \Theta^{T} x\)</span></p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(g(z) = \frac{1}{1 + e^{-z}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \frac{1}{1 + e^{-\Theta^{T} x}}\)</span></p></li>
+<li><p>This is Sigmoid function (Logistic function)</p></li>
+<li><p><span class="math notranslate nohighlight">\(g(z)\)</span> -&gt; <span class="math notranslate nohighlight">\(1\)</span> as <span class="math notranslate nohighlight">\(z\)</span> -&gt; <span class="math notranslate nohighlight">\(+\infty\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g(z) = 0.5\)</span> as <span class="math notranslate nohighlight">\(z = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g(z)\)</span> -&gt; <span class="math notranslate nohighlight">\(0\)</span> as <span class="math notranslate nohighlight">\(z\)</span> -&gt; <span class="math notranslate nohighlight">\(-\infty\)</span></p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="interpretation-of-hypothesis-output">
+<h2>Interpretation of Hypothesis Output<a class="headerlink" href="#interpretation-of-hypothesis-output" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(h_\theta (x)\)</span> = estimated probability that <span class="math notranslate nohighlight">\(y = 1\)</span> on input <span class="math notranslate nohighlight">\(x\)</span></p>
+<p>Example:</p>
+<p><span class="math notranslate nohighlight">\({\begin{bmatrix}1&amp;9&amp;-13\\20&amp;5&amp;-6\end{bmatrix}}\)</span></p>
+<p>{begin{bmatrix}1&amp;9&amp;-13\20&amp;5&amp;-6end{bmatrix}}</p>
+<p>TODO: starting week 3</p>
 </div></blockquote>
 </div>
 <div class="section" id="cost-function">
@@ -90,7 +124,7 @@
 <p>Here <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>, for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
 </div></blockquote>
 <p>}</p>
-<p><span class="math notranslate nohighlight">\(\alpha\)</span> = <a class="reference internal" href="../learning_rate.html#learning-rate-label"><span class="std std-ref">Learning Rate</span></a>.</p>
+<p><span class="math notranslate nohighlight">\(\alpha\)</span> = <a class="reference internal" href="../_appendix/learning_rate.html#learning-rate-label"><span class="std std-ref">Learning Rate</span></a>.</p>
 </div></blockquote>
 </div>
 <div class="section" id="normal-equation">
@@ -113,19 +147,19 @@
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Intro</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../machine_learning.html">Machine Learning</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="supervised_learning.html">Supervised learning</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Logistic Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning.html">Machine Learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../supervised_learning.html">Supervised learning</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Logistic Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neural_networks.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support_vector_machines.html">Support Vector Machines</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../unsupervised_learning.html">Unsupervised learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../anomaly_detection.html">Anomaly Detection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../recommender_systems.html">Recommender Systems</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../large_scale_machine_learning.html">Large Scale Machine Learning</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../special_apps_topics.html">Special Applications/Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advice.html">Advice on Building a ML System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tensorflow.html">TensorFlow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
 
@@ -148,7 +182,7 @@
           <div role="navigation" aria-label="related navigaton">
             <a href="linear_regression.html" title="Linear Regression"
               >previous</a> |
-            <a href="../unsupervised_learning.html" title="Unsupervised learning"
+            <a href="neural_networks.html" title="Neural Networks"
               >next</a> |
             <a href="../genindex.html" title="General Index"
               >index</a>

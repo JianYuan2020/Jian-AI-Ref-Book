@@ -9,9 +9,9 @@ K-means Algorithm
 	Input:
 
 	* :math:`K` = number of clusters
-	* Training set :math:`\{ x^{(1)}, x^{(2)}, ..., x^{(m)} \}` with :math:`{\displaystyle x^{(i)} \in \mathbb {R^{n}}}` (drop :math:`x_{0} = 1` convention)
+	* Training set :math:`\{ x^{(1)}, x^{(2)}, ..., x^{(m)} \}` with :math:`x^{(i)} \in \mathbb {R^{n}}` (drop :math:`x_{0} = 1` convention)
 
-	#. Randomly initialize cluster centroids :math:`\mu_{1}, \mu_{2}, ..., \mu_{K} {\displaystyle \in \mathbb {R^{n}}}`
+	#. Randomly initialize cluster centroids :math:`\mu_{1}, \mu_{2}, ..., \mu_{K} \in \mathbb {R^{n}}`
 	#. Repeat {
 
 		Assign a cluster index :math:`k` to each :math:`x^{(i)}` where :math:`\left\|x^{(i)} - \mu_{k}\right\|^2` is minimum:
@@ -32,7 +32,7 @@ K-means Optimization Objective
 ------------------------------
 
 	* :math:`c^{(i)}` = index of cluster (from :math:`1` to :math:`K`) to which example :math:`x^{(i)}` is currently assigned
-	* :math:`\mu_{k}` = cluster centroid :math:`k`, :math:`({\displaystyle \mu_{k} \in \mathbb {R^{n}}})`
+	* :math:`\mu_{k}` = cluster centroid :math:`k`, :math:`(\mu_{k} \in \mathbb {R^{n}})`
 	* :math:`\mu_{c}(i)` = cluster centroid of cluster to which example :math:`x^{(i)}` has been assigned
 
 Cost Function (distortion)

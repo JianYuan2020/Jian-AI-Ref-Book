@@ -12,7 +12,7 @@ Anomaly detection can be used for detecting low probability cases:
 
 Given the dataset with the majority data as normal:
 
-	* Dataset: :math:`X = \{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}` with :math:`{\displaystyle x^{(i)} \in \mathbb {R^{n}}}`
+	* Dataset: :math:`X = \{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}` with :math:`x^{(i)} \in \mathbb {R^{n}}`
 	* Is :math:`x_{test}` anomalous?
 	* Model (probability): :math:`p(x_{test})`
 		* :math:`p(x_{test}) < \epsilon`, flag anomaly

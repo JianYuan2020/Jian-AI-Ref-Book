@@ -89,7 +89,7 @@ Octave Code
 Gradient Descent vs. Normal Equation
 ------------------------------------
 
-	For :math:`m` training examples, :math:`n` features.
+	For :math:`m` training examples, :math:`n` features
 
 	Gradient Descent:
 
@@ -101,7 +101,7 @@ Gradient Descent vs. Normal Equation
 
 	* No need to choose :math:`\alpha`
 	* Don't need to iterate
-	* Need to compute :math:`(X^{T} X)^{-1} \in \mathbb {R^{n * n}}`, ~:math:`O(n^{3})`
+	* Need to compute :math:`(X^{T} X)^{-1} \in \mathbb {R^{n * n}}`, ~ :math:`O(n^{3})`
 	* Slow if :math:`n` is very large, OK with :math:`n = 100; n = 1000`, move to Gradient Descent when :math:`n = 10000`
 
 Non-invertible?
@@ -117,4 +117,4 @@ Non-invertible?
 
 	* Too many features (e.g. :math:`m <= n`)
 
-		Delete some features, or use regularization.
+		Delete some features, or use regularization
