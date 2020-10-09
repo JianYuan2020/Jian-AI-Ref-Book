@@ -77,20 +77,27 @@
 <div class="section" id="hypothesis-representation">
 <h2>Hypothesis Representation<a class="headerlink" href="#hypothesis-representation" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Logistic Regression Model</p>
+<div><p>For Linear Regression, we have</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta^{T} x\)</span></p></li>
+<li><p>where <span class="math notranslate nohighlight">\(-\infty &lt; h_\theta (x) &lt; \infty\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>Logistic Regression Model</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Want <span class="math notranslate nohighlight">\(0 &lt;= h_\theta (x) &lt;= 1\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = g (\Theta^{T} x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = g (\theta^{T} x)\)</span></p></li>
 </ul>
 </div></blockquote>
-<p>Let <span class="math notranslate nohighlight">\(z = \Theta^{T} x\)</span></p>
+<p>Let <span class="math notranslate nohighlight">\(z = \theta^{T} x\)</span></p>
 <blockquote>
 <div><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(g(z) = \frac{1}{1 + e^{-z}}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \frac{1}{1 + e^{-\Theta^{T} x}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \frac{1}{1 + e^{-\theta^{T} x}}\)</span></p></li>
 <li><p>This is Sigmoid function (Logistic function)</p></li>
-<li><p><span class="math notranslate nohighlight">\(g(z)\)</span> -&gt; <span class="math notranslate nohighlight">\(1\)</span> as <span class="math notranslate nohighlight">\(z\)</span> -&gt; <span class="math notranslate nohighlight">\(+\infty\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g(z)\)</span> -&gt; <span class="math notranslate nohighlight">\(1\)</span> as <span class="math notranslate nohighlight">\(z\)</span> -&gt; <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(g(z) = 0.5\)</span> as <span class="math notranslate nohighlight">\(z = 0\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(g(z)\)</span> -&gt; <span class="math notranslate nohighlight">\(0\)</span> as <span class="math notranslate nohighlight">\(z\)</span> -&gt; <span class="math notranslate nohighlight">\(-\infty\)</span></p></li>
 </ul>
@@ -102,21 +109,118 @@
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(h_\theta (x)\)</span> = estimated probability that <span class="math notranslate nohighlight">\(y = 1\)</span> on input <span class="math notranslate nohighlight">\(x\)</span></p>
 <p>Example:</p>
-<p><span class="math notranslate nohighlight">\({\begin{bmatrix}1&amp;9&amp;-13\\20&amp;5&amp;-6\end{bmatrix}}\)</span></p>
-<p>{begin{bmatrix}1&amp;9&amp;-13\20&amp;5&amp;-6end{bmatrix}}</p>
-<p>TODO: starting week 3</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(x = {\begin{bmatrix}x_{0}\\x_{1}\end{bmatrix}} = {\begin{bmatrix}1\\tumorSize\end{bmatrix}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = 0.7\)</span> interpreted as <span class="math notranslate nohighlight">\(y = 1\)</span></p></li>
+<li><p>Tell patient that 70% chance of tumor being malignant</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y \in\)</span> { <span class="math notranslate nohighlight">\(0, 1\)</span> }</p></li>
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = P(y = 1|x; \theta)\)</span> is the probability that <span class="math notranslate nohighlight">\(y = 1\)</span>, given <span class="math notranslate nohighlight">\(x\)</span>, parameterized by <span class="math notranslate nohighlight">\(\theta\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(y = 0|x; \theta) + P(y = 1|x; \theta) = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(y = 0|x; \theta) = 1 - P(y = 1|x; \theta)\)</span></p></li>
+</ul>
+<p>Or simply</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(y = 0) + P(y = 1) = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(y = 0) = 1 - P(y = 1)\)</span></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="decision-boundary">
+<h2>Decision Boundary<a class="headerlink" href="#decision-boundary" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Logistic Regression</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = g (\theta^{T} x)\)</span> and <span class="math notranslate nohighlight">\(z = \theta^{T} x\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g(z) = \frac{1}{1 + e^{-z}}\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>Plot <span class="math notranslate nohighlight">\(g(z)\)</span> vs. <span class="math notranslate nohighlight">\(z\)</span> curve, we get:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>predict <span class="math notranslate nohighlight">\(y = 1\)</span> if <span class="math notranslate nohighlight">\(h_\theta (x) &gt;= 0.5\)</span> therefore <span class="math notranslate nohighlight">\(z = \theta^{T} x &gt;= 0\)</span></p></li>
+<li><p>predict <span class="math notranslate nohighlight">\(y = 0\)</span> if <span class="math notranslate nohighlight">\(h_\theta (x) &lt; 0.5\)</span> therefore <span class="math notranslate nohighlight">\(z = \theta^{T} x &lt; 0\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>Solve for <span class="math notranslate nohighlight">\(\theta^{T} x &gt;= 0\)</span>, we can get linear or non-linear decision boundaries.</p>
 </div></blockquote>
 </div>
 <div class="section" id="cost-function">
 <h2>Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p>
+<div><ul class="simple">
+<li><p>Training set, <span class="math notranslate nohighlight">\(m\)</span> examples: <span class="math notranslate nohighlight">\({ (x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), ..., (x^{(m)}, y^{(m)}) }\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x = {\begin{bmatrix}x_{0}\\x_{1}\\...\\x_{n}\end{bmatrix}} \in \mathbb {R^{n + 1}}\)</span>, <span class="math notranslate nohighlight">\(x_{0} = 1\)</span>, <span class="math notranslate nohighlight">\(y \in\)</span> { <span class="math notranslate nohighlight">\(0, 1\)</span> }</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(h_\theta (x) = \frac{1}{1 + e^{-\theta^{T} x}}\)</span>, how to choose parameters <span class="math notranslate nohighlight">\(\theta\)</span>?</p></li>
+</ul>
+<p>Logistic Regression</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(J(\theta) = \frac{1}{m} \sum_{i=1}^{m} cost(h_\theta (x^{(i)}), y^{(i)})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Cost(h_\theta (x^{(i)}), y^{(i)}) = \frac{1}{2} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>Or simply</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Cost(h_\theta (x), y) = \frac{1}{2} (h_\theta (x) - y)^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h_\theta (x) = \frac{1}{1 + e^{-\theta^{T} x}}\)</span></p></li>
+</ul>
+</div></blockquote>
 </div></blockquote>
 </div>
-<div class="section" id="gradient-descent">
-<h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="logistic-regression-cost-function">
+<h2>Logistic Regression Cost Function<a class="headerlink" href="#logistic-regression-cost-function" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Also called Batch Gradient Descent for it’s processing all training examples in one batch at every iteration.</p>
+<div><p><span class="math notranslate nohighlight">\(Cost(h_\theta (x), y) = {\begin{cases}- \log(h_\theta (x))&amp;y = 1\\- \log(1 - h_\theta (x))&amp;y = 0\end{cases}}\)</span></p>
+<p>Plot <span class="math notranslate nohighlight">\(Cost(h_\theta (x), y = 1)\)</span> vs. <span class="math notranslate nohighlight">\(h_\theta (x)\)</span> curve</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Cost = 0\)</span>, if <span class="math notranslate nohighlight">\(h_\theta (x) = 1\)</span></p></li>
+<li><p>But as <span class="math notranslate nohighlight">\(h_\theta (x)\)</span> -&gt; <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(Cost\)</span> -&gt; <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
+<li><p>Captures intuition that if <span class="math notranslate nohighlight">\(h_\theta (x) = 0\)</span>, (predict <span class="math notranslate nohighlight">\(h_\theta (x) = P(y = 1|x; \theta) = 0\)</span>), but <span class="math notranslate nohighlight">\(y = 1\)</span>, we will penalize the learning algorithm by a very large cost.</p></li>
+</ul>
+</div></blockquote>
+<p>Plot <span class="math notranslate nohighlight">\(Cost(h_\theta (x), y = 0)\)</span> vs. <span class="math notranslate nohighlight">\(h_\theta (x)\)</span> curve</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Cost = 0\)</span>, if <span class="math notranslate nohighlight">\(h_\theta (x) = 0\)</span></p></li>
+<li><p>But as <span class="math notranslate nohighlight">\(h_\theta (x)\)</span> -&gt; <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(Cost\)</span> -&gt; <span class="math notranslate nohighlight">\(\infty\)</span></p></li>
+<li><p>Captures intuition that if <span class="math notranslate nohighlight">\(h_\theta (x) = 1\)</span>, (predict <span class="math notranslate nohighlight">\(h_\theta (x) = P(y = 0|x; \theta) = 1\)</span>), but <span class="math notranslate nohighlight">\(y = 0\)</span>, we will penalize the learning algorithm by a very large cost.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="simplified-cost-function-and-gradient-descent">
+<h2>Simplified Cost Function and Gradient Descent<a class="headerlink" href="#simplified-cost-function-and-gradient-descent" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Cost Function</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(J(\theta) = \frac{1}{m} \sum_{i=1}^{m} cost(h_\theta (x^{(i)}), y^{(i)})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(Cost(h_\theta (x), y) = {\begin{cases}- \log(h_\theta (x))&amp;y = 1\\- \log(1 - h_\theta (x))&amp;y = 0\end{cases}}\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>Therefore</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Cost(h_\theta (x), y) = -y \log(h_\theta (x)) -(1 - y) \log(1 - h_\theta (x))\)</span>, <span class="math notranslate nohighlight">\(y \in\)</span> { <span class="math notranslate nohighlight">\(0, 1\)</span> }</p></li>
+<li><p><span class="math notranslate nohighlight">\(J(\theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log(h_\theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta (x^{(i)})) ]\)</span></p></li>
+<li><p>To fit parameters <span class="math notranslate nohighlight">\(\theta\)</span>: minimize <span class="math notranslate nohighlight">\(J(\theta)\)</span></p></li>
+<li><p>To make a prediction given new: <span class="math notranslate nohighlight">\(x\)</span>, compute output <span class="math notranslate nohighlight">\(h_\theta (x) = \frac{1}{1 + e^{-\theta^{T} x}}\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>Gradient Descent</p>
+<p>TODO: mid week 3</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y_{n+1}={\begin{cases}2y_{n}&amp;0\leq y_{n}&lt;{\tfrac {1}{2}}\\2y_{n}-1&amp;{\tfrac {1}{2}}\leq y_{n}&lt;1,\end{cases}}\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(x = {\begin{bmatrix}1&amp;9&amp;-13\\20&amp;5&amp;-6\end{bmatrix}}\)</span></p>
+<p>Also called Batch Gradient Descent for it’s processing all training examples in one batch at every iteration.</p>
 <p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\Theta)\)</span></p>
 <p>Repeat for each iteration {</p>
 <blockquote>

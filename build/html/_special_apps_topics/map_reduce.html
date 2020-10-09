@@ -16,7 +16,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Generative Adversarial Network" href="generative_adversarial_network.html" />
+    <link rel="next" title="Reinforcement Learning" href="reinforcement_learning.html" />
     <link rel="prev" title="Online Learning" href="online_learning.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
@@ -26,7 +26,7 @@
         <div class="rel" role="navigation" aria-label="related navigation">
           <a href="online_learning.html" title="Online Learning"
              accesskey="P">previous</a> |
-          <a href="generative_adversarial_network.html" title="Generative Adversarial Network"
+          <a href="reinforcement_learning.html" title="Reinforcement Learning"
              accesskey="N">next</a> |
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -75,7 +75,7 @@
 <p>Many learning algorithms can be expressed as computing sums of functions over the training set.</p>
 <p>E.g. for advanced optimization, with logistic regression, need:</p>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(J_{Train}(\theta) = - \frac{1}{m} \sum_{i=1}^{m} y^{(i)} log (h_\theta (x^{(i)})) - (1 - y^{(i)}) log (1 - h_\theta (x^{(i)}))\)</span></p>
+<div><p><span class="math notranslate nohighlight">\(J_{Train}(\theta) = - \frac{1}{m} \sum_{i=1}^{m} y^{(i)} \log (h_\theta (x^{(i)})) - (1 - y^{(i)}) \log (1 - h_\theta (x^{(i)}))\)</span></p>
 <p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_{j}} J_{Train}(\theta) = \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
 <p>for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
 </div></blockquote>
@@ -99,11 +99,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../special_apps_topics.html">Special Applications/Topics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="large_scale_machine_learning.html">Large Scale Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_learning.html">Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generative_adversarial_network.html">Generative Adversarial Network</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../advice.html">Advice on Building a ML System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tensorflow.html">TensorFlow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
 
@@ -126,7 +128,7 @@
           <div role="navigation" aria-label="related navigaton">
             <a href="online_learning.html" title="Online Learning"
               >previous</a> |
-            <a href="generative_adversarial_network.html" title="Generative Adversarial Network"
+            <a href="reinforcement_learning.html" title="Reinforcement Learning"
               >next</a> |
             <a href="../genindex.html" title="General Index"
               >index</a>

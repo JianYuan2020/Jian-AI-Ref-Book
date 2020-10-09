@@ -35,7 +35,7 @@ Many learning algorithms can be expressed as computing sums of functions over th
 
 E.g. for advanced optimization, with logistic regression, need:
 
-	:math:`J_{Train}(\theta) = - \frac{1}{m} \sum_{i=1}^{m} y^{(i)} log (h_\theta (x^{(i)})) - (1 - y^{(i)}) log (1 - h_\theta (x^{(i)}))`
+	:math:`J_{Train}(\theta) = - \frac{1}{m} \sum_{i=1}^{m} y^{(i)} \log (h_\theta (x^{(i)})) - (1 - y^{(i)}) \log (1 - h_\theta (x^{(i)}))`
 
 	:math:`\frac{\partial }{\partial \theta_{j}} J_{Train}(\theta) = \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
 
