@@ -6,7 +6,6 @@ Advice on Building a ML System
    :caption: Contents:
 
    ../_advice/bias_variance
-   ../_advice/regularization
    ../_advice/deciding_next
    ../_advice/learning_curves
    ../_advice/error_analysis

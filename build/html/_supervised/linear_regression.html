@@ -85,6 +85,13 @@
 <h2>Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p>
+<p>Adding <a class="reference internal" href="../_appendix/regularization.html#regularization-label"><span class="std std-ref">Regularization</span></a>:</p>
+<dl class="simple">
+<dt><span class="math notranslate nohighlight">\(J(\Theta) = \frac{1}{2m} [ \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 + \lambda \sum_{j=1}^{n} (\theta_{j})^2 ]\)</span></dt><dd><ul class="simple">
+<li><p>Exclude <span class="math notranslate nohighlight">\(\theta_{0}\)</span> for regularization</p></li>
+</ul>
+</dd>
+</dl>
 </div></blockquote>
 </div>
 <div class="section" id="gradient-descent">

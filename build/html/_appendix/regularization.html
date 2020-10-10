@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regularization &#8212; Jian AI Ref 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Checking for Convergence" href="checking_for_convergence.html" />
+    <link rel="prev" title="Learning Rate" href="learning_rate.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Jian AI Ref 0.1 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="learning_rate.html" title="Learning Rate"
+             accesskey="P">previous</a> |
+          <a href="checking_for_convergence.html" title="Checking for Convergence"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="regularization">
+<span id="regularization-label"></span><h1>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>To solve the problem of overfitting</p>
+</div></blockquote>
+<a class="reference internal image-reference" href="../_images/under_good_over_fit.png"><img alt="../_images/under_good_over_fit.png" class="align-center" src="../_images/under_good_over_fit.png" style="width: 400pt;" /></a>
+<div class="section" id="under-fitting">
+<h2>Under Fitting<a class="headerlink" href="#under-fitting" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Replace <span class="math notranslate nohighlight">\(x_{i}\)</span> with <span class="math notranslate nohighlight">\(x_{i} - \mu_{i}\)</span> to make features have approximately zero mean
+(Do not apply to <span class="math notranslate nohighlight">\(x_{0} = 1\)</span>)</p>
+</div></blockquote>
+</div>
+<div class="section" id="appropriate-fitting">
+<h2>Appropriate Fitting<a class="headerlink" href="#appropriate-fitting" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(x_{i} = (x_{i} - \mu_{i}) / s_{i}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\mu_{i}\)</span> = average value of <span class="math notranslate nohighlight">\(x_{i}\)</span></p>
+<p><span class="math notranslate nohighlight">\(s_{i}\)</span> = range, max - min or standard deviation of <span class="math notranslate nohighlight">\(x_{i}\)</span></p>
+</div></blockquote>
+</div>
+<div class="section" id="over-fitting">
+<h2>Over Fitting<a class="headerlink" href="#over-fitting" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>If we have too many features, the learned hypothesis may fit the training set very well
+(<span class="math notranslate nohighlight">\(J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span> -&gt; <span class="math notranslate nohighlight">\(0\)</span>),
+but fail to generalize to new examples (predict prices on new examples).</p>
+</div></blockquote>
+<div class="section" id="addressing-overfitting">
+<h3>Addressing Overfitting:<a class="headerlink" href="#addressing-overfitting" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_{1} =\)</span> size of house</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{2} =\)</span> no. of bedrooms</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{3} =\)</span> no. of floors</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{4} =\)</span> age of house</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{5} =\)</span> average income in neighborhood</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{6} =\)</span> kitchen size</p></li>
+<li><p>…</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{100}\)</span></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="options">
+<h3>Options:<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><dl class="simple">
+<dt>Reduce number of features</dt><dd><ul class="simple">
+<li><p>Manually select which features to keep</p></li>
+<li><p>Model selection algorithm (later in course)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Regularization</dt><dd><ul class="simple">
+<li><p>Keep all the features, but reduce magnitude/values of parameters <span class="math notranslate nohighlight">\(\theta_{j}\)</span></p></li>
+<li><p>Works well when we have a lot of features, each of which contributes a bit to predicting <span class="math notranslate nohighlight">\(y\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h3>Regularization<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>Small values for parameters <span class="math notranslate nohighlight">\(\theta_{1}, \theta_{2}, ..., \theta_{n}\)</span></dt><dd><ul class="simple">
+<li><p>“Simpler” hypothesis</p></li>
+<li><p>Less prone to overfitting</p></li>
+</ul>
+</dd>
+<dt><span class="math notranslate nohighlight">\(J(\theta) = \frac{1}{2m} [ \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 + \lambda \sum_{j=1}^{n} (\theta_{j})^2 ]\)</span></dt><dd><ul class="simple">
+<li><p>Exclude <span class="math notranslate nohighlight">\(\theta_{0}\)</span> for regularization</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../special_apps_topics.html">Special Applications/Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advice.html">Advice on Building a ML System</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../appendix.html">Appendix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="normal_distribution.html">Normal Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="feature_scaling.html">Feature Scaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learning_rate.html">Learning Rate</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Regularization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="checking_for_convergence.html">Checking for Convergence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error_metrics.html">Error Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="better_practices.html">Better Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="artificial%20_data_synthesis.html">Artificial Data Synthesis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tensorflow.html">TensorFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="learning_rate.html" title="Learning Rate"
+              >previous</a> |
+            <a href="checking_for_convergence.html" title="Checking for Convergence"
+              >next</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/_appendix/regularization.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Jian Yuan.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

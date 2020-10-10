@@ -42,6 +42,11 @@ Cost Function
 -------------
 	:math:`J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2`
 
+	Adding :ref:`regularization-label`:
+
+	:math:`J(\Theta) = \frac{1}{2m} [ \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 + \lambda \sum_{j=1}^{n} (\theta_{j})^2 ]`
+		- Exclude :math:`\theta_{0}` for regularization
+
 Gradient Descent
 ----------------
 	Also called Batch Gradient Descent for it's processing all training examples in one batch at every iteration

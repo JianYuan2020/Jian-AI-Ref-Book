@@ -187,29 +187,11 @@ Multi-class Classification: One-vs-All
 		* Train a logistic regression classifier :math:`h_\theta^{(i)} (x)` for each class :math:`i` to predict the probability that :math:`y = i`
 		* On a new input :math:`x`, to make a prediction, pick the class :math:`i` that maximizes :math:`h_\theta^{(i)} (x)`
 
-	TODO: mid week 3
+:ref:`regularization-label`
+----------------------------
+
+	TODO: start Week3_2
 
 	* :math:`y_{n+1}={\begin{cases}2y_{n}&0\leq y_{n}<{\tfrac {1}{2}}\\2y_{n}-1&{\tfrac {1}{2}}\leq y_{n}<1,\end{cases}}`
 
 	:math:`x = {\begin{bmatrix}1&9&-13\\20&5&-6\end{bmatrix}}`
-
-
-
-
-	Also called Batch Gradient Descent for it's processing all training examples in one batch at every iteration. 
-
-	:math:`\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\Theta)`
-
-	Repeat for each iteration {
-
-		:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
-
-		Here :math:`x^{(i)}_{0} = 1`, for every :math:`j = 0, ..., n`
-
-	}
-
-	:math:`\alpha` = :ref:`learning-rate-label`.
-
-Normal Equation
----------------
-	Method to solve for :math:`\Theta` analytically.
