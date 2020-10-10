@@ -85,7 +85,7 @@ Cost Function
 	
 	Logistic Regression
 	
-		* :math:`J(\theta) = \frac{1}{m} \sum_{i=1}^{m} cost(h_\theta (x^{(i)}), y^{(i)})`
+		* :math:`J(\theta) = \frac{1}{m} \sum_{i=1}^{m} Cost(h_\theta (x^{(i)}), y^{(i)})`
 		* :math:`Cost(h_\theta (x^{(i)}), y^{(i)}) = \frac{1}{2} (h_\theta (x^{(i)}) - y^{(i)})^2`
 		
 	Or simply
@@ -113,7 +113,7 @@ Simplified Cost Function and Gradient Descent
 ---------------------------------------------
 	Cost Function
 
-		* :math:`J(\theta) = \frac{1}{m} \sum_{i=1}^{m} cost(h_\theta (x^{(i)}), y^{(i)})`
+		* :math:`J(\theta) = \frac{1}{m} \sum_{i=1}^{m} Cost(h_\theta (x^{(i)}), y^{(i)})`
 		* :math:`Cost(h_\theta (x), y) = {\begin{cases}- \log(h_\theta (x))&y = 1\\- \log(1 - h_\theta (x))&y = 0\end{cases}}`
 
 	Therefore
@@ -121,10 +121,71 @@ Simplified Cost Function and Gradient Descent
 		* :math:`Cost(h_\theta (x), y) = -y \log(h_\theta (x)) -(1 - y) \log(1 - h_\theta (x))`, :math:`y \in` { :math:`0, 1` }
 		* :math:`J(\theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log(h_\theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta (x^{(i)})) ]`
 
-		* To fit parameters :math:`\theta`: minimize :math:`J(\theta)`
-		* To make a prediction given new: :math:`x`, compute output :math:`h_\theta (x) = \frac{1}{1 + e^{-\theta^{T} x}}`
+	* To fit parameters :math:`\theta`: minimize :math:`J(\theta)`
+	* To make a prediction given new: :math:`x`, compute output :math:`h_\theta (x) = \frac{1}{1 + e^{-\theta^{T} x}}`
+	* Recall :math:`h_\theta (x) = P(y = 1|x; \theta)`
 
 	Gradient Descent
+
+		:math:`J(\theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log(h_\theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta (x^{(i)})) ]`
+
+		Want to minimize :math:`J(\theta)`
+
+		Repeat for each iteration {
+
+			:math:`\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\theta) = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
+			
+			(for every :math:`j = 0, ..., n`)
+
+		}
+
+		:math:`\alpha` = :ref:`learning-rate-label`
+
+		Algorithm looks identical to linear regression!
+
+Advanced Optimization
+---------------------
+	Optimization Algorithm
+		* Cost function :math:`J(\theta)`. Want to minimize :math:`J(\theta)`
+		* Given :math:`\theta`, we have code that can compute
+			- :math:`J(\theta)`
+			- :math:`\frac{\partial }{\partial \theta_{j}} J(\theta)` (for every :math:`j = 0, ..., n`)
+		* Gradient Descent:
+			Repeat for each iteration {
+
+				:math:`\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\theta)`
+
+			}
+
+	Optimization Algorithms:
+		* Gradient descent
+		* Conjugate gradient
+		* BFGS
+		* L-BFGS
+
+	Advantages:
+		* No need to manually pick :math:`\alpha`
+		* Often faster than gradient descent
+		
+	Disadvantages:
+		* More complex
+
+Multi-class Classification: One-vs-All
+--------------------------------------
+	Multiclass Classification:
+		* Email foldering/tagging: Work, Friends, Family, Hobby (:math:`y \in` { :math:`1, 2, 3, 4` })
+		* Medical diagrams: Not ill, Cold, Flu (:math:`y \in` { :math:`1, 2, 3` })
+		* Weather: Sunny, Cloudy, Rain, Snow (:math:`y \in` { :math:`1, 2, 3, 4` })
+		
+	One-vs-all (one-vs-rest):
+		* Class 1: 
+		* Class 2: 
+		* Class 3: 
+		* :math:`h_\theta^{(i)} (x) = P(y = i|x; \theta)` (:math:`i \in` { :math:`1, 2, 3` })
+
+	One-vs-All:
+		* Train a logistic regression classifier :math:`h_\theta^{(i)} (x)` for each class :math:`i` to predict the probability that :math:`y = i`
+		* On a new input :math:`x`, to make a prediction, pick the class :math:`i` that maximizes :math:`h_\theta^{(i)} (x)`
 
 	TODO: mid week 3
 
