@@ -42,11 +42,6 @@ Cost Function
 -------------
 	:math:`J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2`
 
-	Adding :ref:`regularization-label`:
-
-	:math:`J(\Theta) = \frac{1}{2m} [ \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 + \lambda \sum_{j=1}^{n} (\theta_{j})^2 ]`
-		- Exclude :math:`\theta_{0}` for regularization
-
 Gradient Descent
 ----------------
 	Also called Batch Gradient Descent for it's processing all training examples in one batch at every iteration
@@ -55,11 +50,37 @@ Gradient Descent
 
 	Repeat for each iteration {
 
-		:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}` (for every :math:`j = 0, ..., n`)
+		:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`; (:math:`x_{0}^{(i)} = 1`, :math:`j = 0, ..., n`)
 
 	}
 
 	:math:`\alpha` = :ref:`learning-rate-label`
+
+Regularized Linear Regression
+-----------------------------
+
+	Adding :ref:`regularization-label` to avoid overfitting:
+
+Cost Function
+^^^^^^^^^^^^^
+	:math:`J(\theta) = \frac{1}{2m} [ \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 + \lambda \sum_{j=1}^{n} \theta_{j}^2 ]`
+			- Exclude :math:`\theta_{0}` for regularization
+
+	:math:`\min_{\theta} J(\theta)`
+
+Gradient descent
+^^^^^^^^^^^^^^^^
+	
+	Repeat for each iteration {
+
+		:math:`\theta_{0} = \theta_{0} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{0}`; (:math:`j = 0`)
+
+		:math:`\theta_{j} = \theta_{j} - \alpha [\frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j} + 
+		\frac{\lambda}{m} \theta_{j}]`; (:math:`j = 1, ..., n`)
+
+	}
+
+	:math:`\theta_{j} = \theta_{j} (1 - \alpha \frac{\lambda}{m}) - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`; (:math:`j = 1, ..., n`)
 
 :ref:`feature-scaling-label`
 ----------------------------
@@ -80,7 +101,7 @@ Normal Equation
 		* Set :math:`\frac{\partial }{\partial \theta_{j}} J(\Theta) = 0` (for every :math:`j = 0, ..., n`)
 		* Solve for :math:`\theta_{0}, \theta_{1}, \theta_{2}, ..., \theta_{n}`
 
-	Let :math:`X \in \mathbb {R^{m * (n + 1)}}` and :math:`y \in \mathbb {R^{m}}`
+	Let :math:`X \in \mathbb {R^{m*(n+1)}}` and :math:`y \in \mathbb {R^{m}}`
 
 		:math:`\theta = (X^{T} X)^{-1} X^{T} y \in \mathbb {R^{n + 1}}`
 
@@ -90,6 +111,16 @@ Octave Code
 .. code-block:: octave 
 
 	theta = pinv(X' * X) * X' * y
+
+Regularized Normal Equation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	:math:`X = {\begin{bmatrix}(x^{(1)})^T\\...\\(x^{(m)})^T\end{bmatrix}} \in \mathbb {R^{m*(n+1)}}`, :math:`y = {\begin{bmatrix}y^{(1)}\\...\\y^{(m)}\end{bmatrix}} \in \mathbb {R^{m}}`
+
+	:math:`\min_{\theta} J(\theta)`
+
+	Let :math:`I_{\theta} = {\begin{bmatrix}0&0&0&...&0\\0&1&0&...&0\\0&0&1&...&0\\...\\0&0&0&...&1\end{bmatrix}} \in \mathbb {R^{(n+1)*(n+1)}}`
+
+	:math:`\theta = (X^{T} X + \lambda I_{\theta})^{-1} X^{T} y \in \mathbb {R^{n + 1}}`
 
 Gradient Descent vs. Normal Equation
 ------------------------------------
@@ -109,8 +140,8 @@ Gradient Descent vs. Normal Equation
 	* Need to compute :math:`(X^{T} X)^{-1} \in \mathbb {R^{n * n}}`, ~ :math:`O(n^{3})`
 	* Slow if :math:`n` is very large, OK with :math:`n = 100; n = 1000`, move to Gradient Descent when :math:`n = 10000`
 
-Non-invertible?
----------------
+Non-invertibility
+-----------------
 
 	What if :math:`X^{T} X` is non-invertible? (singular/degenerate)
 
@@ -120,6 +151,7 @@ Non-invertible?
 			* :math:`x_{1} =` size in feet
 			* :math:`x_{2} =` size in meter -> **need to delete this feature**
 
-	* Too many features (e.g. :math:`m <= n`)
+	* Too many features (e.g. :math:`m <= n`), :math:`pinv()` vs. :math:`inv()`
 
-		Delete some features, or use regularization
+		* Delete some features, or use regularization
+		* If :math:`\lambda > 0`, :math:`(X^{T} X + \lambda I_{\theta})^{-1}` is invertible

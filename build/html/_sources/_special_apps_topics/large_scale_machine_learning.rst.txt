@@ -27,7 +27,7 @@ Linear Regression with Batch Gradient Descent
 	:math:`j` for just one learning iteration. When :math:`m` is very large, i.e. :math:`m = 300,000,000`, 
 	computation becomes very expensive and time consuming. 
 	
-	All :math:`m` training examples need to be computed for every :math:`j` => :math:`m * (n + 1)` times for 
+	All :math:`m` training examples need to be computed for every :math:`j` => :math:`m*(n+1)` times for 
 	just one learning iteration.
 
 .. toctree::

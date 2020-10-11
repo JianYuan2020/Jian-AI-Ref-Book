@@ -23,9 +23,9 @@ Appropriate Fitting
 	
 Over Fitting
 ------------
-	If we have too many features, the learned hypothesis may fit the training set very well 
-	(:math:`J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2` -> :math:`0`), 
-	but fail to generalize to new examples (predict prices on new examples).
+	If we have too many features, the learned hypothesis may fit the training set very well, 
+	:math:`J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2` -> :math:`0`, 
+	but fail to generalize to new examples.
 
 Addressing Overfitting:
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -54,8 +54,14 @@ Regularization
 		- "Simpler" hypothesis
 		- Less prone to overfitting
 
-	:math:`J(\theta) = \frac{1}{2m} [ \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 + \lambda \sum_{j=1}^{n} (\theta_{j})^2 ]`
+	:math:`J(\theta) = \frac{1}{2m} [ \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 + \lambda \sum_{j=1}^{n} \theta_{j}^2 ]`
 		- Exclude :math:`\theta_{0}` for regularization
+
+	What if :math:`\lambda` is set to an extremely large value (perhaps too large for our problem, say :math:`\lambda = 10^{10}`)?
+		- Algorithm works fine; setting to be very large can't hurt it
+		- Algortihm fails to eliminate overfitting
+		- Algorithm results in underfitting (Fails to fit even training data well)
+		- Gradient descent will fail to converge
 
 TODO: mid Week3_2
 

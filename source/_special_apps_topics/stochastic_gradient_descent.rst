@@ -51,7 +51,7 @@ Mini-batch Gradient Descent
 	
 			} for each training examples :math:`(x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)})`
 
-		}
+	}
 
 	Here :math:`b` training examples are being used (therefore Mini-batch) to learn gradient descent for every :math:`j`. 
 	Repeat the learning over the rest of the training examples. For one iteration, each training examples is computed once.

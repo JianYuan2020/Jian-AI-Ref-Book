@@ -129,7 +129,7 @@ Simplified Cost Function and Gradient Descent
 
 		:math:`J(\theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log(h_\theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta (x^{(i)})) ]`
 
-		Want to minimize :math:`J(\theta)`
+		:math:`\min_{\theta} J(\theta)`
 
 		Repeat for each iteration {
 
@@ -191,5 +191,3 @@ Multi-class Classification: One-vs-All
 ----------------------------
 
 	* :math:`y_{n+1}={\begin{cases}2y_{n}&0\leq y_{n}<{\tfrac {1}{2}}\\2y_{n}-1&{\tfrac {1}{2}}\leq y_{n}<1,\end{cases}}`
-
-	:math:`x = {\begin{bmatrix}1&9&-13\\20&5&-6\end{bmatrix}}`

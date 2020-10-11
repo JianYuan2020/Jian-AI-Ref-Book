@@ -85,7 +85,6 @@ enough accuracy. Normally after <span class="math notranslate nohighlight">\(1 -
 <p>Say <span class="math notranslate nohighlight">\(b = 10, m = 1000\)</span>.</p>
 <p>Repeat for each iteration {</p>
 <blockquote>
-<div><blockquote>
 <div><p>for <span class="math notranslate nohighlight">\(i = 1, 11, 21, 31, ..., 991\)</span> {</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{10} \sum_{k=i}^{i + 9} (h_\theta (x^{(k)}) - y^{(k)}) x^{(k)}_{j}\)</span></p>
@@ -94,7 +93,6 @@ enough accuracy. Normally after <span class="math notranslate nohighlight">\(1 -
 <p>} for each training examples <span class="math notranslate nohighlight">\((x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)})\)</span></p>
 </div></blockquote>
 <p>}</p>
-</div></blockquote>
 <p>Here <span class="math notranslate nohighlight">\(b\)</span> training examples are being used (therefore Mini-batch) to learn gradient descent for every <span class="math notranslate nohighlight">\(j\)</span>.
 Repeat the learning over the rest of the training examples. For one iteration, each training examples is computed once.</p>
 </div></blockquote>
@@ -118,11 +116,13 @@ Repeat the learning over the rest of the training examples. For one iteration, e
 <li class="toctree-l1 current"><a class="reference internal" href="../special_apps_topics.html">Special Applications/Topics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="recommender_systems.html">Recommender Systems</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="large_scale_machine_learning.html">Large Scale Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_learning.html">Reinforcement Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generative_adversarial_network.html">Generative Adversarial Network</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../advice.html">Advice on Building a ML System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tensorflow.html">TensorFlow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
 
