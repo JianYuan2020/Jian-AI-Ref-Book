@@ -11,7 +11,7 @@ Let's define:
 	* :math:`x^{(i)}` = input (features) of :math:`i^{th}` training example
 	* :math:`x^{(i)}_{j}` = value of feature :math:`j` in :math:`i^{th}` training example
 	* :math:`x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ...; x^{(i)}_{j}; ...; x^{(i)}_{n} ] \in \mathbb {R^{n}}`
-	* :math:`X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ...; (x^{(i)})^{T}; ...; (x^{(m)})^{T} ] \in \mathbb {R^{m * n}}`
+	* :math:`X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ...; (x^{(i)})^{T}; ...; (x^{(m)})^{T} ] \in \mathbb {R^{m*n}}`
 
 Hypothesis
 ----------

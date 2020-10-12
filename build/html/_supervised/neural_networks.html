@@ -46,36 +46,103 @@
 <span id="neural-networks-label"></span><h1>Neural Networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><ul class="simple">
+<li><p>Origins: Algorithms that try to mimic the brain</p></li>
+<li><p>Was very widely used in 80s and early 90s; popularity diminished in late 90s</p></li>
+<li><p>Recent resurgence: State-of-the-art technique for many applications</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="neural-networks-representation">
+<h2>Neural Networks: Representation<a class="headerlink" href="#neural-networks-representation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
 <li><p>Non-linear Hypotheses</p></li>
 <li><p>Non-linear Classification</p></li>
 <li><p>Computer Vision: Car detection</p></li>
 </ul>
 </div></blockquote>
 <div class="section" id="neurons-and-the-brain">
-<h2>Neurons and the Brain<a class="headerlink" href="#neurons-and-the-brain" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>Neural Networks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>Neurons and the Brain<a class="headerlink" href="#neurons-and-the-brain" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><ul class="simple">
-<li><p>Origins: Algorithms that try to mimic the brain</p></li>
-<li><p>Was very widely used in 80s and early 90s; popularity diminished in late 90s</p></li>
-<li><p>Recent resurgence: State-of-the-art technique for many applications</p></li>
-</ul>
-<p>The “one learning algorithm” hypothesis</p>
+<div><p>The “one learning algorithm” hypothesis</p>
 </div></blockquote>
-<a class="reference internal image-reference" href="../_images/nn_auditory_cortex_learns_to_see.png"><img alt="../_images/nn_auditory_cortex_learns_to_see.png" class="align-center" src="../_images/nn_auditory_cortex_learns_to_see.png" style="width: 300pt;" /></a>
-<p>TODO: week 4</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../_images/nn_auditory_cortex_learns_to_see.png"><img alt="nn1" src="../_images/nn_auditory_cortex_learns_to_see.png" style="width: 329.0px; height: 178.5px;" /></a></p></td>
+<td><p><a class="reference internal" href="../_images/nn_somatosensory_cortex_learns_to_see.png"><img alt="nn2" src="../_images/nn_somatosensory_cortex_learns_to_see.png" style="width: 357.0px; height: 178.5px;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="model-representation-i">
+<h2>Model Representation I<a class="headerlink" href="#model-representation-i" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="neuron-and-the-brain">
+<h3>Neuron and the Brain<a class="headerlink" href="#neuron-and-the-brain" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/nn_neuron.png" class="align-center" src="../_images/nn_neuron.png" />
+</div>
+<div class="section" id="neuron-model-logistic-unit">
+<h3>Neuron Model: Logistic Unit<a class="headerlink" href="#neuron-model-logistic-unit" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/nn_input_output.png" class="align-center" src="../_images/nn_input_output.png" />
 <dl class="simple">
 <dt>Let’s define:</dt><dd><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(n\)</span> = number of features.</p></li>
-<li><p><span class="math notranslate nohighlight">\(m\)</span> = number of training examples.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x^{(i)}\)</span> = input (features) of <span class="math notranslate nohighlight">\(i^{th}\)</span> training example.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x^{(i)}_{j}\)</span> = value of feature <span class="math notranslate nohighlight">\(j\)</span> in <span class="math notranslate nohighlight">\(i^{th}\)</span> training example.</p></li>
-<li><p><span class="math notranslate nohighlight">\(x^{(i)} = [ x^{(i)}_{1}; x^{(i)}_{2}; ...; x^{(i)}_{j}; ...; x^{(i)}_{n} ]\)</span> - <span class="math notranslate nohighlight">\(n * 1\)</span> column vector.</p></li>
-<li><p><span class="math notranslate nohighlight">\(X = [ (x^{(1)})^{T}; (x^{(2)})^{T}; ...; (x^{(i)})^{T}; ...; (x^{(m)})^{T} ]\)</span> - <span class="math notranslate nohighlight">\(m * n\)</span> matrix.</p></li>
+<li><p><span class="math notranslate nohighlight">\(a^{(j)}_{i}\)</span> = “activation” of unit <span class="math notranslate nohighlight">\(i\)</span> in layer <span class="math notranslate nohighlight">\(j\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Theta^{(j)}\)</span> = matrix of weights controlling function mapping from layer <span class="math notranslate nohighlight">\(j\)</span> to layer <span class="math notranslate nohighlight">\(j + 1\)</span></p></li>
 </ul>
 </dd>
 </dl>
+<img alt="../_images/nn_input_hidden_output.png" class="align-center" src="../_images/nn_input_hidden_output.png" />
+<dl class="simple">
+<dt>Here:</dt><dd><ul class="simple">
+<li><p>Input layer 1 has 3 units: <span class="math notranslate nohighlight">\(x_{1}, x_{2}, x_{3}\)</span>; <span class="math notranslate nohighlight">\(\Theta^{(1)} \in \mathbb {R^{3*4}}\)</span></p></li>
+<li><p>Hidden layer 2 has 3 units: <span class="math notranslate nohighlight">\(a^{(2)}_{1}, a^{(2)}_{2}, a^{(2)}_{3}\)</span>; <span class="math notranslate nohighlight">\(\Theta^{(2)} \in \mathbb {R^{4}}\)</span></p></li>
+<li><p>Output layer 3 has 1 unit: <span class="math notranslate nohighlight">\(a^{(3)}_{1} = y = h_{\Theta}(x)\)</span></p></li>
+</ul>
+</dd>
+<dt>Add “bias unit”, <span class="math notranslate nohighlight">\(x_{0} = 1\)</span>, compute for Hidden layer 2:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a^{(2)}_{1} = g(\Theta^{(1)}_{10} x_{0} + \Theta^{(1)}_{11} x_{1} + \Theta^{(1)}_{12} x_{2} + \Theta^{(1)}_{13} x_{3})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a^{(2)}_{2} = g(\Theta^{(1)}_{20} x_{0} + \Theta^{(1)}_{21} x_{1} + \Theta^{(1)}_{22} x_{2} + \Theta^{(1)}_{23} x_{3})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a^{(2)}_{3} = g(\Theta^{(1)}_{30} x_{0} + \Theta^{(1)}_{31} x_{1} + \Theta^{(1)}_{32} x_{2} + \Theta^{(1)}_{33} x_{3})\)</span></p></li>
+</ul>
+</dd>
+<dt>Add “bias unit”, <span class="math notranslate nohighlight">\(a^{(2)}_{0} = 1\)</span>, compute for Output layer 3:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h_{\Theta}(x) = a^{(3)}_{1} = g(\Theta^{(2)}_{10} a^{(2)}_{0} + \Theta^{(2)}_{11} a^{(2)}_{1} + \Theta^{(2)}_{12} a^{(2)}_{2} + \Theta^{(2)}_{13} a^{(2)}_{3})\)</span></p></li>
+</ul>
+</dd>
+</dl>
+<p>If network has <span class="math notranslate nohighlight">\(s_{j}\)</span> units in layer <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\(s_{j+1}\)</span> units in layer <span class="math notranslate nohighlight">\(j+1\)</span>, then <span class="math notranslate nohighlight">\(\Theta^{(j)}\)</span>
+will be of dimension <span class="math notranslate nohighlight">\(s_{j+1}*(s_{j}+1)\)</span>. <span class="math notranslate nohighlight">\(\Theta^{(j)} \in \mathbb {R^{s_{j+1}*(s_{j}+1)}}\)</span></p>
+</div>
+</div>
+<div class="section" id="model-representation-ii">
+<h2>Model Representation II<a class="headerlink" href="#model-representation-ii" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="forward-propagation-vectorized-implementation">
+<h3>Forward Propagation: Vectorized Implementation<a class="headerlink" href="#forward-propagation-vectorized-implementation" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a^{(1)} = x = {\begin{bmatrix}x_{0}\\x_{1}\\x_{2}\\x_{3}\end{bmatrix}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(z^{(2)} = {\begin{bmatrix}z^{(2)}_{1}\\z^{(2)}_{2}\\z^{(2)}_{3}\end{bmatrix}} = \Theta^{(1)} a^{(1)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a^{(2)} = g(z^{(2)}) \in \mathbb {R^{3}}\)</span>, add <span class="math notranslate nohighlight">\(a^{(2)}_{0} = 1\)</span>, <span class="math notranslate nohighlight">\(a^{(2)} \in \mathbb {R^{4}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(z^{(3)} = \Theta^{(2)} a^{(2)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(h_{\Theta}(x) = a^{(3)}_{1} = g(z^{(3)})\)</span></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Neural Network learning its own features</p></li>
+<li><p>Other network architectures can have many hidden layers between the input layer and the output layer</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/nn_multiple_hidden_layers.png"><img alt="../_images/nn_multiple_hidden_layers.png" class="align-center" src="../_images/nn_multiple_hidden_layers.png" style="width: 814.0px; height: 472.0px;" /></a>
+</div>
+<div class="section" id="multi-class-classification">
+<h3>Multi-class Classification<a class="headerlink" href="#multi-class-classification" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Multiple output units: One-vs-all</p>
+</div></blockquote>
+<img alt="../_images/nn_multiple_output_units.png" class="align-center" src="../_images/nn_multiple_output_units.png" />
+<p>TODO: week 5</p>
 </div>
 </div>
 <div class="section" id="hypothesis">
