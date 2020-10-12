@@ -62,6 +62,3 @@ Regularization
 		- Algortihm fails to eliminate overfitting
 		- Algorithm results in underfitting (Fails to fit even training data well)
 		- Gradient descent will fail to converge
-
-TODO: mid Week3_2
-

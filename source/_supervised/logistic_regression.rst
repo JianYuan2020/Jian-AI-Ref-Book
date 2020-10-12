@@ -80,7 +80,7 @@ Decision Boundary
 Cost Function
 -------------
 	* Training set, :math:`m` examples: :math:`{ (x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), ..., (x^{(m)}, y^{(m)}) }`
-	* :math:`x = {\begin{bmatrix}x_{0}\\x_{1}\\...\\x_{n}\end{bmatrix}} \in \mathbb {R^{n + 1}}`, :math:`x_{0} = 1`, :math:`y \in` { :math:`0, 1` }
+	* :math:`x = {\begin{bmatrix}x_{0}\\x_{1}\\...\\x_{n}\end{bmatrix}} \in \mathbb {R^{n+1}}`, :math:`x_{0} = 1`, :math:`y \in` { :math:`0, 1` }
 	* For :math:`h_\theta (x) = \frac{1}{1 + e^{-\theta^{T} x}}`, how to choose parameters :math:`\theta`?
 	
 	Logistic Regression
@@ -133,15 +133,39 @@ Simplified Cost Function and Gradient Descent
 
 		Repeat for each iteration {
 
-			:math:`\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\theta) = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
+			:math:`\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\theta) = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}` (:math:`j = 0, ..., n`)
 			
-			(for every :math:`j = 0, ..., n`)
-
 		}
 
 		:math:`\alpha` = :ref:`learning-rate-label`
 
 		Algorithm looks identical to linear regression!
+
+Regularized Logistic Regression
+-------------------------------
+
+	Adding :ref:`regularization-label` to avoid overfitting:
+
+Cost Function
+^^^^^^^^^^^^^
+	:math:`J(\theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log(h_\theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta (x^{(i)})) ] + 
+	\frac{\lambda}{2m} \sum_{j=1}^{n} \theta_{j}^2`
+
+		- Exclude :math:`\theta_{0}` for regularization
+
+Gradient descent
+^^^^^^^^^^^^^^^^
+	
+	Repeat for each iteration {
+
+		:math:`\theta_{0} = \theta_{0} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{0}`; (:math:`j = 0`)
+
+		:math:`\theta_{j} = \theta_{j} - \alpha [\frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j} + 
+		\frac{\lambda}{m} \theta_{j}]`; (:math:`j = 1, ..., n`)
+
+	}
+
+TODO: mid Week3_2
 
 Advanced Optimization
 ---------------------

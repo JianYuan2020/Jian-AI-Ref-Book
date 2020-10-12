@@ -19,7 +19,7 @@ Hypothesis
 
 	Let: :math:`x_{0} = 1` and :math:`x^{(i)}_{0} = 1`:
 
-	:math:`x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ]` - :math:`(n + 1) * 1` column vector.
+	:math:`x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ]` - :math:`(n+1) * 1` column vector.
 
 Parameters
 ----------

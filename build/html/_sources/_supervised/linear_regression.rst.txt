@@ -19,11 +19,11 @@ Hypothesis
 
 	Let: :math:`x_{0} = 1` (:math:`x^{(i)}_{0} = 1` for every :math:`i = 1, ..., m`):
 
-	:math:`x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ] \in \mathbb {R^{n + 1}}`
+	:math:`x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ] \in \mathbb {R^{n+1}}`
 
 Parameters
 ----------
-	:math:`\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ...; \theta_{j}; ...; \theta_{n} ] \in \mathbb {R^{n + 1}}`
+	:math:`\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ...; \theta_{j}; ...; \theta_{n} ] \in \mathbb {R^{n+1}}`
 
 	Therefore:
 
@@ -64,7 +64,7 @@ Regularized Linear Regression
 Cost Function
 ^^^^^^^^^^^^^
 	:math:`J(\theta) = \frac{1}{2m} [ \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 + \lambda \sum_{j=1}^{n} \theta_{j}^2 ]`
-			- Exclude :math:`\theta_{0}` for regularization
+		- Exclude :math:`\theta_{0}` for regularization
 
 	:math:`\min_{\theta} J(\theta)`
 
@@ -91,7 +91,7 @@ Features and Polynomial Regression
 	When adding features: :math:`x^{2}, x^{3}, ...` and/or :math:`x_{1}^{2}, x_{1} x_{2}, x_{2}^{2}, ...` 
 	we can extend linear into complex shapes to better fit our training examples.
 
-	Let :math:`x_{n + 1} = x_{1}^{2}, x_{n + 2} = x_{1} x_{2}, x_{n + 3} = x_{2}^{2}, ...` 
+	Let :math:`x_{n+1} = x_{1}^{2}, x_{n+2} = x_{1} x_{2}, x_{n+3} = x_{2}^{2}, ...` 
 	We can continuously call this linear regression.
 
 Normal Equation
@@ -103,7 +103,7 @@ Normal Equation
 
 	Let :math:`X \in \mathbb {R^{m*(n+1)}}` and :math:`y \in \mathbb {R^{m}}`
 
-		:math:`\theta = (X^{T} X)^{-1} X^{T} y \in \mathbb {R^{n + 1}}`
+		:math:`\theta = (X^{T} X)^{-1} X^{T} y \in \mathbb {R^{n+1}}`
 
 Octave Code
 -----------
@@ -120,7 +120,7 @@ Regularized Normal Equation
 
 	Let :math:`I_{\theta} = {\begin{bmatrix}0&0&0&...&0\\0&1&0&...&0\\0&0&1&...&0\\...\\0&0&0&...&1\end{bmatrix}} \in \mathbb {R^{(n+1)*(n+1)}}`
 
-	:math:`\theta = (X^{T} X + \lambda I_{\theta})^{-1} X^{T} y \in \mathbb {R^{n + 1}}`
+	:math:`\theta = (X^{T} X + \lambda I_{\theta})^{-1} X^{T} y \in \mathbb {R^{n+1}}`
 
 Gradient Descent vs. Normal Equation
 ------------------------------------

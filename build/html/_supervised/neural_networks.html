@@ -15,13 +15,19 @@
     <script src="../_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Support Vector Machines" href="support_vector_machines.html" />
+    <link rel="prev" title="Logistic Regression" href="logistic_regression.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="../index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="logistic_regression.html" title="Logistic Regression"
+             accesskey="P">previous</a> |
+          <a href="support_vector_machines.html" title="Support Vector Machines"
+             accesskey="N">next</a> |
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a>
         </div>
@@ -55,7 +61,7 @@
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}\)</span></p>
 <p>Let: <span class="math notranslate nohighlight">\(x_{0} = 1\)</span> and <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>:</p>
-<p><span class="math notranslate nohighlight">\(x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ]\)</span> - <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p>
+<p><span class="math notranslate nohighlight">\(x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ]\)</span> - <span class="math notranslate nohighlight">\((n+1) * 1\)</span> column vector.</p>
 </div></blockquote>
 </div>
 <div class="section" id="parameters">
@@ -105,10 +111,21 @@
           
           <h3>Table of Contents</h3>
           <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning.html">Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_appendix/appendix.html">Appendix</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../supervised_learning.html">Supervised learning</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logistic_regression.html">Logistic Regression</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support_vector_machines.html">Support Vector Machines</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../special_apps_topics.html">Special Applications/Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advice.html">Advice on Building a ML System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tensorflow.html">TensorFlow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 </ul>
 
@@ -129,6 +146,10 @@
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
+            <a href="logistic_regression.html" title="Logistic Regression"
+              >previous</a> |
+            <a href="support_vector_machines.html" title="Support Vector Machines"
+              >next</a> |
             <a href="../genindex.html" title="General Index"
               >index</a>
           </div>
