@@ -213,7 +213,7 @@
 </ul>
 </div></blockquote>
 <ul class="simple">
-<li><p>To fit parameters <span class="math notranslate nohighlight">\(\theta\)</span>: minimize <span class="math notranslate nohighlight">\(J(\theta)\)</span></p></li>
+<li><p>To fit parameters <span class="math notranslate nohighlight">\(\theta\)</span>: <span class="math notranslate nohighlight">\(\min_{\theta} J(\theta)\)</span></p></li>
 <li><p>To make a prediction given new: <span class="math notranslate nohighlight">\(x\)</span>, compute output <span class="math notranslate nohighlight">\(h_\theta (x) = \frac{1}{1 + e^{-\theta^{T} x}}\)</span></p></li>
 <li><p>Recall <span class="math notranslate nohighlight">\(h_\theta (x) = P(y = 1|x; \theta)\)</span></p></li>
 </ul>
@@ -233,6 +233,9 @@
 </div>
 <div class="section" id="regularized-logistic-regression">
 <h2>Regularized Logistic Regression<a class="headerlink" href="#regularized-logistic-regression" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Adding <a class="reference internal" href="../_appendix/regularization.html#regularization-label"><span class="std std-ref">Regularization</span></a> to avoid overfitting:</p>
+</div></blockquote>
 <div class="section" id="id1">
 <h3>Cost Function<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <blockquote>
@@ -248,7 +251,8 @@
 <div class="section" id="gradient-descent">
 <h3>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>Repeat for each iteration {</p>
+<div><p><span class="math notranslate nohighlight">\(\min_{\theta} J(\theta)\)</span></p>
+<p>Repeat for each iteration {</p>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\theta_{0} = \theta_{0} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{0}\)</span>; (<span class="math notranslate nohighlight">\(j = 0\)</span>)</p>
 <p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha [\frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j} +
@@ -264,11 +268,11 @@
 <blockquote>
 <div><dl>
 <dt>Optimization Algorithm</dt><dd><ul>
-<li><p>Cost function <span class="math notranslate nohighlight">\(J(\theta)\)</span>. Want to minimize <span class="math notranslate nohighlight">\(J(\theta)\)</span></p></li>
+<li><p>Cost function <span class="math notranslate nohighlight">\(J(\theta)\)</span>. <span class="math notranslate nohighlight">\(\min_{\theta} J(\theta)\)</span></p></li>
 <li><dl class="simple">
 <dt>Given <span class="math notranslate nohighlight">\(\theta\)</span>, we have code that can compute</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(J(\theta)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_{j}} J(\theta)\)</span> (for every <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_{j}} J(\theta)\)</span>; (<span class="math notranslate nohighlight">\(j = 0, ..., n\)</span>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -326,12 +330,7 @@
 </ul>
 </dd>
 </dl>
-</div></blockquote>
-</div>
-<div class="section" id="regularization-label">
-<h2><a class="reference internal" href="../_appendix/regularization.html#regularization-label"><span class="std std-ref">Regularization</span></a><a class="headerlink" href="#regularization-label" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(y_{n+1}={\begin{cases}2y_{n}&amp;0\leq y_{n}&lt;{\tfrac {1}{2}}\\2y_{n}-1&amp;{\tfrac {1}{2}}\leq y_{n}&lt;1,\end{cases}}\)</span></p></li>
 </ul>
 </div></blockquote>

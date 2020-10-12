@@ -29,7 +29,7 @@ Map-reduce and data parallelism.
 
 		:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{400} (temp^{(1)}_{j} + temp^{(2)}_{j} + temp^{(3)}_{j} + temp^{(4)}_{j})`
 
-		for every :math:`j = 0, ..., n`
+		:math:`j = 0, ..., n`
 
 Many learning algorithms can be expressed as computing sums of functions over the training set.
 
@@ -39,4 +39,4 @@ E.g. for advanced optimization, with logistic regression, need:
 
 	:math:`\frac{\partial }{\partial \theta_{j}} J_{Train}(\theta) = \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
 
-	for every :math:`j = 0, ..., n`
+	:math:`j = 0, ..., n`

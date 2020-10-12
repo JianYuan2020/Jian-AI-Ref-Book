@@ -18,7 +18,7 @@ Stochastic Gradient Descent
 		
 				:math:`\theta_{j} = \theta_{j} - \alpha (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
 
-				Here :math:`x^{(i)}_{0} = 1`, for every :math:`j = 0, ..., n`
+				Here :math:`x^{(i)}_{0} = 1`, :math:`j = 0, ..., n`
 	
 			} for each training examples :math:`(x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)})`
 
@@ -47,7 +47,7 @@ Mini-batch Gradient Descent
 		
 				:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{10} \sum_{k=i}^{i + 9} (h_\theta (x^{(k)}) - y^{(k)}) x^{(k)}_{j}`
 
-				Here :math:`x^{(k)}_{0} = 1`, for every :math:`j = 0, ..., n`
+				Here :math:`x^{(k)}_{0} = 1`, :math:`j = 0, ..., n`
 	
 			} for each training examples :math:`(x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)})`
 

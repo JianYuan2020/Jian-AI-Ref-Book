@@ -17,7 +17,7 @@ Hypothesis
 ----------
 	:math:`h_\theta (x) = \theta_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}`
 
-	Let: :math:`x_{0} = 1` (:math:`x^{(i)}_{0} = 1` for every :math:`i = 1, ..., m`):
+	Let: :math:`x_{0} = 1` (:math:`x^{(i)}_{0} = 1`, :math:`i = 1, ..., m`):
 
 	:math:`x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ] \in \mathbb {R^{n+1}}`
 
@@ -98,7 +98,7 @@ Normal Equation
 ---------------
 	Method to solve for :math:`\Theta` analytically
 
-		* Set :math:`\frac{\partial }{\partial \theta_{j}} J(\Theta) = 0` (for every :math:`j = 0, ..., n`)
+		* Set :math:`\frac{\partial }{\partial \theta_{j}} J(\Theta) = 0` (:math:`j = 0, ..., n`)
 		* Solve for :math:`\theta_{0}, \theta_{1}, \theta_{2}, ..., \theta_{n}`
 
 	Let :math:`X \in \mathbb {R^{m*(n+1)}}` and :math:`y \in \mathbb {R^{m}}`

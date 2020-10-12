@@ -45,7 +45,7 @@ Gradient Descent
 
 		:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
 
-		Here :math:`x^{(i)}_{0} = 1`, for every :math:`j = 0, ..., n`
+		Here :math:`x^{(i)}_{0} = 1`, :math:`j = 0, ..., n`
 
 	}
 

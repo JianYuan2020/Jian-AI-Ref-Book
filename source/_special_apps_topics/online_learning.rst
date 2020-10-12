@@ -28,7 +28,7 @@ Online Learning
 		
 			:math:`\theta_{j} = \theta_{j} - \alpha (h_\theta (x) - y) x_{j}`
 
-			Here :math:`x_{0} = 1`, for every :math:`j = 0, ..., n`
+			Here :math:`x_{0} = 1`, :math:`j = 0, ..., n`
 	
 		} throw out :math:`(x, y)` after computation
 

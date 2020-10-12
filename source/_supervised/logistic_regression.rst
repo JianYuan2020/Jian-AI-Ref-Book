@@ -121,7 +121,7 @@ Simplified Cost Function and Gradient Descent
 		* :math:`Cost(h_\theta (x), y) = -y \log(h_\theta (x)) -(1 - y) \log(1 - h_\theta (x))`, :math:`y \in` { :math:`0, 1` }
 		* :math:`J(\theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log(h_\theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta (x^{(i)})) ]`
 
-	* To fit parameters :math:`\theta`: minimize :math:`J(\theta)`
+	* To fit parameters :math:`\theta`: :math:`\min_{\theta} J(\theta)`
 	* To make a prediction given new: :math:`x`, compute output :math:`h_\theta (x) = \frac{1}{1 + e^{-\theta^{T} x}}`
 	* Recall :math:`h_\theta (x) = P(y = 1|x; \theta)`
 
@@ -143,7 +143,6 @@ Simplified Cost Function and Gradient Descent
 
 Regularized Logistic Regression
 -------------------------------
-
 	Adding :ref:`regularization-label` to avoid overfitting:
 
 Cost Function
@@ -155,6 +154,7 @@ Cost Function
 
 Gradient descent
 ^^^^^^^^^^^^^^^^
+	:math:`\min_{\theta} J(\theta)`
 	
 	Repeat for each iteration {
 
@@ -170,10 +170,10 @@ TODO: mid Week3_2
 Advanced Optimization
 ---------------------
 	Optimization Algorithm
-		* Cost function :math:`J(\theta)`. Want to minimize :math:`J(\theta)`
+		* Cost function :math:`J(\theta)`. :math:`\min_{\theta} J(\theta)`
 		* Given :math:`\theta`, we have code that can compute
 			- :math:`J(\theta)`
-			- :math:`\frac{\partial }{\partial \theta_{j}} J(\theta)` (for every :math:`j = 0, ..., n`)
+			- :math:`\frac{\partial }{\partial \theta_{j}} J(\theta)`; (:math:`j = 0, ..., n`)
 		* Gradient Descent:
 			Repeat for each iteration {
 
@@ -210,8 +210,5 @@ Multi-class Classification: One-vs-All
 	One-vs-All:
 		* Train a logistic regression classifier :math:`h_\theta^{(i)} (x)` for each class :math:`i` to predict the probability that :math:`y = i`
 		* On a new input :math:`x`, to make a prediction, pick the class :math:`i` that maximizes :math:`h_\theta^{(i)} (x)`
-
-:ref:`regularization-label`
-----------------------------
 
 	* :math:`y_{n+1}={\begin{cases}2y_{n}&0\leq y_{n}<{\tfrac {1}{2}}\\2y_{n}-1&{\tfrac {1}{2}}\leq y_{n}<1,\end{cases}}`
