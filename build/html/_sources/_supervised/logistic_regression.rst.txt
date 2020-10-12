@@ -165,8 +165,6 @@ Gradient descent
 
 	}
 
-TODO: mid Week3_2
-
 Advanced Optimization
 ---------------------
 	Optimization Algorithm

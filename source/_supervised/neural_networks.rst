@@ -2,8 +2,26 @@
 
 Neural Networks
 ===============
+	* Non-linear Hypotheses
+	* Non-linear Classification
+	* Computer Vision: Car detection
 
-Linear regression with multiple variables/features.
+Neurons and the Brain
+---------------------
+Neural Networks
+^^^^^^^^^^^^^^^
+	* Origins: Algorithms that try to mimic the brain
+	* Was very widely used in 80s and early 90s; popularity diminished in late 90s
+	* Recent resurgence: State-of-the-art technique for many applications
+
+	The "one learning algorithm" hypothesis
+
+.. image:: ../_images/nn_auditory_cortex_learns_to_see.png
+	:align: center
+	:width: 300pt
+
+
+TODO: week 4
 
 Let's define:
 	* :math:`n` = number of features.
