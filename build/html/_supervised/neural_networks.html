@@ -97,18 +97,18 @@
 <img alt="../_images/nn_input_hidden_output.png" class="align-center" src="../_images/nn_input_hidden_output.png" />
 <dl class="simple">
 <dt>Here:</dt><dd><ul class="simple">
-<li><p>Input layer 1 has 3 units: <span class="math notranslate nohighlight">\(x_{1}, x_{2}, x_{3}\)</span>; <span class="math notranslate nohighlight">\(\Theta^{(1)} \in \mathbb {R^{3*4}}\)</span></p></li>
-<li><p>Hidden layer 2 has 3 units: <span class="math notranslate nohighlight">\(a^{(2)}_{1}, a^{(2)}_{2}, a^{(2)}_{3}\)</span>; <span class="math notranslate nohighlight">\(\Theta^{(2)} \in \mathbb {R^{4}}\)</span></p></li>
-<li><p>Output layer 3 has 1 unit: <span class="math notranslate nohighlight">\(a^{(3)}_{1} = y = h_{\Theta}(x)\)</span></p></li>
+<li><p>Input layer <span class="math notranslate nohighlight">\(1\)</span> has <span class="math notranslate nohighlight">\(3\)</span> units: <span class="math notranslate nohighlight">\(x_{1}, x_{2}, x_{3}\)</span>; <span class="math notranslate nohighlight">\(\Theta^{(1)} \in \mathbb {R^{3*4}}\)</span></p></li>
+<li><p>Hidden layer <span class="math notranslate nohighlight">\(2\)</span> has <span class="math notranslate nohighlight">\(3\)</span> units: <span class="math notranslate nohighlight">\(a^{(2)}_{1}, a^{(2)}_{2}, a^{(2)}_{3}\)</span>; <span class="math notranslate nohighlight">\(\Theta^{(2)} \in \mathbb {R^{4}}\)</span></p></li>
+<li><p>Output layer <span class="math notranslate nohighlight">\(3\)</span> has <span class="math notranslate nohighlight">\(1\)</span> unit: <span class="math notranslate nohighlight">\(a^{(3)}_{1} = y = h_{\Theta}(x)\)</span></p></li>
 </ul>
 </dd>
-<dt>Add “bias unit”, <span class="math notranslate nohighlight">\(x_{0} = 1\)</span>, compute for Hidden layer 2:</dt><dd><ul class="simple">
+<dt>Add “bias unit”, <span class="math notranslate nohighlight">\(x_{0} = 1\)</span>, compute for Hidden layer <span class="math notranslate nohighlight">\(2\)</span>:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(a^{(2)}_{1} = g(\Theta^{(1)}_{10} x_{0} + \Theta^{(1)}_{11} x_{1} + \Theta^{(1)}_{12} x_{2} + \Theta^{(1)}_{13} x_{3})\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(a^{(2)}_{2} = g(\Theta^{(1)}_{20} x_{0} + \Theta^{(1)}_{21} x_{1} + \Theta^{(1)}_{22} x_{2} + \Theta^{(1)}_{23} x_{3})\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(a^{(2)}_{3} = g(\Theta^{(1)}_{30} x_{0} + \Theta^{(1)}_{31} x_{1} + \Theta^{(1)}_{32} x_{2} + \Theta^{(1)}_{33} x_{3})\)</span></p></li>
 </ul>
 </dd>
-<dt>Add “bias unit”, <span class="math notranslate nohighlight">\(a^{(2)}_{0} = 1\)</span>, compute for Output layer 3:</dt><dd><ul class="simple">
+<dt>Add “bias unit”, <span class="math notranslate nohighlight">\(a^{(2)}_{0} = 1\)</span>, compute for Output layer <span class="math notranslate nohighlight">\(3\)</span>:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(h_{\Theta}(x) = a^{(3)}_{1} = g(\Theta^{(2)}_{10} a^{(2)}_{0} + \Theta^{(2)}_{11} a^{(2)}_{1} + \Theta^{(2)}_{12} a^{(2)}_{2} + \Theta^{(2)}_{13} a^{(2)}_{3})\)</span></p></li>
 </ul>
 </dd>
@@ -134,7 +134,7 @@ will be of dimension <span class="math notranslate nohighlight">\(s_{j+1}*(s_{j}
 <li><p>Neural Network learning its own features</p></li>
 <li><p>Other network architectures can have many hidden layers between the input layer and the output layer</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/nn_multiple_hidden_layers.png"><img alt="../_images/nn_multiple_hidden_layers.png" class="align-center" src="../_images/nn_multiple_hidden_layers.png" style="width: 814.0px; height: 472.0px;" /></a>
+<img alt="../_images/nn_multiple_hidden_layers.png" class="align-center" src="../_images/nn_multiple_hidden_layers.png" />
 </div>
 <div class="section" id="multi-class-classification">
 <h3>Multi-class Classification<a class="headerlink" href="#multi-class-classification" title="Permalink to this headline">¶</a></h3>
@@ -142,31 +142,100 @@ will be of dimension <span class="math notranslate nohighlight">\(s_{j+1}*(s_{j}
 <div><p>Multiple output units: One-vs-all</p>
 </div></blockquote>
 <img alt="../_images/nn_multiple_output_units.png" class="align-center" src="../_images/nn_multiple_output_units.png" />
-<p>TODO: week 5</p>
 </div>
 </div>
-<div class="section" id="hypothesis">
-<h2>Hypothesis<a class="headerlink" href="#hypothesis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="neural-network-classification">
+<h2>Neural Network (Classification)<a class="headerlink" href="#neural-network-classification" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}\)</span></p>
-<p>Let: <span class="math notranslate nohighlight">\(x_{0} = 1\)</span> and <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>:</p>
-<p><span class="math notranslate nohighlight">\(x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ]\)</span> - <span class="math notranslate nohighlight">\((n+1) * 1\)</span> column vector.</p>
-</div></blockquote>
-</div>
-<div class="section" id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ...; \theta_{j}; ...; \theta_{n} ]\)</span> - <span class="math notranslate nohighlight">\((n + 1) * 1\)</span> column vector.</p>
-<p>Therefore:</p>
-<p><span class="math notranslate nohighlight">\(h_\theta (x) = \theta_{0} x_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}\)</span></p>
-<p><span class="math notranslate nohighlight">\(h_\theta (x) = \Theta^{T} x\)</span></p>
+<div><ul class="simple">
+<li><p>Training set, <span class="math notranslate nohighlight">\(m\)</span> examples: <span class="math notranslate nohighlight">\({ (x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), ..., (x^{(m)}, y^{(m)}) }\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> = total no. of layers in network</p></li>
+<li><p><span class="math notranslate nohighlight">\(s_{l}\)</span> = no. of units (not counting bias unit) in layer <span class="math notranslate nohighlight">\(l\)</span></p></li>
+</ul>
+<dl class="simple">
+<dt>Binary Classification:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y^{(i)} = 0\)</span> or <span class="math notranslate nohighlight">\(1 \in \mathbb {R}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(1\)</span> output unit</p></li>
+</ul>
+</dd>
+<dt>Multi-class Classification (K classes):</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y^{(i)} \in \mathbb {R^{K}}\)</span> E.g. <span class="math notranslate nohighlight">\({\begin{bmatrix}1\\0\\0\\0\end{bmatrix}}\)</span>, <span class="math notranslate nohighlight">\({\begin{bmatrix}0\\1\\0\\0\end{bmatrix}}\)</span>, <span class="math notranslate nohighlight">\({\begin{bmatrix}0\\0\\1\\0\end{bmatrix}}\)</span>, <span class="math notranslate nohighlight">\({\begin{bmatrix}0\\0\\0\\1\end{bmatrix}}\)</span></p></li>
+<li><p>Representing pedestrian, car, motorcycle, and truck respectively</p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span> output units</p></li>
+</ul>
+</dd>
+</dl>
 </div></blockquote>
 </div>
 <div class="section" id="cost-function">
 <h2>Cost Function<a class="headerlink" href="#cost-function" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><span class="math notranslate nohighlight">\(J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p>
+<div><p>Logistic Regression:</p>
+<p><span class="math notranslate nohighlight">\(J(\theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log h_\theta (x^{(i)}) + (1 - y^{(i)}) \log(1 - h_\theta (x^{(i)})) ] +
+\frac{\lambda}{2m} \sum_{j=1}^{n} \theta_{j}^2\)</span></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Exclude <span class="math notranslate nohighlight">\(\theta_{0}\)</span> for regularization</p></li>
+</ul>
 </div></blockquote>
+<dl class="simple">
+<dt>Neural Network:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h_\Theta (x) \in \mathbb {R^{K}}\)</span> and <span class="math notranslate nohighlight">\((h_\Theta (x))_{k} = k^{th}\)</span> output</p></li>
+</ul>
+</dd>
+</dl>
+<p><span class="math notranslate nohighlight">\(J(\Theta) = - \frac{1}{m} [ \sum_{i=1}^{m} \sum_{k=1}^{K} y^{(i)}_{k} \log(h_\Theta (x^{(i)}))_{k} + (1 - y^{(i)}_{k}) \log(1 - (h_\Theta (x^{(i)}))_{k}) ] +
+\frac{\lambda}{2m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_{l}} \sum_{j=1}^{s_{l+1}} (\Theta_{ji}^{(l)})^2\)</span></p>
+</div></blockquote>
+</div>
+<div class="section" id="backpropagation-algorithm">
+<h2>Backpropagation Algorithm<a class="headerlink" href="#backpropagation-algorithm" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Gradient Computation</dt><dd><ul class="simple">
+<li><p>Cost function <span class="math notranslate nohighlight">\(J(\Theta)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\min_{\Theta} J(\Theta)\)</span></p></li>
+</ul>
+</dd>
+<dt>Need code to compute:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(J(\Theta)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta)\)</span>, <span class="math notranslate nohighlight">\(\Theta_{ji}^{(l)} \in \mathbb {R}\)</span></p></li>
+</ul>
+</dd>
+</dl>
+<p>Given one training example (<span class="math notranslate nohighlight">\(x, y\)</span>):</p>
+<dl class="simple">
+<dt>Forward propagation:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a^{(1)} = x\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(z^{(2)} = \Theta^{(1)} a^{(1)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a^{(2)} = g(z^{(2)})\)</span>, (add <span class="math notranslate nohighlight">\(a_{0}^{(2)} = 1\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(z^{(3)} = \Theta^{(2)} a^{(2)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a^{(3)} = g(z^{(3)})\)</span>, (add <span class="math notranslate nohighlight">\(a_{0}^{(3)} = 1\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(z^{(4)} = \Theta^{(3)} a^{(3)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a^{(4)} = h_\Theta (x) = g(z^{(4)})\)</span></p></li>
+</ul>
+</dd>
+</dl>
+<p>Gradient computation: Backpropagation algorithm:</p>
+<p>Intuition: <span class="math notranslate nohighlight">\(\delta_{j}^{(l)}\)</span> = “error” of node <span class="math notranslate nohighlight">\(j\)</span> in layer <span class="math notranslate nohighlight">\(l\)</span></p>
+<dl class="simple">
+<dt>For each output unit (layer <span class="math notranslate nohighlight">\(L = 4\)</span>)</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\delta_{j}^{(4)} = a_{j}^{(4)} - y_{j}\)</span></p></li>
+</ul>
+</dd>
+<dt>Or</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\delta^{(4)} = a^{(4)} - y\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta^{(3)} = (\Theta^{(3)})^{T} \delta^{(4)} .* g'(z^{(3)})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta^{(2)} = (\Theta^{(2)})^{T} \delta^{(3)} .* g'(z^{(2)})\)</span></p></li>
+<li><p>No <span class="math notranslate nohighlight">\(\delta^{(1)}\)</span></p></li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta) = a_{j}^{(l)} \delta_{i}^{(l+1)}\)</span> (ignore <span class="math notranslate nohighlight">\(\lambda\)</span>; i.e. <span class="math notranslate nohighlight">\(\lambda = 0\)</span>)</p></li>
+</ul>
+</div></blockquote>
+<p>TODO: week 5</p>
 </div>
 <div class="section" id="gradient-descent">
 <h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h2>

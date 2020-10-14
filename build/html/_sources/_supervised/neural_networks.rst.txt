@@ -48,16 +48,16 @@ Let's define:
 	:align: center
 
 Here:
-	* Input layer 1 has 3 units: :math:`x_{1}, x_{2}, x_{3}`; :math:`\Theta^{(1)} \in \mathbb {R^{3*4}}` 
-	* Hidden layer 2 has 3 units: :math:`a^{(2)}_{1}, a^{(2)}_{2}, a^{(2)}_{3}`; :math:`\Theta^{(2)} \in \mathbb {R^{4}}` 
-	* Output layer 3 has 1 unit: :math:`a^{(3)}_{1} = y = h_{\Theta}(x)`
+	* Input layer :math:`1` has :math:`3` units: :math:`x_{1}, x_{2}, x_{3}`; :math:`\Theta^{(1)} \in \mathbb {R^{3*4}}` 
+	* Hidden layer :math:`2` has :math:`3` units: :math:`a^{(2)}_{1}, a^{(2)}_{2}, a^{(2)}_{3}`; :math:`\Theta^{(2)} \in \mathbb {R^{4}}` 
+	* Output layer :math:`3` has :math:`1` unit: :math:`a^{(3)}_{1} = y = h_{\Theta}(x)`
 
-Add "bias unit", :math:`x_{0} = 1`, compute for Hidden layer 2:
+Add "bias unit", :math:`x_{0} = 1`, compute for Hidden layer :math:`2`:
 	* :math:`a^{(2)}_{1} = g(\Theta^{(1)}_{10} x_{0} + \Theta^{(1)}_{11} x_{1} + \Theta^{(1)}_{12} x_{2} + \Theta^{(1)}_{13} x_{3})` 
 	* :math:`a^{(2)}_{2} = g(\Theta^{(1)}_{20} x_{0} + \Theta^{(1)}_{21} x_{1} + \Theta^{(1)}_{22} x_{2} + \Theta^{(1)}_{23} x_{3})` 
 	* :math:`a^{(2)}_{3} = g(\Theta^{(1)}_{30} x_{0} + \Theta^{(1)}_{31} x_{1} + \Theta^{(1)}_{32} x_{2} + \Theta^{(1)}_{33} x_{3})` 
 
-Add "bias unit", :math:`a^{(2)}_{0} = 1`, compute for Output layer 3:
+Add "bias unit", :math:`a^{(2)}_{0} = 1`, compute for Output layer :math:`3`:
 	* :math:`h_{\Theta}(x) = a^{(3)}_{1} = g(\Theta^{(2)}_{10} a^{(2)}_{0} + \Theta^{(2)}_{11} a^{(2)}_{1} + \Theta^{(2)}_{12} a^{(2)}_{2} + \Theta^{(2)}_{13} a^{(2)}_{3})` 
 
 If network has :math:`s_{j}` units in layer :math:`j`, :math:`s_{j+1}` units in layer :math:`j+1`, then :math:`\Theta^{(j)}` 
@@ -78,7 +78,6 @@ Forward Propagation: Vectorized Implementation
 * Other network architectures can have many hidden layers between the input layer and the output layer
 
 .. image:: ../_images/nn_multiple_hidden_layers.png
-	:scale: 50%
 	:align: center
 
 Multi-class Classification
@@ -88,30 +87,74 @@ Multi-class Classification
 .. image:: ../_images/nn_multiple_output_units.png
 	:align: center
 	
-TODO: week 5
+Neural Network (Classification)
+-------------------------------
+	* Training set, :math:`m` examples: :math:`{ (x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), ..., (x^{(m)}, y^{(m)}) }`
+	* :math:`L` = total no. of layers in network
+	* :math:`s_{l}` = no. of units (not counting bias unit) in layer :math:`l`
 
+	Binary Classification:
+		* :math:`y^{(i)} = 0` or :math:`1 \in \mathbb {R}`
+		* :math:`1` output unit
 
-Hypothesis
-----------
-	:math:`h_\theta (x) = \theta_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}`
-
-	Let: :math:`x_{0} = 1` and :math:`x^{(i)}_{0} = 1`:
-
-	:math:`x = [ x_{0}; x_{1}; x_{2}; ...; x_{j}; ...; x_{n} ]` - :math:`(n+1) * 1` column vector.
-
-Parameters
-----------
-	:math:`\Theta = [ \theta_{0}; \theta_{1}; \theta_{2}; ...; \theta_{j}; ...; \theta_{n} ]` - :math:`(n + 1) * 1` column vector.
-
-	Therefore:
-
-	:math:`h_\theta (x) = \theta_{0} x_{0} + \theta_{1} x_{1} + \theta_{2} x_{2} + ... + \theta_{j} x_{j} + ... + \theta_{n} x_{n}`
-
-	:math:`h_\theta (x) = \Theta^{T} x`
+	Multi-class Classification (K classes):
+		* :math:`y^{(i)} \in \mathbb {R^{K}}` E.g. :math:`{\begin{bmatrix}1\\0\\0\\0\end{bmatrix}}`, :math:`{\begin{bmatrix}0\\1\\0\\0\end{bmatrix}}`, :math:`{\begin{bmatrix}0\\0\\1\\0\end{bmatrix}}`, :math:`{\begin{bmatrix}0\\0\\0\\1\end{bmatrix}}`
+		* Representing pedestrian, car, motorcycle, and truck respectively
+		* :math:`K` output units
 
 Cost Function
 -------------
-	:math:`J(\Theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2`
+	Logistic Regression:
+
+	:math:`J(\theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log h_\theta (x^{(i)}) + (1 - y^{(i)}) \log(1 - h_\theta (x^{(i)})) ] + 
+	\frac{\lambda}{2m} \sum_{j=1}^{n} \theta_{j}^2`
+
+		- Exclude :math:`\theta_{0}` for regularization
+
+	Neural Network:
+		* :math:`h_\Theta (x) \in \mathbb {R^{K}}` and :math:`(h_\Theta (x))_{k} = k^{th}` output
+
+	:math:`J(\Theta) = - \frac{1}{m} [ \sum_{i=1}^{m} \sum_{k=1}^{K} y^{(i)}_{k} \log(h_\Theta (x^{(i)}))_{k} + (1 - y^{(i)}_{k}) \log(1 - (h_\Theta (x^{(i)}))_{k}) ] + 
+	\frac{\lambda}{2m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_{l}} \sum_{j=1}^{s_{l+1}} (\Theta_{ji}^{(l)})^2`
+
+Backpropagation Algorithm
+-------------------------
+
+	Gradient Computation
+		* Cost function :math:`J(\Theta)`
+		* :math:`\min_{\Theta} J(\Theta)`
+
+	Need code to compute:
+		* :math:`J(\Theta)`
+		* :math:`\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta)`, :math:`\Theta_{ji}^{(l)} \in \mathbb {R}`
+
+	Given one training example (:math:`x, y`):
+	
+	Forward propagation:
+		* :math:`a^{(1)} = x`
+		* :math:`z^{(2)} = \Theta^{(1)} a^{(1)}`
+		* :math:`a^{(2)} = g(z^{(2)})`, (add :math:`a_{0}^{(2)} = 1`)
+		* :math:`z^{(3)} = \Theta^{(2)} a^{(2)}`
+		* :math:`a^{(3)} = g(z^{(3)})`, (add :math:`a_{0}^{(3)} = 1`)
+		* :math:`z^{(4)} = \Theta^{(3)} a^{(3)}`
+		* :math:`a^{(4)} = h_\Theta (x) = g(z^{(4)})`
+
+	Gradient computation: Backpropagation algorithm:
+
+	Intuition: :math:`\delta_{j}^{(l)}` = "error" of node :math:`j` in layer :math:`l`
+
+	For each output unit (layer :math:`L = 4`)
+		* :math:`\delta_{j}^{(4)} = a_{j}^{(4)} - y_{j}`
+	Or
+		* :math:`\delta^{(4)} = a^{(4)} - y`
+		* :math:`\delta^{(3)} = (\Theta^{(3)})^{T} \delta^{(4)} .* g'(z^{(3)})`
+		* :math:`\delta^{(2)} = (\Theta^{(2)})^{T} \delta^{(3)} .* g'(z^{(2)})`
+		* No :math:`\delta^{(1)}`
+
+	* :math:`\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta) = a_{j}^{(l)} \delta_{i}^{(l+1)}` (ignore :math:`\lambda`; i.e. :math:`\lambda = 0`)
+
+TODO: week 5
+
 
 Gradient Descent
 ----------------
