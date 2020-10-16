@@ -36,7 +36,7 @@ Gradient Descent
 
 	:math:`\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k}` (for :math:`k = 0`)
 
-	:math:`\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha (\sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k} + \lambda \theta^{(j)}_{k} )` (for :math:`k <> 0`)
+	:math:`\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha (\sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k} + \lambda \theta^{(j)}_{k} )` (for :math:`k \neq 0`)
 
 Collaborative Filtering
 -----------------------
@@ -64,7 +64,7 @@ Gradient Descent
 
 	:math:`x_{k}^{(i)} = x_{k}^{(i)} - \alpha \frac{\partial }{\partial x_{k}^{(i)}} J(x)`
 
-	:math:`x_{k}^{(i)} = x_{k}^{(i)} - \alpha (\sum_{j:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) \theta^{(j)}_{k} + \lambda x_{k}^{(i)} )` (for :math:`k <> 0`)
+	:math:`x_{k}^{(i)} = x_{k}^{(i)} - \alpha (\sum_{j:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) \theta^{(j)}_{k} + \lambda x_{k}^{(i)} )` (for :math:`k \neq 0`)
 
 Minimizing :math:`x^{(1)}, ..., x^{(n_{m})}` and :math:`\theta^{(1)}, ..., \theta^{(n_{u})}` Simultaneously:
 ------------------------------------------------------------------------------------------------------------

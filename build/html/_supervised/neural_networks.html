@@ -205,7 +205,7 @@ will be of dimension <span class="math notranslate nohighlight">\(s_{j+1}*(s_{j}
 </dl>
 <p>Given one training example (<span class="math notranslate nohighlight">\(x, y\)</span>):</p>
 <dl class="simple">
-<dt>Forward propagation:</dt><dd><ul class="simple">
+<dt>Forward Propagation:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(a^{(1)} = x\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(z^{(2)} = \Theta^{(1)} a^{(1)}\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(a^{(2)} = g(z^{(2)})\)</span>, (add <span class="math notranslate nohighlight">\(a_{0}^{(2)} = 1\)</span>)</p></li>
@@ -220,7 +220,7 @@ will be of dimension <span class="math notranslate nohighlight">\(s_{j+1}*(s_{j}
 <p>Intuition: <span class="math notranslate nohighlight">\(\delta_{j}^{(l)}\)</span> = “error” of node <span class="math notranslate nohighlight">\(j\)</span> in layer <span class="math notranslate nohighlight">\(l\)</span></p>
 <dl class="simple">
 <dt>For each output unit (layer <span class="math notranslate nohighlight">\(L = 4\)</span>)</dt><dd><ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\delta_{j}^{(4)} = a_{j}^{(4)} - y_{j}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta_{j}^{(4)} = a_{j}^{(4)} - y_{j}\)</span>, <span class="math notranslate nohighlight">\(a_{j}^{(4)} = (h_\theta (x))_{j}\)</span></p></li>
 </ul>
 </dd>
 <dt>Or</dt><dd><ul class="simple">
@@ -232,7 +232,49 @@ will be of dimension <span class="math notranslate nohighlight">\(s_{j+1}*(s_{j}
 </dd>
 </dl>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta) = a_{j}^{(l)} \delta_{i}^{(l+1)}\)</span> (ignore <span class="math notranslate nohighlight">\(\lambda\)</span>; i.e. <span class="math notranslate nohighlight">\(\lambda = 0\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta) = a_{j}^{(l)} \delta_{i}^{(l+1)}\)</span> (ignore <span class="math notranslate nohighlight">\(\lambda\)</span> for now, set <span class="math notranslate nohighlight">\(\lambda = 0\)</span>)</p></li>
+</ul>
+<dl class="simple">
+<dt>Backpropagation Algorithm:</dt><dd><ul class="simple">
+<li><p>Training set <span class="math notranslate nohighlight">\({ (x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)}) }\)</span></p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(\Delta^{(l)}_{ij} = 0\)</span> (for all <span class="math notranslate nohighlight">\(l, i, j\)</span>); (used to update <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta)\)</span>)</p></li>
+<li><dl class="simple">
+<dt>For <span class="math notranslate nohighlight">\(i = 1\)</span> to <span class="math notranslate nohighlight">\(m\)</span> &lt;- <span class="math notranslate nohighlight">\((x^{(i)}, y^{(i)})\)</span></dt><dd><ul>
+<li><p>Set <span class="math notranslate nohighlight">\(a^{(1)} = x^{(i)}\)</span></p></li>
+<li><p>Perform forward propagation to compute <span class="math notranslate nohighlight">\(a^{(1)}\)</span> (for all <span class="math notranslate nohighlight">\(l = 2, 3, ..., L\)</span>)</p></li>
+<li><p>Using <span class="math notranslate nohighlight">\(y^{(i)}\)</span>, compute <span class="math notranslate nohighlight">\(\delta^{(L)} = a^{(L)} - y^{(i)}\)</span></p></li>
+<li><p>Perform backward propagation to compute <span class="math notranslate nohighlight">\(\delta^{(L-1)}, \delta^{(L-2)}, ..., \delta^{(2)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta^{(l)}_{ij} = \Delta^{(l)}_{ij} + a_{j}^{(l)} \delta_{i}^{(l+1)}\)</span></p></li>
+<li><p>Or <span class="math notranslate nohighlight">\(\Delta^{(l)} = \Delta^{(l)} + \delta^{(l+1)} (a^{(l)})^{T}\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><span class="math notranslate nohighlight">\(D^{(l)}_{ij} = \frac{1}{m} \Delta^{(l)}_{ij}\)</span>; (for <span class="math notranslate nohighlight">\(j = 0\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(D^{(l)}_{ij} = \frac{1}{m} \Delta^{(l)}_{ij} + \lambda \Theta_{ij}^{(l)}\)</span>; (for <span class="math notranslate nohighlight">\(j \neq 0\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta) = D^{(l)}_{ij}\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="backpropagation-intuition">
+<h2>Backpropagation Intuition<a class="headerlink" href="#backpropagation-intuition" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>What is backpropagation doing?</dt><dd><p><span class="math notranslate nohighlight">\(J(\Theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log(h_\Theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - (h_\Theta (x^{(i)}))) ] +
+\frac{\lambda}{2m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_{l}} \sum_{j=1}^{s_{l+1}} (\Theta_{ji}^{(l)})^2\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Focusing on a single example <span class="math notranslate nohighlight">\(x^{(i)}, y^{(i)}\)</span>, the case of <span class="math notranslate nohighlight">\(1\)</span> output unit, and ignoring regularization (<span class="math notranslate nohighlight">\(\lambda = 0\)</span>):</dt><dd><p><span class="math notranslate nohighlight">\(cost(i) = y^{(i)} \log(h_\Theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\Theta (x^{(i)}))\)</span></p>
+</dd>
+</dl>
+</li>
+<li><p>(Think of <span class="math notranslate nohighlight">\(cost(i) =&gt; (h_\Theta (x^{(i)}) - y^{(i)})^2\)</span>)</p></li>
+<li><p>I.e. how well is the network doing on example <span class="math notranslate nohighlight">\(i\)</span>?</p></li>
 </ul>
 </div></blockquote>
 <p>TODO: week 5</p>

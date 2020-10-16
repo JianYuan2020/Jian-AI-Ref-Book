@@ -109,7 +109,7 @@ Cost Function
 	:math:`J(\theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log h_\theta (x^{(i)}) + (1 - y^{(i)}) \log(1 - h_\theta (x^{(i)})) ] + 
 	\frac{\lambda}{2m} \sum_{j=1}^{n} \theta_{j}^2`
 
-		- Exclude :math:`\theta_{0}` for regularization
+		* Exclude :math:`\theta_{0}` for regularization
 
 	Neural Network:
 		* :math:`h_\Theta (x) \in \mathbb {R^{K}}` and :math:`(h_\Theta (x))_{k} = k^{th}` output
@@ -119,7 +119,6 @@ Cost Function
 
 Backpropagation Algorithm
 -------------------------
-
 	Gradient Computation
 		* Cost function :math:`J(\Theta)`
 		* :math:`\min_{\Theta} J(\Theta)`
@@ -130,7 +129,7 @@ Backpropagation Algorithm
 
 	Given one training example (:math:`x, y`):
 	
-	Forward propagation:
+	Forward Propagation:
 		* :math:`a^{(1)} = x`
 		* :math:`z^{(2)} = \Theta^{(1)} a^{(1)}`
 		* :math:`a^{(2)} = g(z^{(2)})`, (add :math:`a_{0}^{(2)} = 1`)
@@ -144,14 +143,39 @@ Backpropagation Algorithm
 	Intuition: :math:`\delta_{j}^{(l)}` = "error" of node :math:`j` in layer :math:`l`
 
 	For each output unit (layer :math:`L = 4`)
-		* :math:`\delta_{j}^{(4)} = a_{j}^{(4)} - y_{j}`
+		* :math:`\delta_{j}^{(4)} = a_{j}^{(4)} - y_{j}`, :math:`a_{j}^{(4)} = (h_\theta (x))_{j}`
 	Or
 		* :math:`\delta^{(4)} = a^{(4)} - y`
 		* :math:`\delta^{(3)} = (\Theta^{(3)})^{T} \delta^{(4)} .* g'(z^{(3)})`
 		* :math:`\delta^{(2)} = (\Theta^{(2)})^{T} \delta^{(3)} .* g'(z^{(2)})`
 		* No :math:`\delta^{(1)}`
 
-	* :math:`\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta) = a_{j}^{(l)} \delta_{i}^{(l+1)}` (ignore :math:`\lambda`; i.e. :math:`\lambda = 0`)
+	* :math:`\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta) = a_{j}^{(l)} \delta_{i}^{(l+1)}` (ignore :math:`\lambda` for now, set :math:`\lambda = 0`)
+
+	Backpropagation Algorithm:
+		* Training set :math:`{ (x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)}) }`
+		* Set :math:`\Delta^{(l)}_{ij} = 0` (for all :math:`l, i, j`); (used to update :math:`\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta)`)
+		* For :math:`i = 1` to :math:`m` <- :math:`(x^{(i)}, y^{(i)})`
+			* Set :math:`a^{(1)} = x^{(i)}`
+			* Perform forward propagation to compute :math:`a^{(1)}` (for all :math:`l = 2, 3, ..., L`)
+			* Using :math:`y^{(i)}`, compute :math:`\delta^{(L)} = a^{(L)} - y^{(i)}`
+			* Perform backward propagation to compute :math:`\delta^{(L-1)}, \delta^{(L-2)}, ..., \delta^{(2)}`
+			* :math:`\Delta^{(l)}_{ij} = \Delta^{(l)}_{ij} + a_{j}^{(l)} \delta_{i}^{(l+1)}`
+			* Or :math:`\Delta^{(l)} = \Delta^{(l)} + \delta^{(l+1)} (a^{(l)})^{T}`
+		* :math:`D^{(l)}_{ij} = \frac{1}{m} \Delta^{(l)}_{ij}`; (for :math:`j = 0`)
+		* :math:`D^{(l)}_{ij} = \frac{1}{m} \Delta^{(l)}_{ij} + \lambda \Theta_{ij}^{(l)}`; (for :math:`j \neq 0`)
+		* :math:`\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta) = D^{(l)}_{ij}`
+
+Backpropagation Intuition
+-------------------------
+	* What is backpropagation doing?
+		:math:`J(\Theta) = - \frac{1}{m} [ \sum_{i=1}^{m} y^{(i)} \log(h_\Theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - (h_\Theta (x^{(i)}))) ] + 
+		\frac{\lambda}{2m} \sum_{l=1}^{L-1} \sum_{i=1}^{s_{l}} \sum_{j=1}^{s_{l+1}} (\Theta_{ji}^{(l)})^2`
+
+	* Focusing on a single example :math:`x^{(i)}, y^{(i)}`, the case of :math:`1` output unit, and ignoring regularization (:math:`\lambda = 0`):
+		:math:`cost(i) = y^{(i)} \log(h_\Theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\Theta (x^{(i)}))`
+	* (Think of :math:`cost(i) => (h_\Theta (x^{(i)}) - y^{(i)})^2`)
+	* I.e. how well is the network doing on example :math:`i`?
 
 TODO: week 5
 

@@ -80,7 +80,7 @@ Octave Code
 		falsePos = sum((cvPredictions == 1) & (yval == 0));
 		falseNeg = sum((cvPredictions == 0) & (yval == 1));
     
-		if (truePos != 0)
+		if (truePos \neq 0)
 		  prec = truePos/(truePos + falsePos); % Precision
 		  rec = truePos/(truePos + falseNeg); % Recall   
 		  F1 = 2*prec*rec/(prec + rec); % F1 score

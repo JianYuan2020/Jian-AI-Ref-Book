@@ -76,7 +76,7 @@
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \frac{\partial }{\partial \theta_{k}^{(j)}} J(\Theta)\)</span></p>
 <p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha \sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k}\)</span> (for <span class="math notranslate nohighlight">\(k = 0\)</span>)</p>
-<p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha (\sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k} + \lambda \theta^{(j)}_{k} )\)</span> (for <span class="math notranslate nohighlight">\(k &lt;&gt; 0\)</span>)</p>
+<p><span class="math notranslate nohighlight">\(\theta_{k}^{(j)} = \theta_{k}^{(j)} - \alpha (\sum_{i:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) x^{(i)}_{k} + \lambda \theta^{(j)}_{k} )\)</span> (for <span class="math notranslate nohighlight">\(k \neq 0\)</span>)</p>
 </div></blockquote>
 </div>
 </div>
@@ -111,7 +111,7 @@
 <h3>Gradient Descent<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(x_{k}^{(i)} = x_{k}^{(i)} - \alpha \frac{\partial }{\partial x_{k}^{(i)}} J(x)\)</span></p>
-<p><span class="math notranslate nohighlight">\(x_{k}^{(i)} = x_{k}^{(i)} - \alpha (\sum_{j:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) \theta^{(j)}_{k} + \lambda x_{k}^{(i)} )\)</span> (for <span class="math notranslate nohighlight">\(k &lt;&gt; 0\)</span>)</p>
+<p><span class="math notranslate nohighlight">\(x_{k}^{(i)} = x_{k}^{(i)} - \alpha (\sum_{j:r(i, j)=1}^{} ((\theta^{(j)})^{T} x^{(i)} - y^{(i, j)}) \theta^{(j)}_{k} + \lambda x_{k}^{(i)} )\)</span> (for <span class="math notranslate nohighlight">\(k \neq 0\)</span>)</p>
 </div></blockquote>
 </div>
 </div>
