@@ -61,7 +61,7 @@
 <li><dl class="simple">
 <dt>Model (probability): <span class="math notranslate nohighlight">\(p(x_{test})\)</span></dt><dd><ul>
 <li><p><span class="math notranslate nohighlight">\(p(x_{test}) &lt; \epsilon\)</span>, flag anomaly</p></li>
-<li><p><span class="math notranslate nohighlight">\(p(x_{test}) &gt;= \epsilon\)</span> is normal (OK)</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(x_{test}) \geq \epsilon\)</span> is normal (OK)</p></li>
 </ul>
 </dd>
 </dl>
@@ -119,7 +119,7 @@
 <blockquote>
 <div><ul class="simple">
 <li><p>Fit model <span class="math notranslate nohighlight">\(p(x)\)</span> on training set <span class="math notranslate nohighlight">\(\{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}\)</span></p></li>
-<li><p>On a cross validation/test example <span class="math notranslate nohighlight">\(x\)</span>, predict <span class="math notranslate nohighlight">\(y = 0\)</span> if <span class="math notranslate nohighlight">\(p(x) &gt;= \epsilon\)</span>, <span class="math notranslate nohighlight">\(y = 1\)</span> if <span class="math notranslate nohighlight">\(p(x) &lt; \epsilon\)</span></p></li>
+<li><p>On a cross validation/test example <span class="math notranslate nohighlight">\(x\)</span>, predict <span class="math notranslate nohighlight">\(y = 0\)</span> if <span class="math notranslate nohighlight">\(p(x) \geq \epsilon\)</span>, <span class="math notranslate nohighlight">\(y = 1\)</span> if <span class="math notranslate nohighlight">\(p(x) &lt; \epsilon\)</span></p></li>
 <li><dl class="simple">
 <dt>Possible evaluation metrics:</dt><dd><ul>
 <li><p>True positive, false positive, false negative, true negative</p></li>
@@ -185,7 +185,7 @@
 <li><p>Automatically captures correlations between features</p></li>
 <li><p><span class="math notranslate nohighlight">\(\Sigma \in \mathbb {R^{nxn}}\)</span>, <span class="math notranslate nohighlight">\(\Sigma^{-1}\)</span> computationally more expensive</p></li>
 <li><p>Must have <span class="math notranslate nohighlight">\(m &gt; n\)</span>, or else <span class="math notranslate nohighlight">\(\Sigma\)</span> is non-invertible.</p></li>
-<li><p>We use <span class="math notranslate nohighlight">\(m &gt;= 10 n\)</span></p></li>
+<li><p>We use <span class="math notranslate nohighlight">\(m \geq 10 n\)</span></p></li>
 </ul>
 </div></blockquote>
 </div>

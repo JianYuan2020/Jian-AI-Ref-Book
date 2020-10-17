@@ -174,8 +174,29 @@ Backpropagation Intuition
 
 	* Focusing on a single example :math:`x^{(i)}, y^{(i)}`, the case of :math:`1` output unit, and ignoring regularization (:math:`\lambda = 0`):
 		:math:`cost(i) = y^{(i)} \log(h_\Theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\Theta (x^{(i)}))`
-	* (Think of :math:`cost(i) => (h_\Theta (x^{(i)}) - y^{(i)})^2`)
+	* (Think of :math:`cost(i)` ~ :math:`(h_\Theta (x^{(i)}) - y^{(i)})^2`)
 	* I.e. how well is the network doing on example :math:`i`?
+	* :math:`\delta_{j}^{(l)}` = "error" of cost for :math:`a_{j}^{(l)}` (unit :math:`j` in layer :math:`l`)
+	* Formally, :math:`\delta_{j}^{(l)} = \frac{\partial }{\partial z_{j}^{(l)}} cost(i)` (for :math:`j \geq 0`), where
+		:math:`cost(i) = y^{(i)} \log(h_\Theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\Theta (x^{(i)}))`
+
+Implementation Note: Unrolling Parameters:
+------------------------------------------
+
+.. image:: ../_images/unroll_into_vectors1.png
+	:scale: 70%
+	:align: center
+
+.. image:: ../_images/unroll_into_vectors2.png
+	:scale: 70%
+	:align: center
+
+.. image:: ../_images/unroll_into_vectors3.png
+	:scale: 70%
+	:align: center
+
+Gradient Checking
+-----------------
 
 TODO: week 5
 
@@ -196,6 +217,3 @@ Gradient Descent
 
 	:math:`\alpha` = :ref:`learning-rate-label`.
 
-Normal Equation
----------------
-	Method to solve for :math:`\Theta` analytically.

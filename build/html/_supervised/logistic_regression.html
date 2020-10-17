@@ -69,7 +69,7 @@
 <blockquote>
 <div><p>Threshold classifier output <span class="math notranslate nohighlight">\(h_\theta (x)\)</span> at <span class="math notranslate nohighlight">\(0.5\)</span>:</p>
 <ul class="simple">
-<li><p>If <span class="math notranslate nohighlight">\(h_\theta (x) &gt;= 0.5\)</span>, predict <span class="math notranslate nohighlight">\(y = 1\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(h_\theta (x) \geq 0.5\)</span>, predict <span class="math notranslate nohighlight">\(y = 1\)</span></p></li>
 <li><p>If <span class="math notranslate nohighlight">\(h_\theta (x) &lt; 0.5\)</span>, predict <span class="math notranslate nohighlight">\(y = 0\)</span></p></li>
 </ul>
 </div></blockquote>
@@ -142,11 +142,11 @@
 <p>Plot <span class="math notranslate nohighlight">\(g(z)\)</span> vs. <span class="math notranslate nohighlight">\(z\)</span> curve, we get:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>predict <span class="math notranslate nohighlight">\(y = 1\)</span> if <span class="math notranslate nohighlight">\(h_\theta (x) &gt;= 0.5\)</span> therefore <span class="math notranslate nohighlight">\(z = \theta^{T} x &gt;= 0\)</span></p></li>
+<li><p>predict <span class="math notranslate nohighlight">\(y = 1\)</span> if <span class="math notranslate nohighlight">\(h_\theta (x) \geq 0.5\)</span> therefore <span class="math notranslate nohighlight">\(z = \theta^{T} x \geq 0\)</span></p></li>
 <li><p>predict <span class="math notranslate nohighlight">\(y = 0\)</span> if <span class="math notranslate nohighlight">\(h_\theta (x) &lt; 0.5\)</span> therefore <span class="math notranslate nohighlight">\(z = \theta^{T} x &lt; 0\)</span></p></li>
 </ul>
 </div></blockquote>
-<p>Solve for <span class="math notranslate nohighlight">\(\theta^{T} x &gt;= 0\)</span>, we can get linear or non-linear decision boundaries.</p>
+<p>Solve for <span class="math notranslate nohighlight">\(\theta^{T} x \geq 0\)</span>, we can get linear or non-linear decision boundaries.</p>
 </div></blockquote>
 </div>
 <div class="section" id="cost-function">

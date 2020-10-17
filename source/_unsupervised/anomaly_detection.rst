@@ -16,7 +16,7 @@ Given the dataset with the majority data as normal:
 	* Is :math:`x_{test}` anomalous?
 	* Model (probability): :math:`p(x_{test})`
 		* :math:`p(x_{test}) < \epsilon`, flag anomaly
-		* :math:`p(x_{test}) >= \epsilon` is normal (OK)
+		* :math:`p(x_{test}) \geq \epsilon` is normal (OK)
 
 Non-gaussian Features
 ---------------------
@@ -54,7 +54,7 @@ Algorithm Evaluation
 --------------------
 
 	* Fit model :math:`p(x)` on training set :math:`\{ x^{(1)}, x^{(2)}, ..., x^{(i)}, ..., x^{(m)} \}`
-	* On a cross validation/test example :math:`x`, predict :math:`y = 0` if :math:`p(x) >= \epsilon`, :math:`y = 1` if :math:`p(x) < \epsilon`
+	* On a cross validation/test example :math:`x`, predict :math:`y = 0` if :math:`p(x) \geq \epsilon`, :math:`y = 1` if :math:`p(x) < \epsilon`
 	* Possible evaluation metrics:
 		- True positive, false positive, false negative, true negative
 		- Precision/Recall
@@ -111,4 +111,4 @@ Multivariate Gaussian
 	* Automatically captures correlations between features
 	* :math:`\Sigma \in \mathbb {R^{nxn}}`, :math:`\Sigma^{-1}` computationally more expensive
 	* Must have :math:`m > n`, or else :math:`\Sigma` is non-invertible.
-	* We use :math:`m >= 10 n`
+	* We use :math:`m \geq 10 n`

@@ -19,7 +19,7 @@ Threshold Classifier
 --------------------
 	Threshold classifier output :math:`h_\theta (x)` at :math:`0.5`:
 
-	* If :math:`h_\theta (x) >= 0.5`, predict :math:`y = 1`
+	* If :math:`h_\theta (x) \geq 0.5`, predict :math:`y = 1`
 	* If :math:`h_\theta (x) < 0.5`, predict :math:`y = 0`
 
 Hypothesis Representation
@@ -72,10 +72,10 @@ Decision Boundary
 
 	Plot :math:`g(z)` vs. :math:`z` curve, we get:
 
-		* predict :math:`y = 1` if :math:`h_\theta (x) >= 0.5` therefore :math:`z = \theta^{T} x >= 0`
+		* predict :math:`y = 1` if :math:`h_\theta (x) \geq 0.5` therefore :math:`z = \theta^{T} x \geq 0`
 		* predict :math:`y = 0` if :math:`h_\theta (x) < 0.5` therefore :math:`z = \theta^{T} x < 0`
 
-	Solve for :math:`\theta^{T} x >= 0`, we can get linear or non-linear decision boundaries.
+	Solve for :math:`\theta^{T} x \geq 0`, we can get linear or non-linear decision boundaries.
 
 Cost Function
 -------------
