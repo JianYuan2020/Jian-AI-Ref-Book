@@ -181,6 +181,7 @@ Backpropagation Intuition
 		:math:`cost(i) = y^{(i)} \log(h_\Theta (x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\Theta (x^{(i)}))`
 
 Implementation Note: Unrolling Parameters:
+------------------------------------------
 
 .. image:: ../_images/unroll_into_vectors1.png
 	:scale: 70%
@@ -194,6 +195,8 @@ Implementation Note: Unrolling Parameters:
 	:scale: 70%
 	:align: center
 
+Gradient Checking
+-----------------
 
 TODO: week 5
 
