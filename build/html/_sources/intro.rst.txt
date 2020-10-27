@@ -10,4 +10,4 @@ Intro
 	After all the study notes are in, I will add my Octave code snippets from all the projects I have done. 
 	Then, I will migrate the code into python projects.
 
-.. note:: Some of the "leafs" in the doc tree are place holder to remind me to fill-in the contents later. So only the top heading is correct - please ignore the rest.
+.. note:: Some of the "leafs" in the doc tree are place holder to remind me to fill-in the contents later. Many of them are the copy/paste of another "leaf" with only the top heading updated - please ignore the rest.
