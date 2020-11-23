@@ -1,4 +1,4 @@
-.. _neural-networks-label:
+﻿.. _neural-networks-label:
 
 Neural Networks
 ===============
@@ -198,8 +198,22 @@ Implementation Note: Unrolling Parameters:
 Gradient Checking
 -----------------
 
+Numerical Estimation of Gradients
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	Implement: :math:`\frac{\partial }{\partial \theta} J(\theta) \approx gradApprox = \frac{J(\theta + \epsilon) - J(\theta - \epsilon)}{2\epsilon}`, :math:`\theta \in \mathbb {R}, \epsilon = 10^{-4}`
+
+	Parameter vector :math:`\theta`:
+		* :math:`\theta = \theta_{1}, \theta_{2}, ..., \theta_{n}; \theta \in \mathbb {R^{n}}` (E.g. :math:`\theta` is "unrolled" version of :math:`\Theta^{(1)}, \Theta^{(2)}, \Theta^{(3)}`)
+		* :math:`\frac{\partial }{\partial \theta_{1}} J(\theta) = \frac{J(\theta_{1} + \epsilon, \theta_{2}, ..., \theta_{n}) - J(\theta_{1} - \epsilon, \theta_{2}, ..., \theta_{n})}{2\epsilon}`
+		* :math:`\frac{\partial }{\partial \theta_{2}} J(\theta) = \frac{J(\theta_{1}, \theta_{2} + \epsilon, ..., \theta_{n}) - J(\theta_{1}, \theta_{2} - \epsilon, ..., \theta_{n})}{2\epsilon}`
+		* ---
+		* :math:`\frac{\partial }{\partial \theta_{n}} J(\theta) = \frac{J(\theta_{1}, \theta_{2}, ..., \theta_{n} + \epsilon) - J(\theta_{1}, \theta_{2}, ..., \theta_{n} - \epsilon)}{2\epsilon}`
+
 TODO: week 5
 
+	Symbols used in LaTeX markup.
+
+	* :math:`\approx`, :math:`\not \approx`, :math:`\simeq`, :math:`\sim`, :math:`\cong` is congruence (一致)
 
 Gradient Descent
 ----------------

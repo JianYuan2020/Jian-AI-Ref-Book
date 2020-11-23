@@ -292,7 +292,29 @@ will be of dimension <span class="math notranslate nohighlight">\(s_{j+1}*(s_{j}
 </div>
 <div class="section" id="gradient-checking">
 <h2>Gradient Checking<a class="headerlink" href="#gradient-checking" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="numerical-estimation-of-gradients">
+<h3>Numerical Estimation of Gradients<a class="headerlink" href="#numerical-estimation-of-gradients" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Implement: <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta} J(\theta) \approx gradApprox = \frac{J(\theta + \epsilon) - J(\theta - \epsilon)}{2\epsilon}\)</span>, <span class="math notranslate nohighlight">\(\theta \in \mathbb {R}, \epsilon = 10^{-4}\)</span></p>
+<dl class="simple">
+<dt>Parameter vector <span class="math notranslate nohighlight">\(\theta\)</span>:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\theta = \theta_{1}, \theta_{2}, ..., \theta_{n}; \theta \in \mathbb {R^{n}}\)</span> (E.g. <span class="math notranslate nohighlight">\(\theta\)</span> is “unrolled” version of <span class="math notranslate nohighlight">\(\Theta^{(1)}, \Theta^{(2)}, \Theta^{(3)}\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_{1}} J(\theta) = \frac{J(\theta_{1} + \epsilon, \theta_{2}, ..., \theta_{n}) - J(\theta_{1} - \epsilon, \theta_{2}, ..., \theta_{n})}{2\epsilon}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_{2}} J(\theta) = \frac{J(\theta_{1}, \theta_{2} + \epsilon, ..., \theta_{n}) - J(\theta_{1}, \theta_{2} - \epsilon, ..., \theta_{n})}{2\epsilon}\)</span></p></li>
+<li><p>—</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_{n}} J(\theta) = \frac{J(\theta_{1}, \theta_{2}, ..., \theta_{n} + \epsilon) - J(\theta_{1}, \theta_{2}, ..., \theta_{n} - \epsilon)}{2\epsilon}\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
 <p>TODO: week 5</p>
+<blockquote>
+<div><p>Symbols used in LaTeX markup.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\approx\)</span>, <span class="math notranslate nohighlight">\(\not \approx\)</span>, <span class="math notranslate nohighlight">\(\simeq\)</span>, <span class="math notranslate nohighlight">\(\sim\)</span>, <span class="math notranslate nohighlight">\(\cong\)</span> is congruence (一致)</p></li>
+</ul>
+</div></blockquote>
+</div>
 </div>
 <div class="section" id="gradient-descent">
 <h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h2>
