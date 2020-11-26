@@ -122,24 +122,44 @@ Numerical Estimation of Gradients
 		* ---
 		* :math:`\frac{\partial }{\partial \theta_{n}} J(\theta) = \frac{J(\theta_{1}, \theta_{2}, ..., \theta_{n} + \epsilon) - J(\theta_{1}, \theta_{2}, ..., \theta_{n} - \epsilon)}{2\epsilon}`
 
+Octave Code
+^^^^^^^^^^^
+
+.. code-block:: octave 
+
+	for i = 1:n,
+		thetaPlus = theta;
+		thetaPlus(i) += EPSILON;
+		thetaMinus = theta;
+		thetaMinus(i) -= EPSILON;
+		gradApprox(i) = (J(thetaPlus) - J(thetaMinus))/(2*EPSILON);
+	end;
+
+Checking
+^^^^^^^^
+	Check that :math:`gradApprox \approx DVec` (from backprop)
+
+Implementation Note:
+^^^^^^^^^^^^^^^^^^^^
+	* Implement backprop to compute DVec (unrolled :math:`D^{(1)}, D^{(2)}, D^{(3)}`)
+	* Implement numerical gradient check to compute gradApprox
+	* Make sure they give similar values
+	* Turn off gradient checking. Using backprop code for learning.
+
+Important:
+^^^^^^^^^^
+	* Be sure to disable your gradient checking code before training your classifier. If you run numerical 
+	  gradient computation on every iteration of gradient descent (or in the inner loop of costFunction(…)) 
+	  your code will be very slow. 
+
+:ref:`random-initialization-label`
+----------------------------------
+
+Putting It Together
+-------------------
 TODO: week 5
 
 	Symbols used in LaTeX markup.
 
 	* :math:`\approx`, :math:`\not \approx`, :math:`\simeq`, :math:`\sim`, :math:`\cong` is congruence (一致)
 
-Gradient Descent
-----------------
-	Also called Batch Gradient Descent for it's processing all training examples in one batch at every iteration. 
-
-	:math:`\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\Theta)`
-
-	Repeat for each iteration {
-
-		:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
-
-		Here :math:`x^{(i)}_{0} = 1`, :math:`j = 0, ..., n`
-
-	}
-
-	:math:`\alpha` = :ref:`learning-rate-label`.

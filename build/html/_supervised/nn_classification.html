@@ -15,13 +15,19 @@
     <script src="../_static/language_data.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Support Vector Machines" href="support_vector_machines.html" />
+    <link rel="prev" title="Model Representation I" href="nn_model_representation.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="../index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="nn_model_representation.html" title="Model Representation I"
+             accesskey="P">previous</a> |
+          <a href="support_vector_machines.html" title="Support Vector Machines"
+             accesskey="N">next</a> |
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a>
         </div>
@@ -198,27 +204,58 @@
 </dd>
 </dl>
 </div></blockquote>
+</div>
+<div class="section" id="octave-code">
+<h3>Octave Code<a class="headerlink" href="#octave-code" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-octave notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">,</span>
+        <span class="n">thetaPlus</span> <span class="p">=</span> <span class="n">theta</span><span class="p">;</span>
+        <span class="n">thetaPlus</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+=</span> <span class="n">EPSILON</span><span class="p">;</span>
+        <span class="n">thetaMinus</span> <span class="p">=</span> <span class="n">theta</span><span class="p">;</span>
+        <span class="n">thetaMinus</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">-=</span> <span class="n">EPSILON</span><span class="p">;</span>
+        <span class="n">gradApprox</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">=</span> <span class="p">(</span><span class="n">J</span><span class="p">(</span><span class="n">thetaPlus</span><span class="p">)</span> <span class="o">-</span> <span class="n">J</span><span class="p">(</span><span class="n">thetaMinus</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">EPSILON</span><span class="p">);</span>
+<span class="k">end</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="checking">
+<h3>Checking<a class="headerlink" href="#checking" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Check that <span class="math notranslate nohighlight">\(gradApprox \approx DVec\)</span> (from backprop)</p>
+</div></blockquote>
+</div>
+<div class="section" id="implementation-note">
+<h3>Implementation Note:<a class="headerlink" href="#implementation-note" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Implement backprop to compute DVec (unrolled <span class="math notranslate nohighlight">\(D^{(1)}, D^{(2)}, D^{(3)}\)</span>)</p></li>
+<li><p>Implement numerical gradient check to compute gradApprox</p></li>
+<li><p>Make sure they give similar values</p></li>
+<li><p>Turn off gradient checking. Using backprop code for learning.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="important">
+<h3>Important:<a class="headerlink" href="#important" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Be sure to disable your gradient checking code before training your classifier. If you run numerical
+gradient computation on every iteration of gradient descent (or in the inner loop of costFunction(…))
+your code will be very slow.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="random-initialization-label">
+<h2><a class="reference internal" href="../_appendix/random_initialization.html#random-initialization-label"><span class="std std-ref">Random Initialization</span></a><a class="headerlink" href="#random-initialization-label" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="putting-it-together">
+<h2>Putting It Together<a class="headerlink" href="#putting-it-together" title="Permalink to this headline">¶</a></h2>
 <p>TODO: week 5</p>
 <blockquote>
 <div><p>Symbols used in LaTeX markup.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\approx\)</span>, <span class="math notranslate nohighlight">\(\not \approx\)</span>, <span class="math notranslate nohighlight">\(\simeq\)</span>, <span class="math notranslate nohighlight">\(\sim\)</span>, <span class="math notranslate nohighlight">\(\cong\)</span> is congruence (一致)</p></li>
 </ul>
-</div></blockquote>
-</div>
-</div>
-<div class="section" id="gradient-descent">
-<h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Also called Batch Gradient Descent for it’s processing all training examples in one batch at every iteration.</p>
-<p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{\partial }{\partial \theta_{j}} J(\Theta)\)</span></p>
-<p>Repeat for each iteration {</p>
-<blockquote>
-<div><p><span class="math notranslate nohighlight">\(\theta_{j} = \theta_{j} - \alpha \frac{1}{m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}\)</span></p>
-<p>Here <span class="math notranslate nohighlight">\(x^{(i)}_{0} = 1\)</span>, <span class="math notranslate nohighlight">\(j = 0, ..., n\)</span></p>
-</div></blockquote>
-<p>}</p>
-<p><span class="math notranslate nohighlight">\(\alpha\)</span> = <a class="reference internal" href="../_appendix/learning_rate.html#learning-rate-label"><span class="std std-ref">Learning Rate</span></a>.</p>
 </div></blockquote>
 </div>
 </div>
@@ -233,10 +270,16 @@
           
           <h3>Table of Contents</h3>
           <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../machine_learning.html">Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../supervised_learning.html">Supervised learning</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logistic_regression.html">Logistic Regression</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="neural_networks.html">Neural Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support_vector_machines.html">Support Vector Machines</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../unsupervised_learning.html">Unsupervised learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../special_apps_topics.html">Special Applications/Topics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advice.html">Advice on Building a ML System</a></li>
@@ -262,6 +305,10 @@
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
+            <a href="nn_model_representation.html" title="Model Representation I"
+              >previous</a> |
+            <a href="support_vector_machines.html" title="Support Vector Machines"
+              >next</a> |
             <a href="../genindex.html" title="General Index"
               >index</a>
           </div>
