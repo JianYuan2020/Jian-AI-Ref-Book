@@ -136,7 +136,7 @@
 <li><p>Training set <span class="math notranslate nohighlight">\({ (x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)}) }\)</span></p></li>
 <li><p>Set <span class="math notranslate nohighlight">\(\Delta^{(l)}_{ij} = 0\)</span> (for all <span class="math notranslate nohighlight">\(l, i, j\)</span>); (used to update <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta)\)</span>)</p></li>
 <li><dl class="simple">
-<dt>For <span class="math notranslate nohighlight">\(i = 1\)</span> to <span class="math notranslate nohighlight">\(m\)</span> &lt;- <span class="math notranslate nohighlight">\((x^{(i)}, y^{(i)})\)</span></dt><dd><ul>
+<dt><span class="math notranslate nohighlight">\(for\)</span> <span class="math notranslate nohighlight">\(i = 1:m\)</span> &lt;- <span class="math notranslate nohighlight">\((x^{(i)}, y^{(i)})\)</span></dt><dd><ul>
 <li><p>Set <span class="math notranslate nohighlight">\(a^{(1)} = x^{(i)}\)</span></p></li>
 <li><p>Perform forward propagation to compute <span class="math notranslate nohighlight">\(a^{(1)}\)</span> (for all <span class="math notranslate nohighlight">\(l = 2, 3, ..., L\)</span>)</p></li>
 <li><p>Using <span class="math notranslate nohighlight">\(y^{(i)}\)</span>, compute <span class="math notranslate nohighlight">\(\delta^{(L)} = a^{(L)} - y^{(i)}\)</span></p></li>
@@ -250,6 +250,41 @@ your code will be very slow.</p></li>
 </div>
 <div class="section" id="putting-it-together">
 <h2>Putting It Together<a class="headerlink" href="#putting-it-together" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pick-a-network-architecture-connectivity-pattern-between-neurons">
+<h3>Pick a Network Architecture (connectivity pattern between neurons)<a class="headerlink" href="#pick-a-network-architecture-connectivity-pattern-between-neurons" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>No. of input units: Dimension of features <span class="math notranslate nohighlight">\(x^{(i)}\)</span></p></li>
+<li><p>No. output units: Number of classes <span class="math notranslate nohighlight">\(y^{(i)} \in \mathbb {R^{K}}\)</span></p></li>
+<li><p>Reasonable default: <span class="math notranslate nohighlight">\(1\)</span> hidden layer, or if <span class="math notranslate nohighlight">\(&gt; 1\)</span> hidden layer, have same no. of hidden units
+in every layer or not (usually the more the better)</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="training-a-neural-network">
+<h3>Training a Neural Network<a class="headerlink" href="#training-a-neural-network" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Randomly initialize weights</p></li>
+<li><p>Implement forward propagation to get <span class="math notranslate nohighlight">\(h_{\Theta}(x^{(i)})\)</span> for any <span class="math notranslate nohighlight">\(x^{(i)}\)</span></p></li>
+<li><p>Implement code to compute cost function <span class="math notranslate nohighlight">\(J(\Theta)\)</span></p></li>
+<li><p>Implement backprop to compute partial derivatives <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \Theta_{jk}^{(l)}} J(\Theta)\)</span></p></li>
+</ol>
+<dl>
+<dt><span class="math notranslate nohighlight">\(for\)</span> <span class="math notranslate nohighlight">\(i = 1:m\)</span></dt><dd><p>Perform forward propagation and backpropagation using example <span class="math notranslate nohighlight">\((x^{(i)}, y^{(i)})\)</span></p>
+<p>(Get activations <span class="math notranslate nohighlight">\(a^{(l)}\)</span> and delta terms <span class="math notranslate nohighlight">\(\delta^{(l)}\)</span> for <span class="math notranslate nohighlight">\(l = 2, ..., L\)</span>)</p>
+<p><span class="math notranslate nohighlight">\(\Delta^{(l)} = \Delta^{(l)} + \delta^{(l+1)} (a^{(l)})^{T}\)</span></p>
+</dd>
+</dl>
+<p>Compute <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \Theta_{jk}^{(l)}} J(\Theta)\)</span></p>
+<ol class="arabic simple" start="5">
+<li><p>Use gradient checking to compare <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \Theta_{jk}^{(l)}} J(\Theta)\)</span> computed
+using backpropagation vs. using numerical estimate of gradient of <span class="math notranslate nohighlight">\(J(\Theta)\)</span>. Then disable
+gradient checking code.</p></li>
+<li><p>Use gradient descent or advanced optimization method with backpropagation to try to minimize
+<span class="math notranslate nohighlight">\(J(\Theta)\)</span> as a function of parameters <span class="math notranslate nohighlight">\(\Theta\)</span></p></li>
+</ol>
+</div></blockquote>
 <p>TODO: week 5</p>
 <blockquote>
 <div><p>Symbols used in LaTeX markup.</p>
@@ -257,6 +292,7 @@ your code will be very slow.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\approx\)</span>, <span class="math notranslate nohighlight">\(\not \approx\)</span>, <span class="math notranslate nohighlight">\(\simeq\)</span>, <span class="math notranslate nohighlight">\(\sim\)</span>, <span class="math notranslate nohighlight">\(\cong\)</span> is congruence (一致)</p></li>
 </ul>
 </div></blockquote>
+</div>
 </div>
 </div>
 

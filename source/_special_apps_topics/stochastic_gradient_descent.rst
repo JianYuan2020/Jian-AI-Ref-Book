@@ -14,7 +14,7 @@ Stochastic Gradient Descent
 	#. Randomly shuffle (reorder) training examples
 	#. Repeat for each iteration {
 
-			for :math:`i = 1, ..., m` {
+			:math:`for` :math:`i = 1:m` {
 		
 				:math:`\theta_{j} = \theta_{j} - \alpha (h_\theta (x^{(i)}) - y^{(i)}) x^{(i)}_{j}`
 
@@ -43,7 +43,7 @@ Mini-batch Gradient Descent
 
 	Repeat for each iteration {
 
-			for :math:`i = 1, 11, 21, 31, ..., 991` {
+			:math:`for` :math:`i = 1, 11, 21, 31, ..., 991` {
 		
 				:math:`\theta_{j} = \theta_{j} - \alpha \frac{1}{10} \sum_{k=i}^{i + 9} (h_\theta (x^{(k)}) - y^{(k)}) x^{(k)}_{j}`
 

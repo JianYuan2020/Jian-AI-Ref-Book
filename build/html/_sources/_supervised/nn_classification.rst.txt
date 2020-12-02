@@ -68,7 +68,7 @@ Backpropagation Algorithm
 	Backpropagation Algorithm:
 		* Training set :math:`{ (x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)}) }`
 		* Set :math:`\Delta^{(l)}_{ij} = 0` (for all :math:`l, i, j`); (used to update :math:`\frac{\partial }{\partial \Theta_{ji}^{(l)}} J(\Theta)`)
-		* For :math:`i = 1` to :math:`m` <- :math:`(x^{(i)}, y^{(i)})`
+		* :math:`for` :math:`i = 1:m` <- :math:`(x^{(i)}, y^{(i)})`
 			* Set :math:`a^{(1)} = x^{(i)}`
 			* Perform forward propagation to compute :math:`a^{(1)}` (for all :math:`l = 2, 3, ..., L`)
 			* Using :math:`y^{(i)}`, compute :math:`\delta^{(L)} = a^{(L)} - y^{(i)}`
@@ -157,6 +157,36 @@ Important:
 
 Putting It Together
 -------------------
+
+Pick a Network Architecture (connectivity pattern between neurons)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	* No. of input units: Dimension of features :math:`x^{(i)}`
+	* No. output units: Number of classes :math:`y^{(i)} \in \mathbb {R^{K}}`
+	* Reasonable default: :math:`1` hidden layer, or if :math:`> 1` hidden layer, have same no. of hidden units 
+	  in every layer or not (usually the more the better)
+
+Training a Neural Network
+^^^^^^^^^^^^^^^^^^^^^^^^^
+	#. Randomly initialize weights
+	#. Implement forward propagation to get :math:`h_{\Theta}(x^{(i)})` for any :math:`x^{(i)}`
+	#. Implement code to compute cost function :math:`J(\Theta)`
+	#. Implement backprop to compute partial derivatives :math:`\frac{\partial }{\partial \Theta_{jk}^{(l)}} J(\Theta)`
+
+	:math:`for` :math:`i = 1:m`
+		Perform forward propagation and backpropagation using example :math:`(x^{(i)}, y^{(i)})`
+
+		(Get activations :math:`a^{(l)}` and delta terms :math:`\delta^{(l)}` for :math:`l = 2, ..., L`)
+
+		:math:`\Delta^{(l)} = \Delta^{(l)} + \delta^{(l+1)} (a^{(l)})^{T}`
+
+	Compute :math:`\frac{\partial }{\partial \Theta_{jk}^{(l)}} J(\Theta)`
+
+	5. Use gradient checking to compare :math:`\frac{\partial }{\partial \Theta_{jk}^{(l)}} J(\Theta)` computed
+	   using backpropagation vs. using numerical estimate of gradient of :math:`J(\Theta)`. Then disable 
+	   gradient checking code.
+	#. Use gradient descent or advanced optimization method with backpropagation to try to minimize 
+	   :math:`J(\Theta)` as a function of parameters :math:`\Theta`
+
 TODO: week 5
 
 	Symbols used in LaTeX markup.

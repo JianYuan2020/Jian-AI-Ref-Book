@@ -16,7 +16,7 @@ K-means Algorithm
 
 		Assign a cluster index :math:`k` to each :math:`x^{(i)}` where :math:`\left\|x^{(i)} - \mu_{k}\right\|^2` is minimum:
 
-		for :math:`i = 1` to :math:`m`
+		:math:`for` :math:`i = 1:m`
 
 			:math:`c^{(i)}` = index (from :math:`1` to :math:`K`) of cluster centroid closest to :math:`x^{(i)}`
 			
@@ -51,7 +51,7 @@ Random Initialization
 Avoiding Local Optima
 ^^^^^^^^^^^^^^^^^^^^^
 
-	for :math:`i = 1` to :math:`100` {
+	:math:`for` :math:`i = 1:100` {
 
 		Randomly initialize K-means
 
