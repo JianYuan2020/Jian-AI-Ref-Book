@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Deciding What to Try Next &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Evaluating a Hypothesis &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -16,17 +16,17 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Evaluating a Hypothesis" href="evaluating_hypothesis.html" />
-    <link rel="prev" title="Bias/Variance" href="bias_variance.html" /> 
+    <link rel="next" title="Learning Curves" href="learning_curves.html" />
+    <link rel="prev" title="Deciding What to Try Next" href="deciding_next.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="../index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="bias_variance.html" title="Bias/Variance"
+          <a href="deciding_next.html" title="Deciding What to Try Next"
              accesskey="P">previous</a> |
-          <a href="evaluating_hypothesis.html" title="Evaluating a Hypothesis"
+          <a href="learning_curves.html" title="Learning Curves"
              accesskey="N">next</a> |
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -42,46 +42,35 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="deciding-what-to-try-next">
-<h1>Deciding What to Try Next<a class="headerlink" href="#deciding-what-to-try-next" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="debugging-a-learning-algorithm">
-<h2>Debugging a Learning Algorithm<a class="headerlink" href="#debugging-a-learning-algorithm" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="evaluating-a-hypothesis">
+<h1>Evaluating a Hypothesis<a class="headerlink" href="#evaluating-a-hypothesis" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><dl class="simple">
-<dt>Suppose you have implemented regularized linear regression to predict housing prices.</dt><dd><p><span class="math notranslate nohighlight">\(J(\theta) = \frac{1}{2m} [ \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2 + \lambda \sum_{j=1}^{n} \theta_{j}^2 ]\)</span></p>
+<div><p>When the hypothesis fails to generalize to new examples not in training set.</p>
+<p>Divide the Dataset into:</p>
+<ul class="simple">
+<li><p>Training set (70%) <span class="math notranslate nohighlight">\((x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)})\)</span></p></li>
+<li><p>Test set (30%) <span class="math notranslate nohighlight">\((x_{test}^{(1)}, y_{test}^{(1)}), ..., (x_{test}^{(m_{test})}, y_{test}^{(m_{test})})\)</span></p></li>
+</ul>
+<p>Training/testing procedure for linear regression:</p>
+<ul class="simple">
+<li><p>Learn parameter <span class="math notranslate nohighlight">\(\theta\)</span> from training data (minimizing training error <span class="math notranslate nohighlight">\(J(\theta)\)</span>)</p></li>
+<li><dl class="simple">
+<dt>Compute test set error:</dt><dd><p><span class="math notranslate nohighlight">\(J_{test}(\theta) = \frac{1}{2m_{test}} \sum_{i=1}^{m_{test}} (h_\theta (x_{test}^{(i)}) - y_{test}^{(i)})^2\)</span></p>
 </dd>
 </dl>
-<p>However, when you test your hypothesis on a new set of houses, you find that it makes
-unacceptably large errors in its predictions. What should you try next?</p>
+</li>
+</ul>
+<p>Training/testing procedure for logistic regression:</p>
 <ul class="simple">
-<li><p>Get more training examples</p></li>
-<li><p>Try smaller sets of features</p></li>
-<li><p>Try getting additional features</p></li>
-<li><p>Try adding polynomial features <span class="math notranslate nohighlight">\((x_{1}^{2}, x_{2}^{2}, x_{1} x_{2}, etc.)\)</span></p></li>
-<li><p>Try decreasing <span class="math notranslate nohighlight">\(\lambda\)</span></p></li>
-<li><p>Try increasing <span class="math notranslate nohighlight">\(\lambda\)</span></p></li>
+<li><p>Learn parameter <span class="math notranslate nohighlight">\(\theta\)</span> from training data</p></li>
+<li><dl class="simple">
+<dt>Compute test set error:</dt><dd><p><span class="math notranslate nohighlight">\(J_{test}(\theta) = - \frac{1}{m_{test}} [ \sum_{i=1}^{m_{test}} y_{test}^{(i)} \log(h_\theta (x_{test}^{(i)})) + (1 - y_{test}^{(i)}) \log(1 - h_\theta (x_{test}^{(i)})) ]\)</span></p>
+</dd>
+</dl>
+</li>
+<li><p>Misclassification error (0/1 misclassification error)</p></li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="machine-learning-diagnostic">
-<h2>Machine Learning Diagnostic<a class="headerlink" href="#machine-learning-diagnostic" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Diagnostic: A test that you can run to gain insight what is/isn’t working with a learning algorithm, and
-gain guidance as to how best to improve its performance.</p>
-<p>Diagnostics can take time to implement, but doing so can be a very good use of your time.</p>
-</div></blockquote>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="evaluating_hypothesis.html">Evaluating a Hypothesis</a></li>
-</ul>
-</div>
-<p>TODO: week 6</p>
-<blockquote>
-<div><p>Symbols used in LaTeX markup.</p>
-<p><span class="math notranslate nohighlight">\(\approx\)</span>, <span class="math notranslate nohighlight">\(\not \approx\)</span>, <span class="math notranslate nohighlight">\(\simeq\)</span>, <span class="math notranslate nohighlight">\(\sim\)</span>, <span class="math notranslate nohighlight">\(\cong\)</span> is congruence (一致)</p>
-</div></blockquote>
-</div>
 </div>
 
 
@@ -102,7 +91,7 @@ gain guidance as to how best to improve its performance.</p>
 <li class="toctree-l1"><a class="reference internal" href="../special_apps_topics.html">Special Applications/Topics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../advice.html">Advice on Building a ML System</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias/Variance</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Deciding What to Try Next</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="deciding_next.html">Deciding What to Try Next</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learning_curves.html">Learning Curves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error_analysis.html">Error Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ceiling_analysis.html">Ceiling Analysis</a></li>
@@ -130,16 +119,16 @@ gain guidance as to how best to improve its performance.</p>
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="bias_variance.html" title="Bias/Variance"
+            <a href="deciding_next.html" title="Deciding What to Try Next"
               >previous</a> |
-            <a href="evaluating_hypothesis.html" title="Evaluating a Hypothesis"
+            <a href="learning_curves.html" title="Learning Curves"
               >next</a> |
             <a href="../genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="../_sources/_advice/deciding_next.rst.txt"
+              <a href="../_sources/_advice/evaluating_hypothesis.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>

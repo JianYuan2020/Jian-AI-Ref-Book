@@ -186,10 +186,3 @@ Training a Neural Network
 	   gradient checking code.
 	#. Use gradient descent or advanced optimization method with backpropagation to try to minimize 
 	   :math:`J(\Theta)` as a function of parameters :math:`\Theta`
-
-TODO: week 5
-
-	Symbols used in LaTeX markup.
-
-	* :math:`\approx`, :math:`\not \approx`, :math:`\simeq`, :math:`\sim`, :math:`\cong` is congruence (一致)
-
