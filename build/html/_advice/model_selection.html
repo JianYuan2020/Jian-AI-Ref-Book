@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model Selection &#8212; Jian AI Ref 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Learning Curves" href="learning_curves.html" />
+    <link rel="prev" title="Evaluating a Hypothesis" href="evaluating_hypothesis.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+        <div class="headertitle"><a
+          href="../index.html">Jian AI Ref 0.1 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="evaluating_hypothesis.html" title="Evaluating a Hypothesis"
+             accesskey="P">previous</a> |
+          <a href="learning_curves.html" title="Learning Curves"
+             accesskey="N">next</a> |
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="model-selection">
+<h1>Model Selection<a class="headerlink" href="#model-selection" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>Model selection and training/cross validation/test sets.</p>
+</div></blockquote>
+<div class="section" id="overfitting-example">
+<h2>Overfitting Example<a class="headerlink" href="#overfitting-example" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Once parameters <span class="math notranslate nohighlight">\(\theta_{0}, \theta_{1}, ..., \theta_{n}\)</span> were fit to some set of data (training
+set), the error of the parameters as measured on that data (the training error <span class="math notranslate nohighlight">\(J(\theta)\)</span>) is
+likely to be lower than the actual generalization error.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h2>Model Selection<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(d\)</span> = degree of polynomial</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(d = 1\)</span> -&gt; <span class="math notranslate nohighlight">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x\)</span> -&gt; <span class="math notranslate nohighlight">\(\Theta^{(1)}\)</span> -&gt; <span class="math notranslate nohighlight">\(J_{test}(\Theta^{(1)})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(d = 2\)</span> -&gt; <span class="math notranslate nohighlight">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x + \theta_{2}x^{2}\)</span> -&gt; <span class="math notranslate nohighlight">\(\Theta^{(2)}\)</span> -&gt; <span class="math notranslate nohighlight">\(J_{test}(\Theta^{(2)})\)</span></p></li>
+</ol>
+<p>–</p>
+<ol class="arabic simple" start="10">
+<li><p><span class="math notranslate nohighlight">\(d = 10\)</span> -&gt; <span class="math notranslate nohighlight">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x + ... + \theta_{10}x^{10}\)</span> -&gt; <span class="math notranslate nohighlight">\(\Theta^{(10)}\)</span> -&gt; <span class="math notranslate nohighlight">\(J_{test}(\Theta^{(10)})\)</span></p></li>
+</ol>
+<p>Choose <span class="math notranslate nohighlight">\(\theta_{0} + \theta_{1}x + ... + \theta_{5}x^{5}\)</span> with the min <span class="math notranslate nohighlight">\(J_{test}(\Theta^{(i)})\)</span> where <span class="math notranslate nohighlight">\(i = 1, 2, ..., 10\)</span></p>
+<p>How well does the model generalize? Report test set error <span class="math notranslate nohighlight">\(J_{test}(\Theta^{(5)})\)</span></p>
+<p>Problem: <span class="math notranslate nohighlight">\(J_{test}(\Theta^{(5)})\)</span> is likely to be an optimistic estimate of
+generalization error. I.e. our extra parameter (<span class="math notranslate nohighlight">\(d\)</span> = degree of polynomial) is
+fit to test set.</p>
+</div></blockquote>
+</div>
+<div class="section" id="divide-the-dataset">
+<h2>Divide the Dataset<a class="headerlink" href="#divide-the-dataset" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Training set (60%) <span class="math notranslate nohighlight">\((x^{(1)}, y^{(1)}), ..., (x^{(m)}, y^{(m)})\)</span></p></li>
+<li><p>Cross validation set (20%) <span class="math notranslate nohighlight">\((x_{cv}^{(1)}, y_{cv}^{(1)}), ..., (x_{cv}^{(m_{cv})}, y_{cv}^{(m_{cv})})\)</span></p></li>
+<li><p>Test set (20%) <span class="math notranslate nohighlight">\((x_{test}^{(1)}, y_{test}^{(1)}), ..., (x_{test}^{(m_{test})}, y_{test}^{(m_{test})})\)</span></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="training-cross-validation-test-error">
+<h2>Training/Cross Validation/Test Error<a class="headerlink" href="#training-cross-validation-test-error" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Training error:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(J_{train}(\theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p>
+</div></blockquote>
+<p>Cross Validation error:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(J_{cv}(\theta) = \frac{1}{2m_{cv}} \sum_{i=1}^{m_{cv}} (h_\theta (x_{cv}^{(i)}) - y_{cv}^{(i)})^2\)</span></p>
+</div></blockquote>
+<p>Test error:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(J_{test}(\theta) = \frac{1}{2m_{test}} \sum_{i=1}^{m_{test}} (h_\theta (x_{test}^{(i)}) - y_{test}^{(i)})^2\)</span></p>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>Model Selection<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(d = 1\)</span> -&gt; <span class="math notranslate nohighlight">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x\)</span> -&gt; <span class="math notranslate nohighlight">\(\Theta^{(1)}\)</span> -&gt; <span class="math notranslate nohighlight">\(J_{cv}(\Theta^{(1)})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(d = 2\)</span> -&gt; <span class="math notranslate nohighlight">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x + \theta_{2}x^{2}\)</span> -&gt; <span class="math notranslate nohighlight">\(\Theta^{(2)}\)</span> -&gt; <span class="math notranslate nohighlight">\(J_{cv}(\Theta^{(2)})\)</span></p></li>
+</ol>
+<p>–</p>
+<ol class="arabic simple" start="10">
+<li><p><span class="math notranslate nohighlight">\(d = 10\)</span> -&gt; <span class="math notranslate nohighlight">\(h_{\theta}(x) = \theta_{0} + \theta_{1}x + ... + \theta_{10}x^{10}\)</span> -&gt; <span class="math notranslate nohighlight">\(\Theta^{(10)}\)</span> -&gt; <span class="math notranslate nohighlight">\(J_{cv}(\Theta^{(10)})\)</span></p></li>
+</ol>
+<p>Choose <span class="math notranslate nohighlight">\(\theta_{0} + \theta_{1}x + ... + \theta_{4}x^{4}\)</span> with the min <span class="math notranslate nohighlight">\(J_{cv}(\Theta^{(i)})\)</span> where <span class="math notranslate nohighlight">\(i = 1, 2, ..., 10\)</span></p>
+<p>Estimate generalization error for test set <span class="math notranslate nohighlight">\(J_{test}(\Theta^{(4)})\)</span></p>
+</div></blockquote>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          
+          <h3>Table of Contents</h3>
+          <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../machine_learning.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../supervised_learning.html">Supervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unsupervised_learning.html">Unsupervised learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../special_apps_topics.html">Special Applications/Topics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../advice.html">Advice on Building a ML System</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias/Variance</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="deciding_next.html">Deciding What to Try Next</a></li>
+<li class="toctree-l2"><a class="reference internal" href="learning_curves.html">Learning Curves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error_analysis.html">Error Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ceiling_analysis.html">Ceiling Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Appendix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tensorflow.html">TensorFlow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="../search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+            </form>
+          </div>
+
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="evaluating_hypothesis.html" title="Evaluating a Hypothesis"
+              >previous</a> |
+            <a href="learning_curves.html" title="Learning Curves"
+              >next</a> |
+            <a href="../genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+              <br/>
+              <a href="../_sources/_advice/model_selection.rst.txt"
+                rel="nofollow">Show Source</a>
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Jian Yuan.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

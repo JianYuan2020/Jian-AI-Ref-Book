@@ -29,6 +29,7 @@ Machine Learning Diagnostic
    :caption: Contents:
 
    evaluating_hypothesis
+   model_selection
 
 
 TODO: week 6
