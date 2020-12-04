@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bias vs Variance &#8212; Jian AI Ref 0.1 documentation</title>
+    <title>Diagnosing Bias vs Variance &#8212; Jian AI Ref 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/agogo.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -16,17 +16,17 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Deciding What to Try Next" href="deciding_next.html" />
-    <link rel="prev" title="Advice on Building a ML System" href="../advice.html" /> 
+    <link rel="next" title="Learning Curves" href="learning_curves.html" />
+    <link rel="prev" title="Model Selection" href="model_selection.html" /> 
   </head><body>
     <div class="header-wrapper" role="banner">
       <div class="header">
         <div class="headertitle"><a
           href="../index.html">Jian AI Ref 0.1 documentation</a></div>
         <div class="rel" role="navigation" aria-label="related navigation">
-          <a href="../advice.html" title="Advice on Building a ML System"
+          <a href="model_selection.html" title="Model Selection"
              accesskey="P">previous</a> |
-          <a href="deciding_next.html" title="Deciding What to Try Next"
+          <a href="learning_curves.html" title="Learning Curves"
              accesskey="N">next</a> |
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a>
@@ -42,17 +42,10 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="bias-vs-variance">
-<h1>Bias vs Variance<a class="headerlink" href="#bias-vs-variance" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="diagnosing-bias-vs-variance">
+<h1>Diagnosing Bias vs Variance<a class="headerlink" href="#diagnosing-bias-vs-variance" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>The bias-variance tradeoff is a central problem in supervised learning.</p>
-<a class="reference internal image-reference" href="../_images/bias_vs_variance.png"><img alt="../_images/bias_vs_variance.png" class="align-center" src="../_images/bias_vs_variance.png" style="width: 587.3px; height: 305.2px;" /></a>
-<p>Training error: <span class="math notranslate nohighlight">\(J_{train}(\theta) = \frac{1}{2m} \sum_{i=1}^{m} (h_\theta (x^{(i)}) - y^{(i)})^2\)</span></p>
-<p>Cross validation error: <span class="math notranslate nohighlight">\(J_{cv}(\theta) = \frac{1}{2m_{cv}} \sum_{i=1}^{m_{cv}} (h_\theta (x_{cv}^{(i)}) - y_{cv}^{(i)})^2\)</span>
-(or <span class="math notranslate nohighlight">\(J_{test}(\theta)\)</span>)</p>
-<p>Here is a normal pattern for <span class="math notranslate nohighlight">\(J_{train}(\theta), J_{cv}(\theta)\)</span> (or <span class="math notranslate nohighlight">\(J_{test}(\theta)\)</span>)
-over <span class="math notranslate nohighlight">\(d\)</span> and therefore an effective way to choose the proper <span class="math notranslate nohighlight">\(d\)</span>:</p>
-<a class="reference internal image-reference" href="../_images/bias_variance_errors.png"><img alt="../_images/bias_variance_errors.png" class="align-center" src="../_images/bias_variance_errors.png" style="width: 563.5px; height: 207.2px;" /></a>
+<div><p><a class="reference internal" href="bias_variance.html"><span class="doc">Bias vs Variance</span></a></p>
 </div></blockquote>
 </div>
 
@@ -73,8 +66,8 @@ over <span class="math notranslate nohighlight">\(d\)</span> and therefore an ef
 <li class="toctree-l1"><a class="reference internal" href="../unsupervised_learning.html">Unsupervised learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../special_apps_topics.html">Special Applications/Topics</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../advice.html">Advice on Building a ML System</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Bias vs Variance</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deciding_next.html">Deciding What to Try Next</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bias_variance.html">Bias vs Variance</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="deciding_next.html">Deciding What to Try Next</a></li>
 <li class="toctree-l2"><a class="reference internal" href="learning_curves.html">Learning Curves</a></li>
 <li class="toctree-l2"><a class="reference internal" href="error_analysis.html">Error Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ceiling_analysis.html">Ceiling Analysis</a></li>
@@ -102,16 +95,16 @@ over <span class="math notranslate nohighlight">\(d\)</span> and therefore an ef
       <div class="footer">
         <div class="left">
           <div role="navigation" aria-label="related navigaton">
-            <a href="../advice.html" title="Advice on Building a ML System"
+            <a href="model_selection.html" title="Model Selection"
               >previous</a> |
-            <a href="deciding_next.html" title="Deciding What to Try Next"
+            <a href="learning_curves.html" title="Learning Curves"
               >next</a> |
             <a href="../genindex.html" title="General Index"
               >index</a>
           </div>
           <div role="note" aria-label="source link">
               <br/>
-              <a href="../_sources/_advice/bias_variance.rst.txt"
+              <a href="../_sources/_advice/diagnosing_bias_vs_variance.rst.txt"
                 rel="nofollow">Show Source</a>
           </div>
         </div>

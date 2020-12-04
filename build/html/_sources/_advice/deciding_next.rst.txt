@@ -30,7 +30,7 @@ Machine Learning Diagnostic
 
    evaluating_hypothesis
    model_selection
-
+   diagnosing_bias_vs_variance
 
 TODO: week 6
 
